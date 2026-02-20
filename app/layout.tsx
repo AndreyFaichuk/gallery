@@ -4,9 +4,16 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 
-const forumSans = localFont({
+const forum = localFont({
   src: './fonts/Forum-Regular.ttf',
-  variable: '--font-forum-sans',
+  variable: '--font-body',
+  display: 'swap',
+});
+
+const artist = localFont({
+  src: './fonts/The-Artist-Script.otf',
+  variable: '--font-artist',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -20,8 +27,8 @@ interface Props {
 
 const RootLayout: FC<Props> = ({ children }) => {
   return (
-    <html lang="en">
-      <body className={cn(forumSans.variable)}>{children}</body>
+    <html lang="en" className={cn(forum.variable, artist.variable)}>
+      <body>{children}</body>
     </html>
   );
 };

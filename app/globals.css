@@ -7,3 +7,14 @@ body {
   overflow-x: hidden;
   background: url('/bg.svg') center / cover no-repeat;
 }
+
+@theme {
+  --font-body: var(--font-body);
+  --font-artist: var(--font-artist);
+
+  --text-logo: 40px;
+}
+
+:root {
+  --font-size-title-logo: 40px;
+}
