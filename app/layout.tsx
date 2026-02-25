@@ -1,8 +1,8 @@
 import type { FC, ReactNode } from 'react';
-import cn from 'classnames';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
+import { cn } from './lib/utils';
 
 const forum = localFont({
   src: './fonts/Forum-Regular.ttf',
