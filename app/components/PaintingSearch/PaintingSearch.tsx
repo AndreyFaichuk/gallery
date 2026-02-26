@@ -4,8 +4,8 @@ import { type ChangeEvent, type KeyboardEvent, useState, useMemo } from 'react';
 import { X } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Suggestions } from './Suggestions';
-import { type Product, Products } from './Products';
-import { useQuery } from '@tanstack/react-query';
+import { Products } from './Products';
+import usePaintings from '@/hooks/use-paintings';
 
 const MOCK_DATA = [
   'Mona Lisa',
@@ -15,33 +15,14 @@ const MOCK_DATA = [
   'The Last Supper',
 ];
 
-const MOCK_PRODUCTS: Product[] = [
-  {
-    name: 'Mona Lisa',
-    logoUrl:
-      'https://plus.unsplash.com/premium_photo-1771837804377-3a85ecdfa4b9?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    name: 'Starry Night',
-    logoUrl:
-      'https://images.unsplash.com/photo-1771904488645-fa6ebf7a2d06?q=80&w=698&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    name: 'The Scream',
-    logoUrl:
-      'https://plus.unsplash.com/premium_photo-1694475296052-66ab2908ded3?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    name: 'Girl with a Pearl Earring',
-    logoUrl:
-      'https://images.unsplash.com/photo-1771871028054-1f0d8f9f2e12?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-];
-
 export const PaintingSearch = () => {
   const [search, setSearch] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number | null>(null);
+
+  const { paintings, arePaintingsLoading } = usePaintings({ query: search });
+
+  console.log(paintings, 'paintings');
 
   const filtered = useMemo(() => {
     if (!search) return [];
@@ -110,7 +91,7 @@ export const PaintingSearch = () => {
         }
       />
 
-      {isOpen && filtered.length > 0 && (
+      {isOpen && (
         <div className="absolute mt-2 w-full rounded-md border shadow-md z-50 flex justify-around">
           <Suggestions
             activeSuggestionIndex={activeSuggestionIndex}
@@ -118,7 +99,7 @@ export const PaintingSearch = () => {
             setActiveSuggestionIndex={setActiveSuggestionIndex}
           />
 
-          <Products products={MOCK_PRODUCTS} />
+          <Products products={paintings} />
         </div>
       )}
     </div>

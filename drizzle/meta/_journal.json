@@ -8,6 +8,13 @@
       "when": 1772103759827,
       "tag": "0000_open_supreme_intelligence",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1772128526857,
+      "tag": "0001_broken_red_skull",
+      "breakpoints": true
     }
   ]
 }

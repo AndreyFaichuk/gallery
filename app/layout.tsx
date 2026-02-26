@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import { cn } from './lib/utils';
+import ReactQueryProvider from './components/providers/tanstack-query-provider';
 
 const forum = localFont({
   src: './fonts/Forum-Regular.ttf',
@@ -28,7 +29,9 @@ interface Props {
 const RootLayout: FC<Props> = ({ children }) => {
   return (
     <html lang="en" className={cn(forum.variable, artist.variable)}>
-      <body>{children}</body>
+      <body>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+      </body>
     </html>
   );
 };
