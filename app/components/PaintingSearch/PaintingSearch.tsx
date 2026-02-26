@@ -5,6 +5,7 @@ import { X } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Suggestions } from './Suggestions';
 import { type Product, Products } from './Products';
+import { useQuery } from '@tanstack/react-query';
 
 const MOCK_DATA = [
   'Mona Lisa',
