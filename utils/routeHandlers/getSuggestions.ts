@@ -1,5 +1,5 @@
 import { eq, ilike } from 'drizzle-orm';
-import { paintings } from '../db/schema';
+import { paintings, searchTerms } from '../db/schema';
 import { db } from '../db/db';
 
 type Options = {
@@ -9,13 +9,13 @@ type Options = {
 const getSuggestions = async ({ query }: Options) => {
   const result = await db
     .select({
-      name: paintings.name,
+      term: searchTerms.term,
     })
-    .from(paintings)
-    .where(ilike(paintings.name, `%${query}%`))
+    .from(searchTerms)
+    .where(ilike(searchTerms.term, `%${query}%`))
     .limit(10);
 
-  return result;
+  return result.map((row) => row.term);
 };
 
 export default getSuggestions;
