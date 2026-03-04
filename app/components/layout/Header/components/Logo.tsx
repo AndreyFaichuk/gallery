@@ -1,3 +1,5 @@
+'use client';
+
 export const Logo = () => {
   return (
     <div className="flex items-center gap-1 relative w-[520px]">
