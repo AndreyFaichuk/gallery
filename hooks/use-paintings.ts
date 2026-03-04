@@ -13,12 +13,12 @@ type UsePaintingsProps = {
 
 const usePaintings = ({ query }: UsePaintingsProps) => {
   const {
-    data: paintings = [],
+    data: paintingsAndSuggestions = { paintings: [], suggestions: [] },
     isLoading: arePaintingsLoading,
     error,
     isError,
     refetch,
-  } = useQuery<PaintingT[]>({
+  } = useQuery<{ paintings: PaintingT[]; suggestions: string[] }>({
     queryKey: paintingsQueryKeys.paintings.all(query),
     queryFn: async () => {
       const searchParams = new URLSearchParams();
@@ -30,7 +30,7 @@ const usePaintings = ({ query }: UsePaintingsProps) => {
       const response = await fetch(`/api/paintings/?${searchParams.toString()}`);
 
       if (!response.ok) {
-        throw new Error('Failed to fetch paintings');
+        throw new Error('Failed to fetch paintings or suggestions');
       }
 
       return response.json();
@@ -39,7 +39,7 @@ const usePaintings = ({ query }: UsePaintingsProps) => {
   });
 
   return {
-    paintings,
+    paintingsAndSuggestions,
     arePaintingsLoading,
     error,
     isError,
