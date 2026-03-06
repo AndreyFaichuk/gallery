@@ -16,7 +16,7 @@ type ProductsProps = {
   isLoading: boolean;
 };
 
-export const Products: FC<ProductsProps> = memo(({ products, isLoading = false }) => {
+const ProductsComponent: FC<ProductsProps> = ({ products, isLoading = false }) => {
   return (
     <div className="flex flex-col flex-1 px-3 py-2">
       <p className="text-xs text-muted-foreground">Products</p>
@@ -53,4 +53,6 @@ export const Products: FC<ProductsProps> = memo(({ products, isLoading = false }
       )}
     </div>
   );
-});
+};
+
+export const Products = memo(ProductsComponent);

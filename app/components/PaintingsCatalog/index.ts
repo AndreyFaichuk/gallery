@@ -1,0 +1,1 @@
+export { PaintingsCatalog } from './PaintingsCatalog';

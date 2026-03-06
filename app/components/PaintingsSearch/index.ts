@@ -1,0 +1,1 @@
+export { PaintingsSearch } from './PaintingsSearch';

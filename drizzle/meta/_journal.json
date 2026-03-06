@@ -15,6 +15,20 @@
       "when": 1772128526857,
       "tag": "0001_broken_red_skull",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1772646198909,
+      "tag": "0002_fuzzy_galactus",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1772647682531,
+      "tag": "0003_previous_moonstone",
+      "breakpoints": true
     }
   ]
 }
