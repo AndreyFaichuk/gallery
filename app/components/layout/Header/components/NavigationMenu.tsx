@@ -23,8 +23,8 @@ const MENU_OPTIONS: MenuOptions = [
   {
     title: 'original oil paintings',
     subMenu: [
-      { title: 'all paintings', link: '/paintings' },
-      { title: 'available paintings', link: '/paintings/available' },
+      { title: 'all paintings', link: '/collections/all-paintings' },
+      { title: 'available paintings', link: '/collections/available-paintings' },
     ],
   },
   {

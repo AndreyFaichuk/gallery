@@ -21,6 +21,8 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
+NavigationMenuItem.displayName = NavigationMenuPrimitive.Item.displayName;
+
 const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
@@ -59,6 +61,8 @@ const NavigationMenuLink = React.forwardRef<
     {...props}
   />
 ));
+
+NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName;
 
 const NavigationMenuViewport = NavigationMenuPrimitive.Viewport;
 

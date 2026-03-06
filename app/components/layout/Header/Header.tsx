@@ -3,7 +3,7 @@
 import { Handbag, Search } from 'lucide-react';
 import { Logo } from './components/Logo';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
-import { PaintingSearch } from '../../PaintingSearch';
+import { PaintingsSearch } from '../../PaintingsSearch';
 import { NavigationMenu } from './components/NavigationMenu';
 
 export const Header = () => {
@@ -21,9 +21,9 @@ export const Header = () => {
               align="start"
               alignOffset={0}
               sideOffset={20}
-              className="p-0 border-0 w-[90vw] max-w-[600px]"
+              className="border-0 w-[90vw] max-w-[600px] p-0"
             >
-              <PaintingSearch />
+              <PaintingsSearch />
             </PopoverContent>
           </Popover>
 

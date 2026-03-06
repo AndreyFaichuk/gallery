@@ -8,7 +8,7 @@ import { Products } from './Products';
 import usePaintings from '@/hooks/use-paintings';
 import useDebouncedValue from '@/hooks/use-debounced-value';
 
-export const PaintingSearch = () => {
+export const PaintingsSearch = () => {
   const [search, setSearch] = useState('');
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number | null>(null);
 
@@ -61,6 +61,7 @@ export const PaintingSearch = () => {
   return (
     <div className="relative w-full" aria-controls="search-listbox">
       <Input
+        className="bg-white"
         placeholder="Search paintings..."
         autoFocus
         onChange={(e) => setValue(e.target.value)}
@@ -74,7 +75,7 @@ export const PaintingSearch = () => {
       />
 
       {search && (
-        <div className="absolute mt-2 w-full rounded-md border shadow-md z-50 flex justify-around">
+        <div className="absolute mt-2 w-full rounded-md shadow-md z-50 flex justify-around bg-white">
           <Suggestions
             activeSuggestionIndex={activeSuggestionIndex}
             suggestions={suggestions}

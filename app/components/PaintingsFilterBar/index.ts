@@ -1,0 +1,1 @@
+export { PaintingsFilterBar } from './PaintingsFilterBar';
