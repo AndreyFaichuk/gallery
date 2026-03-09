@@ -17,6 +17,7 @@
     "classnames": "^2.5.1",
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.1",
+    "framer-motion": "^12.35.1",
     "lucide-react": "^0.564.0",
     "next": "15.5.7",
     "pg": "^8.19.0",

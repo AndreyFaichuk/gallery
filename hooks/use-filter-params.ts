@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import useDebounce from './use-debounce';
 
@@ -9,57 +9,67 @@ type useFilterParamsProps = {
 export const useFilterParams = ({ params }: useFilterParamsProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
 
   const [availability, collections] = params;
 
   const availabilityParam = searchParams.get(availability);
   const collectionsParam = searchParams.get(collections);
 
-  const [filters, setFilters] = useState({
+  const currentParamsMap = {
     [availability]: availabilityParam?.split(',') || [],
     [collections]: collectionsParam?.split(',') || [],
-  });
+  };
 
-  const debouncedFilters = useDebounce(filters, 600);
+  const page = Number(searchParams.get('page')) || 1;
 
-  useEffect(() => {
-    const currentSearchParams = new URLSearchParams(searchParams.toString());
+  const currentSearchParams = new URLSearchParams(searchParams.toString());
 
-    for (const [param, values] of Object.entries(debouncedFilters)) {
-      if (values.length) {
-        currentSearchParams.set(param, values.join(','));
+  const handleToggleSearchParam = (param: string, value: string) => {
+    const currentValues = currentSearchParams.get(param)?.split(',') || [];
+
+    const isValueAlreadyApplied = currentValues.includes(value);
+
+    if (isValueAlreadyApplied) {
+      const newValues = currentValues.filter((v) => v !== value);
+
+      if (newValues.length) {
+        currentSearchParams.set(param, newValues.join(','));
       } else {
         currentSearchParams.delete(param);
       }
+    } else {
+      const newValues = [...currentValues, value];
+      currentSearchParams.set(param, newValues.join(','));
+    }
+
+    if (param !== 'page') {
+      currentSearchParams.set('page', '1');
     }
 
     router.replace(`?${currentSearchParams.toString()}`);
-  }, [debouncedFilters, searchParams, router.replace]);
+  };
 
-  const handleToggleSearchParam = (param: string, value: string) => {
-    setFilters((prev) => {
-      const currentValues = prev[param] || [];
+  const handleSetPage = (value: number) => {
+    currentSearchParams.set('page', String(value));
 
-      const newValues = currentValues.includes(value)
-        ? currentValues.filter((v) => v !== value)
-        : [...currentValues, value];
-
-      return {
-        ...prev,
-        [param]: newValues,
-      };
-    });
+    return `${pathname}?${currentSearchParams.toString()}`;
   };
 
   const handleRemoveAllSearchParams = () => {
-    const cleared = Object.fromEntries(params.map((param) => [param, []]));
-    setFilters(cleared);
+    for (const param of params) {
+      currentSearchParams.delete(param);
+    }
+
+    router.replace(`?${currentSearchParams.toString()}`);
   };
 
   return {
-    currentParamsMap: filters,
+    page,
+    currentParamsMap,
     handleToggleSearchParam,
     handleRemoveAllSearchParams,
+    handleSetPage,
   };
 };
 
