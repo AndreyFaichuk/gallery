@@ -6,10 +6,16 @@ type Options = {
   query?: string;
   collectionId?: string;
   isAvailable?: '1' | '0';
+  page?: number;
+  limit?: number;
 };
 
-const getAllPaintings = async ({ query, collectionId, isAvailable }: Options) => {
+const getAllPaintings = async ({ query, collectionId, isAvailable, page, limit = 8 }: Options) => {
   const conditions: SQL[] = [];
+
+  const pageNumber = page && page > 0 ? page : 1;
+
+  const offset = (pageNumber - 1) * limit;
 
   const collectionIds = collectionId ? collectionId.split(',').map((id) => id.trim()) : [];
 
@@ -25,13 +31,15 @@ const getAllPaintings = async ({ query, collectionId, isAvailable }: Options) =>
     conditions.push(eq(paintings.isAvailable, isAvailable === '1'));
   }
 
-  const [items, availabilityCounts, collectionCounts] = await Promise.all([
-    await db
+  const [items, availabilityCounts, collectionCounts, paintingsCount] = await Promise.all([
+    db
       .select()
       .from(paintings)
-      .where(conditions.length ? and(...conditions) : undefined),
+      .where(conditions.length ? and(...conditions) : undefined)
+      .limit(limit)
+      .offset(offset),
 
-    await db
+    db
       .select({
         isAvailable: paintings.isAvailable,
         count: sql<number>`count(*)`,
@@ -39,7 +47,7 @@ const getAllPaintings = async ({ query, collectionId, isAvailable }: Options) =>
       .from(paintings)
       .groupBy(paintings.isAvailable),
 
-    await db
+    db
       .select({
         id: collections.id,
         name: collections.name,
@@ -48,10 +56,20 @@ const getAllPaintings = async ({ query, collectionId, isAvailable }: Options) =>
       .from(collections)
       .leftJoin(paintings, eq(paintings.collectionId, collections.id))
       .groupBy(collections.id),
+
+    db
+      .select({
+        count: sql<number>`count(${paintings.id})`,
+      })
+      .from(paintings)
+      .where(conditions.length ? and(...conditions) : undefined),
   ]);
+
+  const totalCount = paintingsCount[0]?.count ?? 0;
 
   return {
     items,
+    totalCount,
     filters: [
       {
         name: 'Availability',

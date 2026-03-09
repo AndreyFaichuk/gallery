@@ -4,10 +4,10 @@ import { type FC, Fragment } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { ChevronDown } from 'lucide-react';
 import { FilterOption } from './FilterOption';
-import type { PaintingsFilterBarProps } from './PaintingsFilterBar';
-import useFilterParams from '@/hooks/use-filter-params';
+import type { FilterOptions, PaintingsFilterBarProps } from './PaintingsFilterBar';
 
-type FilterPopoverProps = PaintingsFilterBarProps & {
+type FilterPopoverProps = {
+  filters: FilterOptions;
   handleToggleSearchParam: (param: string, value: string) => void;
   currentParamsMap: {
     [x: string]: string[];

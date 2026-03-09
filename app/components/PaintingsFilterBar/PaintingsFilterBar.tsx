@@ -1,9 +1,10 @@
 'use client';
 
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { FilterPopover } from './FilterPopover';
 import { ActiveFilters } from './ActiveFilters';
 import useFilterParams from '@/hooks/use-filter-params';
+import { Pagination } from '../Pagination';
 
 export type Option = {
   label: string;
@@ -16,13 +17,26 @@ export type FilterOptions = { param: string; name: string; options: Option[] }[]
 
 export type PaintingsFilterBarProps = {
   filters: FilterOptions;
+  totalCount: number;
+  children: ReactNode;
 };
 
-export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({ filters }) => {
-  const { currentParamsMap, handleToggleSearchParam, handleRemoveAllSearchParams } =
-    useFilterParams({
-      params: filters.map((filter) => filter.param),
-    });
+const LIMIT = 8;
+
+export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
+  filters,
+  children,
+  totalCount,
+}) => {
+  const {
+    currentParamsMap,
+    handleToggleSearchParam,
+    handleRemoveAllSearchParams,
+    handleSetPage,
+    page,
+  } = useFilterParams({
+    params: filters.map((filter) => filter.param),
+  });
 
   const filtersToRender = Object.entries(currentParamsMap).flatMap(([param, value]) => {
     const currentFilterBlock = filters.find((filter) => filter.param === param);
@@ -41,18 +55,24 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({ filters }) => 
     });
   });
 
+  const totalPages = Math.ceil(totalCount / LIMIT);
+
   return (
-    <div className="w-full flex flex-col gap-4">
-      <FilterPopover
-        filters={filters}
-        currentParamsMap={currentParamsMap}
-        handleToggleSearchParam={handleToggleSearchParam}
-      />
-      <ActiveFilters
-        currentParamsMap={filtersToRender}
-        handleToggleSearchParam={handleToggleSearchParam}
-        handleRemoveAllSearchParams={handleRemoveAllSearchParams}
-      />
+    <div className="flex flex-col gap-4">
+      <div className="w-full flex flex-col gap-4">
+        <FilterPopover
+          filters={filters}
+          currentParamsMap={currentParamsMap}
+          handleToggleSearchParam={handleToggleSearchParam}
+        />
+        <ActiveFilters
+          currentParamsMap={filtersToRender}
+          handleToggleSearchParam={handleToggleSearchParam}
+          handleRemoveAllSearchParams={handleRemoveAllSearchParams}
+        />
+      </div>
+      {children}
+      <Pagination currentPage={page} setPage={handleSetPage} totalPages={totalPages} />
     </div>
   );
 };

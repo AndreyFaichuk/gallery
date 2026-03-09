@@ -1,6 +1,7 @@
 'use client';
 
 import type { PaintingT } from '@/types/schema-types';
+import getImageUrl from '@/utils/get-image-url';
 import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -29,6 +30,8 @@ const ProductsComponent: FC<ProductsProps> = ({ products, isLoading = false }) =
       ) : (
         <ul className="flex flex-col gap-1">
           {products.map((item) => {
+            const firstImageUrl = getImageUrl(`${item.id}/${item.images[0]}`);
+
             return (
               <li key={item.name} className="w-full rounded-md">
                 <Link
@@ -36,7 +39,7 @@ const ProductsComponent: FC<ProductsProps> = ({ products, isLoading = false }) =
                   className="block w-full px-3 py-2 hover:bg-gray-50 hover:underline hover:decoration-2 hover:underline-offset-2"
                 >
                   <div className="flex items-center gap-2">
-                    <Image src={item.images[0]} alt={item.name} width={50} height={60} />
+                    <Image src={firstImageUrl} alt={item.name} width={50} height={60} />
                     {item.name}
                   </div>
                 </Link>
