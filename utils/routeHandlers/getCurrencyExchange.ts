@@ -1,5 +1,3 @@
-'use server';
-
 import { desc } from 'drizzle-orm';
 import { exchangeRates } from '../db/schema';
 import { db } from '../db/db';
