@@ -5,14 +5,27 @@ import getImageUrl from '@/utils/get-image-url';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import type { FC } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
+import { CURRENCY_OPTIONS } from '../layout/Header/components/CurrencySellector';
 
 type PaintingItemProps = {
   item: PaintingT;
+  exchange: {
+    EUR: number;
+    UAH: number;
+    USD: number;
+  };
 };
 
-export const PaintingItem: FC<PaintingItemProps> = ({ item }) => {
+export const PaintingItem: FC<PaintingItemProps> = ({ item, exchange }) => {
+  const [currency] = useLocalStorage('currency', CURRENCY_OPTIONS[0].value);
+
   const firstImage = getImageUrl(`${item.id}/${item.images[0]}`);
   const secondImage = getImageUrl(`${item.id}/${item.images[1]}`);
+
+  const formattedPriceBasedOnCurrency = Math.ceil(
+    Number(item.price) * exchange[currency as keyof typeof exchange],
+  );
 
   return (
     <motion.div
@@ -35,7 +48,7 @@ export const PaintingItem: FC<PaintingItemProps> = ({ item }) => {
             alt="painting"
             width={600}
             height={600}
-            className="w-full h-auto object-cover transform-gpu"
+            className="w-full h-auto"
           />
         </motion.div>
 
@@ -51,8 +64,7 @@ export const PaintingItem: FC<PaintingItemProps> = ({ item }) => {
             alt="painting hover"
             width={600}
             height={600}
-            className="w-full h-auto object-cover transform-gpu"
-            priority={false}
+            className="w-full h-auto"
             loading="lazy"
           />
         </motion.div>
@@ -62,7 +74,7 @@ export const PaintingItem: FC<PaintingItemProps> = ({ item }) => {
         <h3 className="transition group-hover:opacity-70 group-hover:underline decoration-1">
           {item.name}
         </h3>
-        <span>{item.price}</span>
+        <span>{formattedPriceBasedOnCurrency}</span>
       </div>
     </motion.div>
   );

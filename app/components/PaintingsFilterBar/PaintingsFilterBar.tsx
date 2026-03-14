@@ -33,6 +33,8 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
     handleToggleSearchParam,
     handleRemoveAllSearchParams,
     handleSetPage,
+    handleSetSortParam,
+    sortParam,
     page,
   } = useFilterParams({
     params: filters.map((filter) => filter.param),
@@ -58,12 +60,15 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
   const totalPages = Math.ceil(totalCount / LIMIT);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-12">
       <div className="w-full flex flex-col gap-4">
         <FilterPopover
           filters={filters}
           currentParamsMap={currentParamsMap}
+          handleSetSortParam={handleSetSortParam}
           handleToggleSearchParam={handleToggleSearchParam}
+          totalCount={totalCount}
+          sortParam={sortParam}
         />
         <ActiveFilters
           currentParamsMap={filtersToRender}
