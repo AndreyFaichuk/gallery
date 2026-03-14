@@ -29,6 +29,20 @@
       "when": 1772647682531,
       "tag": "0003_previous_moonstone",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1773486033967,
+      "tag": "0004_fixed_tombstone",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1773490609247,
+      "tag": "0005_organic_northstar",
+      "breakpoints": true
     }
   ]
 }

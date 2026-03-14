@@ -5,6 +5,7 @@ import { Logo } from './components/Logo';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { PaintingsSearch } from '../../PaintingsSearch';
 import { NavigationMenu } from './components/NavigationMenu';
+import { CurrencySellector } from './components/CurrencySellector';
 
 export const Header = () => {
   return (
@@ -28,7 +29,10 @@ export const Header = () => {
           </Popover>
 
           <Logo />
-          <Handbag className="size-8 cursor-pointer" />
+          <div className="flex gap-6 items-center relative">
+            <CurrencySellector />
+            <Handbag className="size-8 cursor-pointer" />
+          </div>
         </div>
         <NavigationMenu />
       </div>

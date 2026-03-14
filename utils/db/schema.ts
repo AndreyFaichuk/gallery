@@ -8,6 +8,7 @@ import {
   boolean,
   index,
   timestamp,
+  pgEnum,
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm/sql/sql';
 
@@ -57,4 +58,18 @@ export const collections = pgTable('collections', {
   name: text('name').notNull(),
   description: text('description'),
   createdAt: timestamp().defaultNow(),
+});
+
+export const exchangeRatesBaseCurrencyEnum = pgEnum('base_currency', ['EUR', 'USD', 'UAH']);
+
+export const exchangeRates = pgTable('exchange_rates', {
+  id: uuid('id').primaryKey(),
+
+  baseCurrency: exchangeRatesBaseCurrencyEnum('base_currency').notNull().default('USD'),
+
+  USD: numeric('rate_usd', { mode: 'number' }).notNull(),
+  EUR: numeric('rate_eur', { mode: 'number' }).notNull(),
+  UAH: numeric('rate_uah', { mode: 'number' }).notNull(),
+
+  fetchedAt: timestamp('fetched_at').notNull(),
 });

@@ -1,6 +1,10 @@
+import type { Nullable } from '@/types';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import useDebounce from './use-debounce';
+
+const VALID_PARAMS = {
+  PAGE: 'page',
+  SORT: 'sort',
+} as const;
 
 type useFilterParamsProps = {
   params: string[];
@@ -16,12 +20,13 @@ export const useFilterParams = ({ params }: useFilterParamsProps) => {
   const availabilityParam = searchParams.get(availability);
   const collectionsParam = searchParams.get(collections);
 
+  const sortParam = searchParams.get(VALID_PARAMS.SORT);
+  const page = Number(searchParams.get(VALID_PARAMS.PAGE)) || 1;
+
   const currentParamsMap = {
     [availability]: availabilityParam?.split(',') || [],
     [collections]: collectionsParam?.split(',') || [],
   };
-
-  const page = Number(searchParams.get('page')) || 1;
 
   const currentSearchParams = new URLSearchParams(searchParams.toString());
 
@@ -43,17 +48,26 @@ export const useFilterParams = ({ params }: useFilterParamsProps) => {
       currentSearchParams.set(param, newValues.join(','));
     }
 
-    if (param !== 'page') {
-      currentSearchParams.set('page', '1');
+    if (param !== VALID_PARAMS.PAGE) {
+      currentSearchParams.set(VALID_PARAMS.PAGE, '1');
     }
 
     router.replace(`?${currentSearchParams.toString()}`);
   };
 
   const handleSetPage = (value: number) => {
-    currentSearchParams.set('page', String(value));
+    currentSearchParams.set(VALID_PARAMS.PAGE, String(value));
 
     return `${pathname}?${currentSearchParams.toString()}`;
+  };
+
+  const handleSetSortParam = (value: Nullable<string>) => {
+    if (!value) return;
+
+    currentSearchParams.set(VALID_PARAMS.SORT, String(value));
+    currentSearchParams.set(VALID_PARAMS.PAGE, '1');
+
+    router.replace(`?${currentSearchParams.toString()}`);
   };
 
   const handleRemoveAllSearchParams = () => {
@@ -66,7 +80,9 @@ export const useFilterParams = ({ params }: useFilterParamsProps) => {
 
   return {
     page,
+    sortParam,
     currentParamsMap,
+    handleSetSortParam,
     handleToggleSearchParam,
     handleRemoveAllSearchParams,
     handleSetPage,
