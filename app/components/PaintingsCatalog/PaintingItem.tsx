@@ -4,9 +4,11 @@ import type { PaintingT } from '@/types/schema-types';
 import getImageUrl from '@/utils/get-image-url';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import type { FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { CURRENCY_OPTIONS } from '../layout/Header/components/CurrencySellector';
+import { formatCurrency } from '@/utils/format-currency';
+import type { ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
 
 type PaintingItemProps = {
   item: PaintingT;
@@ -17,15 +19,32 @@ type PaintingItemProps = {
   };
 };
 
+const formatPaintingPrice = (price: number, currency: ExchangeRatesCurrency) =>
+  formatCurrency({
+    number: price,
+    currency,
+  });
+
 export const PaintingItem: FC<PaintingItemProps> = ({ item, exchange }) => {
-  const [currency] = useLocalStorage('currency', CURRENCY_OPTIONS[0].value);
+  const [mounted, setMounted] = useState(false);
+  const [currency] = useLocalStorage<ExchangeRatesCurrency>('currency', CURRENCY_OPTIONS[0].value);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const firstImage = getImageUrl(`${item.id}/${item.images[0]}`);
   const secondImage = getImageUrl(`${item.id}/${item.images[1]}`);
 
-  const formattedPriceBasedOnCurrency = Math.ceil(
-    Number(item.price) * exchange[currency as keyof typeof exchange],
-  );
+  const effectiveCurrency = mounted ? currency : null;
+
+  const formattedPrice =
+    effectiveCurrency !== null
+      ? formatPaintingPrice(
+          Math.ceil(Number(item.price) * exchange[effectiveCurrency]),
+          effectiveCurrency,
+        )
+      : null;
 
   return (
     <motion.div
@@ -74,7 +93,7 @@ export const PaintingItem: FC<PaintingItemProps> = ({ item, exchange }) => {
         <h3 className="transition group-hover:opacity-70 group-hover:underline decoration-1">
           {item.name}
         </h3>
-        <span>{formattedPriceBasedOnCurrency}</span>
+        {formattedPrice ?? null}
       </div>
     </motion.div>
   );

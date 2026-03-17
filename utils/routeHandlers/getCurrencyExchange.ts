@@ -4,11 +4,17 @@ import { db } from '../db/db';
 import { z } from 'zod';
 import { DateTime } from 'luxon';
 
+export const BASE_CURRENCY = {
+  USD: 'USD',
+  EUR: 'EUR',
+  UAH: 'UAH',
+} as const;
+
 export const exchangeRatesSchema = z.object({
   disclaimer: z.string(),
   license: z.string(),
   timestamp: z.number().int().positive(),
-  base: z.enum(['USD', 'EUR', 'UAH']),
+  base: z.enum([...Object.values(BASE_CURRENCY)]),
   rates: z.object({
     USD: z.number(),
     EUR: z.number(),
@@ -25,6 +31,8 @@ const getDiffInDaysSinceLastFetch = (fetchedAt?: Date): number => {
 };
 
 export type ExchangeRatesResponse = z.infer<typeof exchangeRatesSchema>;
+
+export type ExchangeRatesCurrency = ExchangeRatesResponse['base'];
 
 const currencyExchangeUrl = 'https://openexchangerates.org/api';
 

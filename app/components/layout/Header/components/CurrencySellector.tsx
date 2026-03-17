@@ -1,18 +1,35 @@
 'use client';
 
 import { Select, type SelectOption } from '@/app/components/ui/select';
+import { CURRENCY_SYMBOLS } from '@/utils/format-currency';
+import {
+  BASE_CURRENCY,
+  type ExchangeRatesCurrency,
+} from '@/utils/routeHandlers/getCurrencyExchange';
 import { useLocalStorage } from 'usehooks-ts';
 
-export const CURRENCY_OPTIONS: SelectOption[] = [
-  { value: 'USD', label: '$ USD' },
-  { value: 'EUR', label: '€ EUR' },
-  { value: 'UAH', label: '₴ UAH' },
+export const CURRENCY_OPTIONS: SelectOption<ExchangeRatesCurrency>[] = [
+  {
+    value: BASE_CURRENCY.USD,
+    label: `${CURRENCY_SYMBOLS[BASE_CURRENCY.USD]} ${BASE_CURRENCY.USD}`,
+  },
+  {
+    value: BASE_CURRENCY.EUR,
+    label: `${CURRENCY_SYMBOLS[BASE_CURRENCY.EUR]} ${BASE_CURRENCY.EUR}`,
+  },
+  {
+    value: BASE_CURRENCY.UAH,
+    label: `${CURRENCY_SYMBOLS[BASE_CURRENCY.UAH]} ${BASE_CURRENCY.UAH}`,
+  },
 ];
 
 export const CurrencySellector = () => {
-  const [currency, setCurrency] = useLocalStorage('currency', CURRENCY_OPTIONS[0].value);
+  const [currency, setCurrency] = useLocalStorage<ExchangeRatesCurrency>(
+    'currency',
+    CURRENCY_OPTIONS[0].value,
+  );
 
-  const handleSetCurrency = (currency?: string) => {
+  const handleSetCurrency = (currency?: ExchangeRatesCurrency) => {
     if (!currency) return;
 
     setCurrency(currency);
