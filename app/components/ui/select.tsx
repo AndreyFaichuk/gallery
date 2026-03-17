@@ -4,14 +4,14 @@ import React from 'react';
 import ReactSelect, { type Props } from 'react-select';
 import { cn } from '@/app/lib/utils';
 
-export type SelectOption = {
-  value: string;
+export type SelectOption<T> = {
+  value: T;
   label: string;
 };
 
-type SelectProps = Props<SelectOption, false>;
+type SelectProps<T> = Props<SelectOption<T>, false>;
 
-export const Select = ({ className, ...props }: SelectProps) => {
+export const Select = <T,>({ className, ...props }: SelectProps<T>) => {
   return (
     <ReactSelect
       {...props}
