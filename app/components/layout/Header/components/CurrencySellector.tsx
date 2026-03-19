@@ -48,6 +48,7 @@ export const CurrencySellector = () => {
     <div className="w-[120px] absolute right-14">
       {isMounted && (
         <Select
+          optionClassName="bg-[#FBFFF5]"
           instanceId="currency-select"
           value={currentOption}
           onChange={(option) => handleSetCurrency(option?.value)}

@@ -9,9 +9,17 @@ export type SelectOption<T> = {
   label: string;
 };
 
-type SelectProps<T> = Props<SelectOption<T>, false>;
+type SelectProps<T> = Props<SelectOption<T>, false> & {
+  menuClassName?: string;
+  optionClassName?: string;
+};
 
-export const Select = <T,>({ className, ...props }: SelectProps<T>) => {
+export const Select = <T,>({
+  className,
+  menuClassName,
+  optionClassName,
+  ...props
+}: SelectProps<T>) => {
   return (
     <ReactSelect
       {...props}
@@ -20,16 +28,17 @@ export const Select = <T,>({ className, ...props }: SelectProps<T>) => {
       classNames={{
         control: ({ isFocused }) =>
           cn(
-            'flex h-10 items-center rounded-md bg-background px-2 transition-colors border-1 border-slate-200',
+            'flex h-10 items-center rounded-md bg-background px-2 transition-colors border border-slate-200',
           ),
 
         valueContainer: () => 'px-1',
 
-        menu: () => cn('z-50 mt-1 overflow-hidden rounded-md shadow-md bg-white'),
+        menu: () => cn('z-50 mt-1 overflow-hidden rounded-md shadow-md bg-white', menuClassName),
 
         option: ({ isFocused, isSelected }) =>
           cn(
             'cursor-pointer px-3 py-2 text-sm transition-colors bg-white',
+            optionClassName,
             isSelected && 'bg-zinc-200 text-black',
             !isSelected && isFocused && 'bg-zinc-50',
           ),
