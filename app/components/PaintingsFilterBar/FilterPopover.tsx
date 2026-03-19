@@ -8,6 +8,8 @@ import type { FilterOptions } from './PaintingsFilterBar';
 import { Select, type SelectOption } from '../ui/select';
 import type { Nullable } from '@/types';
 
+const PARTIAL_BACKGROUND_COLOR = '#F0EBE5';
+
 export const SORT_OPTIONS: SelectOption<string>[] = [
   {
     value: 'name',
@@ -72,8 +74,11 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
           </PopoverTrigger>
         </div>
 
-        <PopoverContent align="start" className="border-0 p-0 w-[300px]" sideOffset={10}>
-          <ul className="flex flex-col gap-2 bg-white rounded-md shadow-md p-3">
+        <PopoverContent align="start" className="border-0 p-0 w-[300px] " sideOffset={10}>
+          <ul
+            className="flex flex-col gap-2  rounded-md shadow-md p-3"
+            style={{ backgroundColor: PARTIAL_BACKGROUND_COLOR }}
+          >
             {filters.map((block, blockIndex) => {
               return block.options.map((option, optionIndex) => {
                 const isLastBlock = blockIndex === filters.length - 1;
@@ -102,6 +107,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
           <p>Sort by: </p>
           <Select
             instanceId="sort-select"
+            optionClassName="bg-[#FBFFF5]"
             className="min-w-[170px]"
             value={currentSortOption}
             onChange={(option) => handleSetSortParam(option?.value ?? '')}

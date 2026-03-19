@@ -10,6 +10,8 @@ import useDebouncedValue from '@/hooks/use-debounced-value';
 import { VALID_PARAMS } from '@/hooks/use-filter-params';
 import { useSearchParams } from 'next/navigation';
 
+const PARTIAL_BACKGROUND_COLOR = '#F5F0EC';
+
 export const SuggestionsAndProductsAll = () => {
   const searchParams = useSearchParams();
   const queryParam = searchParams.get(VALID_PARAMS.QUERY);
@@ -66,7 +68,7 @@ export const SuggestionsAndProductsAll = () => {
   return (
     <div className="relative w-full" aria-controls="search-listbox">
       <Input
-        className="bg-white"
+        style={{ backgroundColor: PARTIAL_BACKGROUND_COLOR }}
         placeholder="Search paintings..."
         autoFocus
         onChange={(e) => setValue(e.target.value)}
@@ -80,7 +82,10 @@ export const SuggestionsAndProductsAll = () => {
       />
 
       {search && (
-        <div className="absolute mt-2 w-full rounded-md shadow-md z-50 flex justify-around bg-white">
+        <div
+          className="absolute mt-2 w-full rounded-md shadow-md z-50 flex justify-around"
+          style={{ backgroundColor: PARTIAL_BACKGROUND_COLOR }}
+        >
           <Suggestions
             activeSuggestionIndex={activeSuggestionIndex}
             suggestions={suggestions}

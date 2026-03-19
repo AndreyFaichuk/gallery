@@ -16,6 +16,8 @@ type SuggestionsAndProductsSearchProps = {
   paintings: PaintingT[];
 };
 
+const PARTIAL_BACKGROUND_COLOR = '#F8FFF6';
+
 export const SuggestionsAndProductsSearch: FC<SuggestionsAndProductsSearchProps> = ({
   paintings,
   suggestions,
@@ -70,7 +72,6 @@ export const SuggestionsAndProductsSearch: FC<SuggestionsAndProductsSearchProps>
     }
 
     updateTriggerWidth();
-    setOpen(true);
   }, [shouldOpen]);
 
   const handleClear = () => {
@@ -162,7 +163,7 @@ export const SuggestionsAndProductsSearch: FC<SuggestionsAndProductsSearchProps>
           <PopoverTrigger asChild>
             <div className="w-full" ref={triggerRef} aria-controls="search-listbox">
               <Input
-                className="bg-white"
+                style={{ backgroundColor: PARTIAL_BACKGROUND_COLOR }}
                 placeholder="Search paintings..."
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
