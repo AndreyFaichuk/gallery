@@ -8,7 +8,7 @@ import type { FilterOptions } from './PaintingsFilterBar';
 import { Select, type SelectOption } from '../ui/select';
 import type { Nullable } from '@/types';
 
-export const SORT_OPTIONS: SelectOption[] = [
+export const SORT_OPTIONS: SelectOption<string>[] = [
   {
     value: 'name',
     label: 'Alphabetically, A-Z',

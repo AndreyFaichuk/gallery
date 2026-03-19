@@ -7,6 +7,8 @@ type Options = {
 };
 
 const getSuggestions = async ({ query }: Options) => {
+  if (!query.trim()) return [];
+
   const result = await db
     .select({
       term: searchTerms.term,

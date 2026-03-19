@@ -1,14 +1,19 @@
 'use client';
 
-import { type ChangeEvent, type KeyboardEvent, useState, useMemo, useCallback } from 'react';
+import { type KeyboardEvent, useState } from 'react';
 import { X } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Suggestions } from './Suggestions';
 import { Products } from './Products';
 import usePaintings from '@/hooks/use-paintings';
 import useDebouncedValue from '@/hooks/use-debounced-value';
+import { VALID_PARAMS } from '@/hooks/use-filter-params';
+import { useSearchParams } from 'next/navigation';
 
-export const PaintingsSearch = () => {
+export const SuggestionsAndProductsAll = () => {
+  const searchParams = useSearchParams();
+  const queryParam = searchParams.get(VALID_PARAMS.QUERY);
+
   const [search, setSearch] = useState('');
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number | null>(null);
 
@@ -23,7 +28,7 @@ export const PaintingsSearch = () => {
 
   const { value, setValue } = useDebouncedValue({
     callback: handleSearch,
-    initialValue: '',
+    initialValue: queryParam ?? '',
   });
 
   const handleClear = () => {

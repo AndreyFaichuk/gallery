@@ -9,12 +9,12 @@ type InputProps = ComponentProps<'input'> & {
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, afterIcon, ...props }, ref) => {
     return (
-      <div className="relative w-full">
+      <div className="relative">
         <input
           type={type}
           ref={ref}
           className={cn(
-            'flex h-10 w-full rounded-md focus:outline-none bg-background px-3 py-2 text-base disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+            'flex h-10 w-full rounded-md focus:outline-none bg-background px-3 py-2 text-base disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-popover shadow-md outline-none',
             afterIcon ? 'pr-10' : '',
             className,
           )}

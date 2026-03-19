@@ -17,10 +17,7 @@ const PopoverContent = React.forwardRef<
       ref={ref}
       align={align}
       sideOffset={sideOffset}
-      className={cn(
-        'z-50 rounded-md border bg-popover p-2 text-popover-foreground shadow-md outline-none',
-        className,
-      )}
+      className={cn('z-50  p-2', className)}
       {...props}
     />
   </PopoverPrimitive.Portal>
@@ -28,4 +25,12 @@ const PopoverContent = React.forwardRef<
 
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 
-export { Popover, PopoverTrigger, PopoverContent, PopoverArrow };
+const PopoverAnchor = PopoverPrimitive.Anchor;
+
+PopoverAnchor.displayName = PopoverPrimitive.Anchor.displayName;
+
+const PopoverClose = PopoverPrimitive.Close;
+
+PopoverClose.displayName = PopoverPrimitive.Close.displayName;
+
+export { Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverAnchor, PopoverClose };

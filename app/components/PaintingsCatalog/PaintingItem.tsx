@@ -9,6 +9,8 @@ import { useLocalStorage } from 'usehooks-ts';
 import { CURRENCY_OPTIONS } from '../layout/Header/components/CurrencySellector';
 import { formatCurrency } from '@/utils/format-currency';
 import type { ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
+import { cn } from '@/app/lib/utils';
+import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types/painting-types';
 
 type PaintingItemProps = {
   item: PaintingT;
@@ -17,6 +19,27 @@ type PaintingItemProps = {
     UAH: number;
     USD: number;
   };
+  variant?: PaintingItemVariantT;
+};
+
+const PAINTING_ITEM_STYLES: Record<
+  PaintingItemVariantT,
+  {
+    rootClassName: string;
+    imageWidth: number;
+    imageHeight: number;
+  }
+> = {
+  [PAINTING_ITEM_VARIANT.CATALOG]: {
+    rootClassName: 'max-w-[600px]',
+    imageWidth: 600,
+    imageHeight: 600,
+  },
+  [PAINTING_ITEM_VARIANT.SEARCH]: {
+    rootClassName: 'max-w-[270px]',
+    imageWidth: 270,
+    imageHeight: 270,
+  },
 };
 
 const formatPaintingPrice = (price: number, currency: ExchangeRatesCurrency) =>
@@ -25,13 +48,19 @@ const formatPaintingPrice = (price: number, currency: ExchangeRatesCurrency) =>
     currency,
   });
 
-export const PaintingItem: FC<PaintingItemProps> = ({ item, exchange }) => {
+export const PaintingItem: FC<PaintingItemProps> = ({
+  item,
+  exchange,
+  variant = PAINTING_ITEM_VARIANT.CATALOG,
+}) => {
   const [mounted, setMounted] = useState(false);
   const [currency] = useLocalStorage<ExchangeRatesCurrency>('currency', CURRENCY_OPTIONS[0].value);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const styles = PAINTING_ITEM_STYLES[variant];
 
   const firstImage = getImageUrl(`${item.id}/${item.images[0]}`);
   const secondImage = getImageUrl(`${item.id}/${item.images[1]}`);
@@ -48,7 +77,7 @@ export const PaintingItem: FC<PaintingItemProps> = ({ item, exchange }) => {
 
   return (
     <motion.div
-      className="max-w-[600px] w-full flex flex-col gap-4 cursor-pointer group"
+      className={cn('w-full flex flex-col gap-4 cursor-pointer group', styles.rootClassName)}
       initial="rest"
       whileHover="hover"
       animate="rest"
@@ -65,8 +94,8 @@ export const PaintingItem: FC<PaintingItemProps> = ({ item, exchange }) => {
           <Image
             src={firstImage}
             alt="painting"
-            width={600}
-            height={600}
+            width={styles.imageWidth}
+            height={styles.imageHeight}
             className="w-full h-auto"
           />
         </motion.div>
@@ -81,8 +110,8 @@ export const PaintingItem: FC<PaintingItemProps> = ({ item, exchange }) => {
           <Image
             src={secondImage}
             alt="painting hover"
-            width={600}
-            height={600}
+            width={styles.imageWidth}
+            height={styles.imageHeight}
             className="w-full h-auto"
             loading="lazy"
           />
