@@ -25,11 +25,11 @@ export const Select = <T,>({ className, ...props }: SelectProps<T>) => {
 
         valueContainer: () => 'px-1',
 
-        menu: () => cn('z-50 mt-1 overflow-hidden rounded-md  shadow-md'),
+        menu: () => cn('z-50 mt-1 overflow-hidden rounded-md shadow-md bg-white'),
 
         option: ({ isFocused, isSelected }) =>
           cn(
-            'cursor-pointer px-3 py-2 text-sm transition-colors',
+            'cursor-pointer px-3 py-2 text-sm transition-colors bg-white',
             isSelected && 'bg-zinc-200 text-black',
             !isSelected && isFocused && 'bg-zinc-50',
           ),

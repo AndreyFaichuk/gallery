@@ -77,7 +77,9 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
         />
       </div>
       {children}
-      <Pagination currentPage={page} setPage={handleSetPage} totalPages={totalPages} />
+      {totalPages > 1 && (
+        <Pagination currentPage={page} setPage={handleSetPage} totalPages={totalPages} />
+      )}
     </div>
   );
 };

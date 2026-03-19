@@ -1,8 +1,7 @@
-'use client';
-
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import type { FC } from 'react';
+import { PopoverClose } from '../ui/popover';
 
 type SuggestionsProps = {
   suggestions: string[];
@@ -40,15 +39,21 @@ export const Suggestions: FC<SuggestionsProps> = ({
                 onMouseLeave={() => setActiveSuggestionIndex(null)}
                 className="w-full rounded-md"
               >
-                <Link
-                  href={`/search?q=${item}`}
-                  className={`
-                  block w-full px-3 py-2
-                  ${isActive ? 'bg-gray-50 underline decoration-2 underline-offset-2' : 'hover:bg-gray-50 hover:underline hover:decoration-2 hover:underline-offset-2'}
-                `}
-                >
-                  {item}
-                </Link>
+                <PopoverClose asChild>
+                  <Link
+                    href={`/collections/search?query=${item}`}
+                    className={`
+                      block w-full px-3 py-2
+                      ${
+                        isActive
+                          ? 'bg-gray-50 underline decoration-2 underline-offset-2'
+                          : 'hover:bg-gray-50 hover:underline hover:decoration-2 hover:underline-offset-2'
+                      }
+                    `}
+                  >
+                    {item}
+                  </Link>
+                </PopoverClose>
               </li>
             );
           })}

@@ -1,7 +1,12 @@
-import { PaintingsCatalog } from '@/app/components/PaintingsCatalog';
+import { PaintingSearchCatalog } from '@/app/components/layout/PaintingSearchCatalog';
+import { Pagination } from '@/app/components/Pagination';
 import { PaintingsFilterBar } from '@/app/components/PaintingsFilterBar';
-import type { PaintingsSearchParamsProps } from '@/types/painting-types';
+import { SuggestionsAndProductsSearch } from '@/app/components/SuggestionsAndProductsSearch';
+import { Input } from '@/app/components/ui/input';
+import { PAINTING_ITEM_VARIANT, type PaintingsSearchParamsProps } from '@/types/painting-types';
 import getAllPaintings, { type SortParam } from '@/utils/routeHandlers/getAllPaintings';
+import getPaintings from '@/utils/routeHandlers/getPaintings';
+import getSuggestions from '@/utils/routeHandlers/getSuggestions';
 
 const test = [
   {
@@ -67,10 +72,16 @@ const AllPaintings = async ({ searchParams }: PaintingsSearchParamsProps) => {
     sort,
   });
 
+  const [suggestions, paintings] = await Promise.all([
+    getSuggestions({ query: query ?? '' }),
+    getPaintings({ query: query ?? '' }),
+  ]);
+
   return (
     <div className="flex flex-col gap-4 mt-4">
+      <SuggestionsAndProductsSearch paintings={paintings} suggestions={suggestions} />
       <PaintingsFilterBar filters={filters} totalCount={totalCount}>
-        <PaintingsCatalog items={items} exchange={exchange} />
+        <PaintingSearchCatalog items={items} exchange={exchange} />
       </PaintingsFilterBar>
     </div>
   );

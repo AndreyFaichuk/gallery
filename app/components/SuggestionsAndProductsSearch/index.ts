@@ -1,0 +1,1 @@
+export { SuggestionsAndProductsSearch } from './SuggestionsAndProductsSearch';

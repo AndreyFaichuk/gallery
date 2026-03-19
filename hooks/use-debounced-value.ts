@@ -12,6 +12,7 @@ const useDebouncedValue = <T>({ callback, initialValue, delay = 500 }: Props<T>)
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const isFirstRender = useRef(true);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -27,7 +28,7 @@ const useDebouncedValue = <T>({ callback, initialValue, delay = 500 }: Props<T>)
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [value, delay, callback]);
+  }, [value, delay]);
 
   return { setValue, value };
 };

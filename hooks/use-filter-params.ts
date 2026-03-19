@@ -1,9 +1,10 @@
 import type { Nullable } from '@/types';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-const VALID_PARAMS = {
+export const VALID_PARAMS = {
   PAGE: 'page',
   SORT: 'sort',
+  QUERY: 'query',
 } as const;
 
 type useFilterParamsProps = {
@@ -15,17 +16,19 @@ export const useFilterParams = ({ params }: useFilterParamsProps) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [availability, collections] = params;
-
-  const availabilityParam = searchParams.get(availability);
-  const collectionsParam = searchParams.get(collections);
-
   const sortParam = searchParams.get(VALID_PARAMS.SORT);
+  const queryParam = searchParams.get(VALID_PARAMS.QUERY);
   const page = Number(searchParams.get(VALID_PARAMS.PAGE)) || 1;
 
+  const availability = params[0];
+  const collections = params[1];
+
+  const availabilityParam = availability ? searchParams.get(availability) : null;
+  const collectionsParam = collections ? searchParams.get(collections) : null;
+
   const currentParamsMap = {
-    [availability]: availabilityParam?.split(',') || [],
-    [collections]: collectionsParam?.split(',') || [],
+    ...(availability ? { [availability]: availabilityParam?.split(',') || [] } : {}),
+    ...(collections ? { [collections]: collectionsParam?.split(',') || [] } : {}),
   };
 
   const currentSearchParams = new URLSearchParams(searchParams.toString());
@@ -78,14 +81,30 @@ export const useFilterParams = ({ params }: useFilterParamsProps) => {
     router.replace(`?${currentSearchParams.toString()}`);
   };
 
+  const handleSetQueryParam = (value: string) => {
+    const trimmedValue = value.trim();
+
+    if (trimmedValue) {
+      currentSearchParams.set(VALID_PARAMS.QUERY, trimmedValue);
+    } else {
+      currentSearchParams.delete(VALID_PARAMS.QUERY);
+    }
+
+    currentSearchParams.set(VALID_PARAMS.PAGE, '1');
+
+    router.replace(`${pathname}?${currentSearchParams.toString()}`);
+  };
+
   return {
     page,
     sortParam,
     currentParamsMap,
+    queryParam,
     handleSetSortParam,
     handleToggleSearchParam,
     handleRemoveAllSearchParams,
     handleSetPage,
+    handleSetQueryParam,
   };
 };
 

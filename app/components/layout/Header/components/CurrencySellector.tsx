@@ -6,6 +6,7 @@ import {
   BASE_CURRENCY,
   type ExchangeRatesCurrency,
 } from '@/utils/routeHandlers/getCurrencyExchange';
+import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 
 export const CURRENCY_OPTIONS: SelectOption<ExchangeRatesCurrency>[] = [
@@ -24,6 +25,8 @@ export const CURRENCY_OPTIONS: SelectOption<ExchangeRatesCurrency>[] = [
 ];
 
 export const CurrencySellector = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
   const [currency, setCurrency] = useLocalStorage<ExchangeRatesCurrency>(
     'currency',
     CURRENCY_OPTIONS[0].value,
@@ -35,17 +38,23 @@ export const CurrencySellector = () => {
     setCurrency(currency);
   };
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const currentOption = CURRENCY_OPTIONS.find((option) => option.value === currency);
 
   return (
     <div className="w-[120px] absolute right-14">
-      <Select
-        instanceId="currency-select"
-        value={currentOption}
-        onChange={(option) => handleSetCurrency(option?.value)}
-        options={CURRENCY_OPTIONS}
-        isSearchable={false}
-      />
+      {isMounted && (
+        <Select
+          instanceId="currency-select"
+          value={currentOption}
+          onChange={(option) => handleSetCurrency(option?.value)}
+          options={CURRENCY_OPTIONS}
+          isSearchable={false}
+        />
+      )}
     </div>
   );
 };

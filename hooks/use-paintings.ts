@@ -35,7 +35,7 @@ const usePaintings = ({ query }: UsePaintingsProps) => {
 
       return response.json();
     },
-    enabled: !!query,
+    enabled: Boolean(query.trim()),
   });
 
   return {

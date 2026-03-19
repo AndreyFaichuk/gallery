@@ -7,6 +7,8 @@ type Options = {
 };
 
 const getPaintings = async ({ query }: Options) => {
+  if (!query.trim()) return [];
+
   const result = await db
     .select()
     .from(paintings)
