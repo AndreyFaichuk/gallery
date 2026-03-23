@@ -43,6 +43,13 @@
       "when": 1773490609247,
       "tag": "0005_organic_northstar",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1774290405210,
+      "tag": "0006_flaky_blue_shield",
+      "breakpoints": true
     }
   ]
 }

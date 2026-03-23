@@ -11,6 +11,7 @@ import {
   pgEnum,
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm/sql/sql';
+import { DateTime } from 'luxon';
 
 export const paintings = pgTable(
   'paintings',
@@ -20,10 +21,14 @@ export const paintings = pgTable(
       .primaryKey(),
     name: text('name').notNull(),
     description: text('description'),
-    dimensions: text('dimensions'),
     price: numeric('price').notNull(),
-    images: jsonb().$type<string[]>().notNull(),
+    width: numeric('width_cm', { mode: 'number' }).notNull().default(1),
+    height: numeric('height_cm', { mode: 'number' }).notNull().default(1),
+    imageUrls: jsonb('image_urls').$type<string[]>().notNull().default([]),
+    videoUrls: jsonb('video_urls').$type<string[]>().notNull().default([]),
     isAvailable: boolean('is_available').notNull().default(true),
+    year: numeric('year', { mode: 'number' }).notNull().default(DateTime.now().year),
+    specifications: text('specifications'),
     collectionId: uuid('collection_id').references(() => collections.id, { onDelete: 'cascade' }),
     createdAt: timestamp().defaultNow(),
   },

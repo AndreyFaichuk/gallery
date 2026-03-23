@@ -1,7 +1,7 @@
 'use client';
 
 import { Select, type SelectOption } from '@/app/components/ui/select';
-import { CURRENCY_SYMBOLS } from '@/utils/format-currency';
+import { CURRENCY_SYMBOLS } from '@/utils';
 import {
   BASE_CURRENCY,
   type ExchangeRatesCurrency,

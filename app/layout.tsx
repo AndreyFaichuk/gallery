@@ -33,7 +33,7 @@ const RootLayout: FC<Props> = ({ children }) => {
       <body className="px-60">
         <ReactQueryProvider>
           <Header />
-          <main style={{ flex: 1 }}>{children}</main>
+          <main className="flex flex-col gap-4 mt-16 mb-4">{children}</main>
         </ReactQueryProvider>
       </body>
     </html>

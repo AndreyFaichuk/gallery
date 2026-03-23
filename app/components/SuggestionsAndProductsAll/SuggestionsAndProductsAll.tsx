@@ -93,7 +93,7 @@ export const SuggestionsAndProductsAll = () => {
             isLoading={arePaintingsLoading}
           />
 
-          <Products products={paintings} isLoading={arePaintingsLoading} />
+          <Products paintings={paintings} isLoading={arePaintingsLoading} />
         </div>
       )}
     </div>
