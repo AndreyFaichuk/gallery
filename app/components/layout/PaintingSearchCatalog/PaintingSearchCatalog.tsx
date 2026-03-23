@@ -3,14 +3,10 @@
 import type { PaintingT } from '@/types/schema-types';
 import type { FC } from 'react';
 import { PaintingItem } from '../../PaintingsCatalog/PaintingItem';
+import type { ExchangeT } from '@/types/painting-types';
 
-type PaintingsCatalogProps = {
+type PaintingsCatalogProps = ExchangeT & {
   items: PaintingT[];
-  exchange: {
-    EUR: number;
-    UAH: number;
-    USD: number;
-  };
 };
 
 export const PaintingSearchCatalog: FC<PaintingsCatalogProps> = ({ items, exchange }) => {

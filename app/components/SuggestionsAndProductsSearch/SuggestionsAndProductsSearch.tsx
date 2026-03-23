@@ -142,7 +142,7 @@ export const SuggestionsAndProductsSearch: FC<SuggestionsAndProductsSearchProps>
   ) : undefined;
 
   return (
-    <div className="mt-6 flex w-full justify-center">
+    <div className="flex w-full justify-center">
       <div className="relative flex w-1/3 flex-col items-center gap-6">
         <h1 className="text-2xl font-body">Search results</h1>
 
@@ -195,7 +195,7 @@ export const SuggestionsAndProductsSearch: FC<SuggestionsAndProductsSearchProps>
                 isLoading={false}
               />
 
-              <Products products={paintings} isLoading={false} />
+              <Products paintings={paintings} isLoading={false} />
             </div>
           </PopoverContent>
         </Popover>

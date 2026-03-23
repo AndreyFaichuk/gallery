@@ -1,16 +1,17 @@
 'use client';
 
 import type { PaintingT } from '@/types/schema-types';
-import getImageUrl from '@/utils/get-image-url';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffect, useState, type FC } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { CURRENCY_OPTIONS } from '../layout/Header/components/CurrencySellector';
-import { formatCurrency } from '@/utils/format-currency';
 import type { ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
 import { cn } from '@/app/lib/utils';
 import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types/painting-types';
+import { useRouter } from 'next/navigation';
+import { formatCurrency, getMediaContentUrl } from '@/utils';
+import { useCurrency } from '@/hooks/use-currency';
 
 type PaintingItemProps = {
   item: PaintingT;
@@ -53,30 +54,21 @@ export const PaintingItem: FC<PaintingItemProps> = ({
   exchange,
   variant = PAINTING_ITEM_VARIANT.CATALOG,
 }) => {
-  const [mounted, setMounted] = useState(false);
-  const [currency] = useLocalStorage<ExchangeRatesCurrency>('currency', CURRENCY_OPTIONS[0].value);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const router = useRouter();
+  const formattedPrice = useCurrency({ exchange, price: item.price });
 
   const styles = PAINTING_ITEM_STYLES[variant];
 
-  const firstImage = getImageUrl(`${item.id}/${item.images[0]}`);
-  const secondImage = getImageUrl(`${item.id}/${item.images[1]}`);
+  const firstImage = getMediaContentUrl(`${item.id}/${item.imageUrls[0]}`);
+  const secondImage = getMediaContentUrl(`${item.id}/${item.imageUrls[1]}`);
 
-  const effectiveCurrency = mounted ? currency : null;
-
-  const formattedPrice =
-    effectiveCurrency !== null
-      ? formatPaintingPrice(
-          Math.ceil(Number(item.price) * exchange[effectiveCurrency]),
-          effectiveCurrency,
-        )
-      : null;
+  const handleRedirect = (id: string) => {
+    router.push(`/paintings/${id}`);
+  };
 
   return (
     <motion.div
+      onClick={() => handleRedirect(item.id)}
       className={cn('w-full flex flex-col gap-4 cursor-pointer group', styles.rootClassName)}
       initial="rest"
       whileHover="hover"

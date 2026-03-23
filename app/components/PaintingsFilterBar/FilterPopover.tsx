@@ -115,7 +115,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
             isSearchable={false}
           />
         </div>
-        {`${totalCount} products`}
+        {`${totalCount} paintings`}
       </div>
     </div>
   );

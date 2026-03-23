@@ -1,0 +1,1 @@
+export { PaintingDetails } from './PaintingDetails';
