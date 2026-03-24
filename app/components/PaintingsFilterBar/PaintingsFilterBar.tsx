@@ -5,6 +5,8 @@ import { FilterPopover } from './FilterPopover';
 import { ActiveFilters } from './ActiveFilters';
 import useFilterParams from '@/hooks/use-filter-params';
 import { Pagination } from '../Pagination';
+import * as Sentry from '@sentry/nextjs';
+import { Button } from '../ui/button';
 
 export type Option = {
   label: string;
@@ -59,6 +61,10 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
 
   const totalPages = Math.ceil(totalCount / LIMIT);
 
+  const captureClientError = () => {
+    Sentry.captureException(new Error('Sentry manual client capture test'));
+  };
+
   return (
     <div className="flex flex-col gap-12">
       <div className="w-full flex flex-col gap-4">
@@ -80,6 +86,8 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
       {totalPages > 1 && (
         <Pagination currentPage={page} setPage={handleSetPage} totalPages={totalPages} />
       )}
+
+      <Button onClick={captureClientError}>Capture Client Error Manually</Button>
     </div>
   );
 };
