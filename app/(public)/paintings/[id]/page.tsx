@@ -30,7 +30,7 @@ const PaintingPage = async ({ params }: PaintingPageParams) => {
 
   if (!painting) return redirect('/');
 
-  return <PaintingDetails painting={test} exchange={exchange} />;
+  return <PaintingDetails painting={painting} exchange={exchange} />;
 };
 
 export default PaintingPage;
