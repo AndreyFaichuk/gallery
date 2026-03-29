@@ -14,9 +14,11 @@ export const PaintingDetails: FC<PaintingDetailProps> = ({ painting, exchange })
   const { imageUrls, name, id, videoUrls } = painting;
 
   return (
-    <div className="flex items-start justify-center gap-10">
-      <PhotoCollage videoUrls={videoUrls} imageUrls={imageUrls} name={name} id={id} />
-      <PaintingInfo painting={painting} exchange={exchange} />
+    <div className="col-start-3 col-span-10 gap-10">
+      <div className="flex gap-10 items-start">
+        <PhotoCollage videoUrls={videoUrls} imageUrls={imageUrls} name={name} id={id} />
+        <PaintingInfo painting={painting} exchange={exchange} />
+      </div>
     </div>
   );
 };

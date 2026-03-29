@@ -1,4 +1,4 @@
-import { eq, ilike } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 import { paintings } from '../db/schema';
 import { db } from '../db/db';
 

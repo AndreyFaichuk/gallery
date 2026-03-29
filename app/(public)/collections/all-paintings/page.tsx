@@ -1,7 +1,7 @@
 import { PaintingsCatalog } from '@/app/components/PaintingsCatalog';
 import { PaintingsFilterBar } from '@/app/components/PaintingsFilterBar';
 import type { PaintingsSearchParamsProps } from '@/types/painting-types';
-import getAllPaintings, { type SortParam } from '@/utils/routeHandlers/getAllPaintings';
+import getAllPaintings from '@/utils/routeHandlers/getAllPaintings';
 
 const test = [
   {

@@ -1,5 +1,5 @@
-import { eq, ilike } from 'drizzle-orm';
-import { paintings, searchTerms } from '../db/schema';
+import { ilike } from 'drizzle-orm';
+import { searchTerms } from '../db/schema';
 import { db } from '../db/db';
 
 type Options = {
