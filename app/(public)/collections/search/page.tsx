@@ -1,10 +1,8 @@
 import { PaintingSearchCatalog } from '@/app/components/layout/PaintingSearchCatalog';
-import { Pagination } from '@/app/components/Pagination';
 import { PaintingsFilterBar } from '@/app/components/PaintingsFilterBar';
 import { SuggestionsAndProductsSearch } from '@/app/components/SuggestionsAndProductsSearch';
-import { Input } from '@/app/components/ui/input';
-import { PAINTING_ITEM_VARIANT, type PaintingsSearchParamsProps } from '@/types/painting-types';
-import getAllPaintings, { type SortParam } from '@/utils/routeHandlers/getAllPaintings';
+import type { PaintingsSearchParamsProps } from '@/types/painting-types';
+import getAllPaintings from '@/utils/routeHandlers/getAllPaintings';
 import getPaintings from '@/utils/routeHandlers/getPaintings';
 import getSuggestions from '@/utils/routeHandlers/getSuggestions';
 

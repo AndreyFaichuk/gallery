@@ -3,14 +3,11 @@
 import type { PaintingT } from '@/types/schema-types';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useEffect, useState, type FC } from 'react';
-import { useLocalStorage } from 'usehooks-ts';
-import { CURRENCY_OPTIONS } from '../layout/Header/components/CurrencySellector';
-import type { ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
+import type { FC } from 'react';
 import { cn } from '@/app/lib/utils';
 import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types/painting-types';
 import { useRouter } from 'next/navigation';
-import { formatCurrency, getMediaContentUrl } from '@/utils';
+import { getMediaContentUrl } from '@/utils';
 import { useCurrency } from '@/hooks/use-currency';
 
 type PaintingItemProps = {
@@ -41,13 +38,12 @@ const PAINTING_ITEM_STYLES: Record<
     imageWidth: 270,
     imageHeight: 270,
   },
+  [PAINTING_ITEM_VARIANT.ALSO_LIKE]: {
+    rootClassName: 'max-w-[200px]',
+    imageWidth: 200,
+    imageHeight: 200,
+  },
 };
-
-const formatPaintingPrice = (price: number, currency: ExchangeRatesCurrency) =>
-  formatCurrency({
-    number: price,
-    currency,
-  });
 
 export const PaintingItem: FC<PaintingItemProps> = ({
   item,

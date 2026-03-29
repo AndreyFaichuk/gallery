@@ -21,6 +21,7 @@ export type PaintingsSearchParamsProps = QueryParamsBase<{
 export const PAINTING_ITEM_VARIANT = {
   CATALOG: 'catalog',
   SEARCH: 'search',
+  ALSO_LIKE: 'alsoLike',
 } as const;
 
 export type PaintingItemVariantT =

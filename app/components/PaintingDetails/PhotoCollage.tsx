@@ -25,7 +25,7 @@ export const PhotoCollage: FC<PhotoCollageProps> = ({ imageUrls, name, id, video
 
   return (
     <>
-      <div className="grid gap-3 w-1/3">
+      <div className="grid gap-3 w-4/10">
         {mainImage && (
           <div
             className="relative overflow-hidden w-full aspect-[7/9] cursor-pointer"

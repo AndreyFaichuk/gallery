@@ -27,7 +27,7 @@ export const PaintingInfo: FC<PaintingInfoProps> = ({ painting, exchange }) => {
           </div>
         </div>
 
-        <span className="font-body">Original painting by Juliette Bereziy</span>
+        <span className="font-body text-lg">Original painting by Juliette Bereziy</span>
         <span className="text-lg/7 font-body ">{description}</span>
         <span className="text-lg/7 font-body">{specifications}</span>
         <span className="font-body text-lg">{formatDimension(width, height)}</span>
