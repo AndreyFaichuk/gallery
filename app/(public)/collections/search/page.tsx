@@ -97,8 +97,6 @@ const AllPaintings = async ({ searchParams }: PaintingsSearchParamsProps) => {
     getPaintings({ query: query ?? '' }),
   ]);
 
-  await wait();
-
   return (
     <>
       <SuggestionsAndProductsSearch paintings={paintings} suggestions={suggestions} />

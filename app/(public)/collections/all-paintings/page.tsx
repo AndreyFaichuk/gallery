@@ -129,22 +129,20 @@ const filters = [
 const wait = () => new Promise((res) => setTimeout(() => res(1), 10000));
 
 const AllPaintings = async ({ searchParams }: PaintingsSearchParamsProps) => {
-  // const { collection, availability, query, page, sort } = await searchParams;
+  const { collection, availability, query, page, sort } = await searchParams;
 
-  // const { filters, items, totalCount, exchange } = await getAllPaintings({
-  //   collectionId: collection,
-  //   isAvailable: availability,
-  //   page: page ? Number(page) : undefined,
-  //   query,
-  //   sort,
-  // });
-
-  await wait();
+  const { filters, items, totalCount, exchange } = await getAllPaintings({
+    collectionId: collection,
+    isAvailable: availability,
+    page: page ? Number(page) : undefined,
+    query,
+    sort,
+  });
 
   return (
     <>
-      <PaintingsFilterBar filters={[]} totalCount={5}>
-        <PaintingsCatalog items={test} exchange={exchange} />
+      <PaintingsFilterBar filters={filters} totalCount={totalCount}>
+        <PaintingsCatalog items={items} exchange={exchange} />
       </PaintingsFilterBar>
     </>
   );
