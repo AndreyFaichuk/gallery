@@ -79,6 +79,8 @@ const test = [
 
 const exchange = { EUR: 0.872334, UAH: 44.09512, USD: 1 };
 
+const wait = () => new Promise((res) => setTimeout(() => res(1), 10000));
+
 const AllPaintings = async ({ searchParams }: PaintingsSearchParamsProps) => {
   const { collection, availability, query, page, sort } = await searchParams;
 
@@ -94,6 +96,8 @@ const AllPaintings = async ({ searchParams }: PaintingsSearchParamsProps) => {
     getSuggestions({ query: query ?? '' }),
     getPaintings({ query: query ?? '' }),
   ]);
+
+  await wait();
 
   return (
     <>
