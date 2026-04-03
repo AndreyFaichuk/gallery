@@ -13,12 +13,12 @@ const PAINTING_ITEM_SKELETON_STYLES: Record<
   }
 > = {
   [PAINTING_ITEM_VARIANT.CATALOG]: {
-    rootClassName: 'w-full max-w-[600px]',
+    rootClassName: 'w-[480px] h-[720px]',
     gridClassName: 'xl:grid-cols-2',
   },
   [PAINTING_ITEM_VARIANT.SEARCH]: {
-    rootClassName: 'w-full max-w-[270px]',
-    gridClassName: 'xl:grid-cols-4',
+    rootClassName: 'w-[270px] h-[432px]',
+    gridClassName: 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
   },
   [PAINTING_ITEM_VARIANT.ALSO_LIKE]: {
     rootClassName: 'w-full max-w-[200px]',
@@ -40,13 +40,13 @@ export const PaintingItemSkeleton: FC<PaintingItemSkeletonProps> = ({
       <PaintingsFilterBar filters={[]} totalCount={0}>
         <div
           className={cn(
-            'w-full grid gap-20 justify-items-center max-w-[90%] mx-auto',
+            'grid gap-20 justify-items-center max-w-[90%] mx-auto',
             styles.gridClassName,
           )}
         >
           {Array.from({ length: 8 }).map((_, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: we won't add/delete/move new elements here, so index as a key is ok here
-            <div key={i} className={cn('w-full', styles.rootClassName)}>
+            <div key={i} className={cn(styles.rootClassName)}>
               <div className="aspect-[3/4] w-full rounded bg-neutral-200 animate-pulse" />
               <div className="mt-4 h-5 w-2/3 rounded bg-neutral-200 animate-pulse" />
               <div className="mt-2 h-4 w-1/3 rounded bg-neutral-200 animate-pulse" />
