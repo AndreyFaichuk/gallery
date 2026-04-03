@@ -22,7 +22,7 @@ export const ActiveFilters: FC<ActiveFiltersProps> = ({
   if (!shouldRender) return null;
 
   return (
-    <div className="flex gap-2 w-full items-center">
+    <div className="flex gap-2 w-full items-center flex-wrap">
       {currentParamsMap.map((filter) => (
         <ActiveFilter
           {...filter}

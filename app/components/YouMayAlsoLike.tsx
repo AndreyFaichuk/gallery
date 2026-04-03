@@ -9,7 +9,7 @@ type YouMayAlsoLikeProps = ExchangeT & {
 
 export const YouMayAlsoLike: FC<YouMayAlsoLikeProps> = ({ paintings, exchange }) => {
   return (
-    <div className="col-start-3 col-span-10 mt-20">
+    <div className="col-start-1 xl:col-start-3 col-span-10 mt-20">
       <div className="flex flex-col justify-center gap-8">
         <h1 className="font-body text-2xl">You may also like</h1>
         <div className="flex gap-2">

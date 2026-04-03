@@ -11,7 +11,7 @@ type PaintingsCatalogProps = ExchangeT & {
 
 export const PaintingSearchCatalog: FC<PaintingsCatalogProps> = ({ items, exchange }) => {
   return (
-    <div className="grid xl:grid-cols-4 gap-20 justify-items-center max-w-[90%] mx-auto">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20 justify-items-center max-w-[90%] mx-auto">
       {items.map((item) => (
         <PaintingItem
           key={item.id}

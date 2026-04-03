@@ -15,8 +15,8 @@ export const PaintingInfo: FC<PaintingInfoProps> = ({ painting, exchange }) => {
   const formattedPrice = useCurrency({ exchange, price: painting.price });
 
   return (
-    <aside className="sticky top-9 w-1/3">
-      <div className="flex flex-col gap-8">
+    <aside className="sticky top-9 w-3/5 xl:w-1/3">
+      <div className="flex flex-col gap-8 w-full">
         <div className="flex flex-col gap-4">
           <span className="font-body">Juliette Bereziy Atelier</span>
           <h1 className="text-4xl font-body">{name}</h1>
