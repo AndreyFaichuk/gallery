@@ -30,10 +30,10 @@ interface Props {
 const RootLayout: FC<Props> = ({ children }) => {
   return (
     <html lang="en" className={cn(forum.variable, artist.variable)}>
-      <body className="px-60">
+      <body className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-60">
         <ReactQueryProvider>
           <Header />
-          <main className="flex flex-col gap-4 mt-16 mb-4">{children}</main>
+          <main className="mt-16 mb-4 flex flex-col gap-4">{children}</main>
         </ReactQueryProvider>
       </body>
     </html>

@@ -23,6 +23,39 @@ export type PaintingsFilterBarProps = {
 
 const LIMIT = 8;
 
+const test = [
+  {
+    param: 'collection',
+    paramLabel: 'Collections',
+    value: '5c131120-73e9-4d10-bf41-c6a8a19e3e84',
+    label: 'Renaissance Classics',
+  },
+  {
+    param: 'collection',
+    paramLabel: 'Collections',
+    value: 'b8dd9d7d-b4de-4509-a4e6-3576444efebe',
+    label: 'Emotional Landscapes',
+  },
+  {
+    param: 'collection',
+    paramLabel: 'Collections',
+    value: '41b2ccf7-2148-4709-9b8b-5bd8f0776f4b',
+    label: 'Urban & Contemporary',
+  },
+  {
+    param: 'collection',
+    paramLabel: 'Collections',
+    value: '106c3d38-92fc-4cb0-9da7-987583ce4198',
+    label: 'Abstract Expressions',
+  },
+  {
+    param: 'collection',
+    paramLabel: 'Collections',
+    value: '93d24a70-1e7b-4d0d-afa6-7d59c5bdc108',
+    label: 'Modern Minimalism',
+  },
+];
+
 export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
   filters,
   children,

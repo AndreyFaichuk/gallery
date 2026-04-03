@@ -3,6 +3,7 @@
 import type { FC } from 'react';
 import { cn } from '@/app/lib/utils';
 import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types/painting-types';
+import { PaintingsFilterBar } from '../PaintingsFilterBar';
 
 const PAINTING_ITEM_SKELETON_STYLES: Record<
   PaintingItemVariantT,
@@ -35,8 +36,13 @@ export const PaintingItemSkeleton: FC<PaintingItemSkeletonProps> = ({
   const styles = PAINTING_ITEM_SKELETON_STYLES[variant];
 
   return (
-    <div className="w-full flex justify-center">
-      <div className={cn('grid gap-20 justify-items-center w-[60%]', styles.gridClassName)}>
+    <PaintingsFilterBar filters={[]} totalCount={0}>
+      <div
+        className={cn(
+          'w-full grid gap-20 justify-items-center max-w-[90%] mx-auto',
+          styles.gridClassName,
+        )}
+      >
         {Array.from({ length: 8 }).map((_, i) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: we won't add/delete/move new elements here, so index as a key is ok here
           <div key={i} className={cn('w-full', styles.rootClassName)}>
@@ -46,6 +52,6 @@ export const PaintingItemSkeleton: FC<PaintingItemSkeletonProps> = ({
           </div>
         ))}
       </div>
-    </div>
+    </PaintingsFilterBar>
   );
 };
