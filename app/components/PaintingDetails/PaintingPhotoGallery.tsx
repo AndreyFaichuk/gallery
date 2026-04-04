@@ -4,19 +4,20 @@ import type { FC } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import Share from 'yet-another-react-lightbox/plugins/share';
 import Video from 'yet-another-react-lightbox/plugins/video';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 
 import 'yet-another-react-lightbox/styles.css';
 
 type PaintingPhotoGalleryProps = {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
+  index: number;
+  setIndex: (index: number) => void;
   paintingPreparedImageUrls: string[];
   paintingPreparedVideoUrls: string[];
 };
 
 export const PaintingPhotoGallery: FC<PaintingPhotoGalleryProps> = ({
-  isOpen,
-  setIsOpen,
+  index,
+  setIndex,
   paintingPreparedImageUrls,
   paintingPreparedVideoUrls,
 }) => {
@@ -39,10 +40,23 @@ export const PaintingPhotoGallery: FC<PaintingPhotoGalleryProps> = ({
 
   return (
     <Lightbox
-      plugins={[Share, Video]}
-      open={isOpen}
-      close={() => setIsOpen(false)}
+      index={index}
+      plugins={[Share, Video, Zoom]}
+      open={index > -1}
+      close={() => setIndex(-1)}
       slides={[...picturesSlides, ...videosSlides]}
+      animation={{ zoom: 500 }}
+      zoom={{
+        maxZoomPixelRatio: 6,
+        zoomInMultiplier: 3,
+        doubleTapDelay: 300,
+        doubleClickDelay: 300,
+        doubleClickMaxStops: 4,
+        keyboardMoveDistance: 50,
+        wheelZoomDistanceFactor: 100,
+        pinchZoomDistanceFactor: 100,
+        scrollToZoom: true,
+      }}
     />
   );
 };
