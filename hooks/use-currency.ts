@@ -1,4 +1,4 @@
-import { CURRENCY_OPTIONS } from '@/app/components/layout/Header/components/CurrencySellector';
+import { CURRENCY_OPTIONS } from '@/app/components/layout/Header/desktop/components/CurrencySellector';
 import type { ExchangeT } from '@/types/painting-types';
 import { formatCurrency } from '@/utils';
 import type { ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
