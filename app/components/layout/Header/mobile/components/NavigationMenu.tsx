@@ -21,7 +21,7 @@ export const NavigationMenu = ({ onClose }: Props) => {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -10, scale: 0.95 }}
       transition={{ duration: 0.25 }}
-      className="absolute top-[150px] left-0 w-full px-4 mt-2"
+      className="absolute top-[170px] left-0 w-full px-4 mt-2"
     >
       <div ref={ref} className="rounded-3xl bg-white/60 backdrop-blur-md p-6 shadow-lg">
         <nav className="flex flex-col gap-4 text-lg">
