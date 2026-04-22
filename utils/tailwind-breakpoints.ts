@@ -1,4 +1,4 @@
-import { tailwindBreakpoints, type TailwindBreakpointsT } from '@/types/tailwind-types';
+import { tailwindBreakpoints, type TailwindBreakpointsT } from '@/types';
 
 // Matches the default tailwind breakpoints + a custom xs breakpoint
 export const tailwindBreakpointsMapper: Record<TailwindBreakpointsT, number> = {

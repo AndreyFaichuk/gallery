@@ -1,10 +1,10 @@
 'use client';
 
-import type { PaintingT } from '@/types/schema-types';
+import type { PaintingT } from '@/types/schema.types';
 import type { FC } from 'react';
 import { PhotoCollage } from './PhotoCollage';
 import { PaintingInfo } from './PaintingInfo';
-import type { ExchangeT } from '@/types/painting-types';
+import type { ExchangeT } from '@/types';
 
 type PaintingDetailProps = ExchangeT & {
   painting: PaintingT;

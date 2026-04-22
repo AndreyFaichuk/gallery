@@ -3,7 +3,7 @@
 import { breakpointOptions, useBreakpoint } from '@/hooks/use-breakpoint';
 import { DesktopHeader } from './desktop/DesktopHeader';
 import { MobileHeader } from './mobile/MobileHeader';
-import { tailwindBreakpoints } from '@/types/tailwind-types';
+import { tailwindBreakpoints } from '@/types';
 import { useEffect, useState } from 'react';
 
 export const Header = () => {

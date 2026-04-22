@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'usehooks-ts';
-import type { TailwindBreakpointsT } from '@/types/tailwind-types';
-import { getBreakpointValue } from '@/utils/tailwind-breakpoints';
+import type { TailwindBreakpointsT } from '@/types';
+import { getBreakpointValue } from '@/utils';
 
 export const breakpointOptions = {
   BELOW: 'below',

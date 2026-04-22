@@ -1,6 +1,6 @@
 import { useCurrency } from '@/hooks/use-currency';
-import type { ExchangeT } from '@/types/painting-types';
-import type { PaintingT } from '@/types/schema-types';
+import type { ExchangeT } from '@/types';
+import type { PaintingT } from '@/types';
 import type { FC } from 'react';
 import { Button } from '../ui/button';
 import { formatDimension } from '@/utils';

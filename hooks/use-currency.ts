@@ -1,5 +1,5 @@
 import { CURRENCY_OPTIONS } from '@/app/components/layout/Header/desktop/components/CurrencySellector';
-import type { ExchangeT } from '@/types/painting-types';
+import type { ExchangeT } from '@/types';
 import { formatCurrency } from '@/utils';
 import type { ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
 import { useEffect, useState } from 'react';

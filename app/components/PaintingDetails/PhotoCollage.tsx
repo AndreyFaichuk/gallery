@@ -1,4 +1,4 @@
-import type { PaintingT } from '@/types/schema-types';
+import type { PaintingT } from '@/types/schema.types';
 import { getMediaContentUrl } from '@/utils';
 import Image from 'next/image';
 import { useState, type FC } from 'react';

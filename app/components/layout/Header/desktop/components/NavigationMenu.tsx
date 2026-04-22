@@ -9,35 +9,13 @@ import {
   NavigationMenuContent,
   NavigationMenuLink,
 } from '@/app/components/ui/navigation-menu';
-
-type MenuOptionBase = {
-  title: string;
-  link?: string;
-};
-
-type MenuOptions = (MenuOptionBase & {
-  subMenu?: MenuOptionBase[];
-})[];
-
-const MENU_OPTIONS: MenuOptions = [
-  {
-    title: 'original oil paintings',
-    subMenu: [
-      { title: 'all paintings', link: '/collections/all-paintings' },
-      { title: 'available paintings', link: '/collections/available-paintings' },
-    ],
-  },
-  {
-    title: 'about me',
-    link: '/about',
-  },
-] as const;
+import { DESKTOP_MENU_OPTIONS } from '@/constants';
 
 export const NavigationMenu = () => {
   return (
     <NavigationMenuRoot className="w-2/3 justify-evenly">
       <NavigationMenuList>
-        {MENU_OPTIONS.map((option) => {
+        {DESKTOP_MENU_OPTIONS.map((option) => {
           if (option.link) {
             return (
               <NavigationMenuItem key={option.title}>
