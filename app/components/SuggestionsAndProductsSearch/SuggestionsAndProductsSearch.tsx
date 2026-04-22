@@ -8,7 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import useDebouncedValue from '@/hooks/use-debounced-value';
 import { Suggestions } from '../SuggestionsAndProductsAll/Suggestions';
 import { Products } from '../SuggestionsAndProductsAll/Products';
-import type { PaintingT } from '@/types/schema-types';
+import type { PaintingT } from '@/types/schema.types';
 import useFilterParams from '@/hooks/use-filter-params';
 
 type SuggestionsAndProductsSearchProps = {

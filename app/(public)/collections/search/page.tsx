@@ -1,7 +1,7 @@
 import { PaintingSearchCatalog } from '@/app/components/layout/PaintingSearchCatalog';
 import { PaintingsFilterBar } from '@/app/components/PaintingsFilterBar';
 import { SuggestionsAndProductsSearch } from '@/app/components/SuggestionsAndProductsSearch';
-import type { PaintingsSearchParamsProps } from '@/types/painting-types';
+import type { PaintingsSearchParamsProps } from '@/types';
 import getAllPaintings from '@/utils/routeHandlers/getAllPaintings';
 import getPaintings from '@/utils/routeHandlers/getPaintings';
 import getSuggestions from '@/utils/routeHandlers/getSuggestions';

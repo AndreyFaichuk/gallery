@@ -2,7 +2,7 @@
 
 import { Suspense, type FC } from 'react';
 import { cn } from '@/app/lib/utils';
-import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types/painting-types';
+import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types/painting.types';
 import { PaintingsFilterBar } from '../PaintingsFilterBar';
 
 const PAINTING_ITEM_SKELETON_STYLES: Record<

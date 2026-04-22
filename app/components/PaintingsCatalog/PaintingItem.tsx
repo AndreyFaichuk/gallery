@@ -1,11 +1,11 @@
 'use client';
 
-import type { PaintingT } from '@/types/schema-types';
+import type { PaintingT } from '@/types/schema.types';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import type { FC } from 'react';
 import { cn } from '@/app/lib/utils';
-import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types/painting-types';
+import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types';
 import { useRouter } from 'next/navigation';
 import { getMediaContentUrl } from '@/utils';
 import { useCurrency } from '@/hooks/use-currency';

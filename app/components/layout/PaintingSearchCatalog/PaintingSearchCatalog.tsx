@@ -1,9 +1,9 @@
 'use client';
 
-import type { PaintingT } from '@/types/schema-types';
+import type { PaintingT } from '@/types/schema.types';
 import type { FC } from 'react';
 import { PaintingItem } from '../../PaintingsCatalog/PaintingItem';
-import { PAINTING_ITEM_VARIANT, type ExchangeT } from '@/types/painting-types';
+import { PAINTING_ITEM_VARIANT, type ExchangeT } from '@/types';
 
 type PaintingsCatalogProps = ExchangeT & {
   items: PaintingT[];

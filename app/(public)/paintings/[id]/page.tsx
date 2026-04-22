@@ -1,6 +1,6 @@
 import { PaintingDetails } from '@/app/components/PaintingDetails';
 import { YouMayAlsoLike } from '@/app/components/YouMayAlsoLike';
-import type { PaintingPageParams } from '@/types/painting-types';
+import type { PaintingPageParams } from '@/types';
 import getPainting from '@/utils/routeHandlers/getPainting';
 import getYouMayAlsoLikePaintings from '@/utils/routeHandlers/getYouMayAlsoLikePaintings';
 import { redirect } from 'next/navigation';

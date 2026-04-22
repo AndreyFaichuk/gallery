@@ -1,6 +1,6 @@
 'use client';
 
-import type { PaintingT } from '@/types/schema-types';
+import type { PaintingT } from '@/types/schema.types';
 import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
