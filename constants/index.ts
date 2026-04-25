@@ -1,2 +1,2 @@
 export * from './navigation.constants';
-export * from './filter-bar-mobile.constants';
+export * from './filter-bar.constants';
