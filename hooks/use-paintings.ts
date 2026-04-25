@@ -11,7 +11,7 @@ type UsePaintingsProps = {
   query: string;
 };
 
-const usePaintings = ({ query }: UsePaintingsProps) => {
+export const usePaintings = ({ query }: UsePaintingsProps) => {
   const {
     data: paintingsAndSuggestions = { paintings: [], suggestions: [] },
     isLoading: arePaintingsLoading,
@@ -46,5 +46,3 @@ const usePaintings = ({ query }: UsePaintingsProps) => {
     refetch,
   };
 };
-
-export default usePaintings;

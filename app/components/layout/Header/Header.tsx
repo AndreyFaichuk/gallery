@@ -1,6 +1,6 @@
 'use client';
 
-import { breakpointOptions, useBreakpoint } from '@/hooks/use-breakpoint';
+import { breakpointOptions, useBreakpoint } from '@/hooks';
 import { DesktopHeader } from './desktop/DesktopHeader';
 import { MobileHeader } from './mobile/MobileHeader';
 import { tailwindBreakpoints } from '@/types';

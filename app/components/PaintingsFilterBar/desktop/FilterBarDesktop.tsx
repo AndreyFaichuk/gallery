@@ -1,11 +1,11 @@
 'use client';
 
 import { type FC, Fragment } from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { ChevronDown } from 'lucide-react';
-import { FilterOption } from './FilterOption';
-import type { FilterOptions } from './PaintingsFilterBar';
-import { Select, type SelectOption } from '../ui/select';
+import { FilterOption } from '../FilterOption';
+import type { FilterOptions } from '../PaintingsFilterBar';
+import { Select, type SelectOption } from '../../ui/select';
 import type { Nullable } from '@/types';
 
 const PARTIAL_BACKGROUND_COLOR = '#F0EBE5';
@@ -37,7 +37,7 @@ export const SORT_OPTIONS: SelectOption<string>[] = [
   },
 ] as const;
 
-type FilterPopoverProps = {
+export type FilterBarDesktopProps = {
   totalCount: number;
   filters: FilterOptions;
   handleToggleSearchParam: (param: string, value: string) => void;
@@ -48,7 +48,7 @@ type FilterPopoverProps = {
   sortParam: Nullable<string>;
 };
 
-export const FilterPopover: FC<FilterPopoverProps> = ({
+export const FilterBarDesktop: FC<FilterBarDesktopProps> = ({
   filters,
   handleToggleSearchParam,
   handleSetSortParam,

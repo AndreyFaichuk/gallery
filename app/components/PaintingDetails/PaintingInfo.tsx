@@ -1,4 +1,4 @@
-import { useCurrency } from '@/hooks/use-currency';
+import { useCurrency } from '@/hooks';
 import type { ExchangeT } from '@/types';
 import type { PaintingT } from '@/types';
 import type { FC } from 'react';
@@ -23,7 +23,9 @@ export const PaintingInfo: FC<PaintingInfoProps> = ({ painting, exchange }) => {
           <span className="text-lg">{formattedPrice ?? null}</span>
 
           <div className="w-1/2">
-            <Button>Add to cart</Button>
+            <Button variant="outline" size="lg">
+              Add to cart
+            </Button>
           </div>
         </div>
 

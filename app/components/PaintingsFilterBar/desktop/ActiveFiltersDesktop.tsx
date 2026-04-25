@@ -1,10 +1,10 @@
 import type { FC } from 'react';
-import { ActiveFilter } from './ActiveFilter';
+import { ActiveFilter } from '../ActiveFilter';
 
-type ActiveFiltersProps = {
+export type ActiveFiltersDesktopProps = {
   handleToggleSearchParam: (param: string, value: string) => void;
   handleRemoveAllSearchParams: VoidFunction;
-  currentParamsMap: {
+  filtersToRender: {
     param: string;
     paramLabel: string;
     value: string;
@@ -12,18 +12,18 @@ type ActiveFiltersProps = {
   }[];
 };
 
-export const ActiveFilters: FC<ActiveFiltersProps> = ({
-  currentParamsMap,
+export const ActiveFiltersDesktop: FC<ActiveFiltersDesktopProps> = ({
+  filtersToRender,
   handleToggleSearchParam,
   handleRemoveAllSearchParams,
 }) => {
-  const shouldRender = currentParamsMap.length > 0;
+  const shouldRender = filtersToRender.length > 0;
 
   if (!shouldRender) return null;
 
   return (
     <div className="flex gap-2 w-full items-center flex-wrap">
-      {currentParamsMap.map((filter) => (
+      {filtersToRender.map((filter) => (
         <ActiveFilter
           {...filter}
           key={`${filter.param}-${filter.value}`}
