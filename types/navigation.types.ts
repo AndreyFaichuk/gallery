@@ -1,3 +1,7 @@
+export type FilterOptionParamsT = 'availability' | 'collections';
+export type BaseFilterOptionNamesT = 'Availability' | 'Collections';
+export type FilterBarMobileNamesT = BaseFilterOptionNamesT & 'Sort by';
+
 export type MenuOptionBase = {
   title: string;
   link?: string;

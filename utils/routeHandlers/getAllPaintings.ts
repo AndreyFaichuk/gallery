@@ -2,6 +2,7 @@ import { and, asc, desc, eq, ilike, inArray, sql, type SQL } from 'drizzle-orm';
 import { collections, paintings } from '../db/schema';
 import { db } from '../db/db';
 import getCurrencyExchange from './getCurrencyExchange';
+import { FILTER_BAR_MOBILE_OPTIONS } from '@/constants';
 
 const SORT_PARAM_MAP = {
   name: paintings.name,
@@ -103,8 +104,8 @@ const getAllPaintings = async ({
     totalCount,
     filters: [
       {
-        name: 'Availability',
-        param: 'availability',
+        name: FILTER_BAR_MOBILE_OPTIONS.availability.name,
+        param: FILTER_BAR_MOBILE_OPTIONS.availability.param,
         options: [
           {
             label: 'In stock',
@@ -119,8 +120,8 @@ const getAllPaintings = async ({
         ],
       },
       {
-        name: 'Collections',
-        param: 'collection',
+        name: FILTER_BAR_MOBILE_OPTIONS.collections.name,
+        param: FILTER_BAR_MOBILE_OPTIONS.collections.param,
         options: collectionCounts.map((c) => ({
           label: c.name,
           value: c.id,

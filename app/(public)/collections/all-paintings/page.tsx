@@ -84,7 +84,7 @@ const filters = [
       {
         label: 'In stock',
         value: '1',
-        count: '10',
+        count: 10,
       },
       {
         label: 'Out of stock',
@@ -100,31 +100,31 @@ const filters = [
       {
         label: 'Renaissance Classics',
         value: '5c131120-73e9-4d10-bf41-c6a8a19e3e84',
-        count: '2',
+        count: 2,
       },
       {
         label: 'Emotional Landscapes',
         value: 'b8dd9d7d-b4de-4509-a4e6-3576444efebe',
-        count: '2',
+        count: 2,
       },
       {
         label: 'Urban & Contemporary',
         value: '41b2ccf7-2148-4709-9b8b-5bd8f0776f4b',
-        count: '2',
+        count: 2,
       },
       {
         label: 'Abstract Expressions',
         value: '106c3d38-92fc-4cb0-9da7-987583ce4198',
-        count: '2',
+        count: 2,
       },
       {
         label: 'Modern Minimalism',
         value: '93d24a70-1e7b-4d0d-afa6-7d59c5bdc108',
-        count: '2',
+        count: 2,
       },
     ],
   },
-];
+] as const;
 
 const wait = () => new Promise((res) => setTimeout(() => res(1), 10000));
 

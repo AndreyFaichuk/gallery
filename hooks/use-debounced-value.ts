@@ -6,7 +6,7 @@ type Props<T> = {
   delay?: number;
 };
 
-const useDebouncedValue = <T>({ callback, initialValue, delay = 500 }: Props<T>) => {
+export const useDebouncedValue = <T>({ callback, initialValue, delay = 500 }: Props<T>) => {
   const [value, setValue] = useState<T>(initialValue);
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -32,5 +32,3 @@ const useDebouncedValue = <T>({ callback, initialValue, delay = 500 }: Props<T>)
 
   return { setValue, value };
 };
-
-export default useDebouncedValue;

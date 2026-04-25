@@ -5,10 +5,9 @@ import { X } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Suggestions } from './Suggestions';
 import { Products } from './Products';
-import usePaintings from '@/hooks/use-paintings';
-import useDebouncedValue from '@/hooks/use-debounced-value';
 import { VALID_PARAMS } from '@/hooks/use-filter-params';
 import { useSearchParams } from 'next/navigation';
+import { useDebouncedValue, usePaintings } from '@/hooks';
 
 const PARTIAL_BACKGROUND_COLOR = '#F5F0EC';
 

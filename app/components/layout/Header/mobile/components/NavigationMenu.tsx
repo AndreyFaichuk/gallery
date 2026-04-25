@@ -1,7 +1,7 @@
 'use client';
 
 import { MOBILE_MENU_OPTIONS } from '@/constants';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { RefObject, useRef } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';

@@ -8,7 +8,7 @@ import { cn } from '@/app/lib/utils';
 import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types';
 import { useRouter } from 'next/navigation';
 import { getMediaContentUrl } from '@/utils';
-import { useCurrency } from '@/hooks/use-currency';
+import { useCurrency } from '@/hooks';
 
 type PaintingItemProps = {
   item: PaintingT;
