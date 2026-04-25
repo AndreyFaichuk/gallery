@@ -5,37 +5,11 @@ import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { ChevronDown } from 'lucide-react';
 import { FilterOption } from '../FilterOption';
 import type { FilterOptions } from '../PaintingsFilterBar';
-import { Select, type SelectOption } from '../../ui/select';
+import { Select } from '../../ui/select';
 import type { Nullable } from '@/types';
+import { SORT_OPTIONS } from '@/constants';
 
 const PARTIAL_BACKGROUND_COLOR = '#F0EBE5';
-
-export const SORT_OPTIONS: SelectOption<string>[] = [
-  {
-    value: 'name',
-    label: 'Alphabetically, A-Z',
-  },
-  {
-    value: '-name',
-    label: 'Alphabetically, Z-A',
-  },
-  {
-    value: 'price',
-    label: 'Price, low to high',
-  },
-  {
-    value: '-price',
-    label: 'Price, high to low',
-  },
-  {
-    value: 'date',
-    label: 'Date, old to new',
-  },
-  {
-    value: '-date',
-    label: 'Date, new to old',
-  },
-] as const;
 
 export type FilterBarDesktopProps = {
   totalCount: number;
