@@ -33,6 +33,18 @@ export const useFilterParams = ({ params }: useFilterParamsProps) => {
 
   const currentSearchParams = new URLSearchParams(searchParams.toString());
 
+  const handleToggleSearchParamsBulk = (param: string, values: string[]) => {
+    if (values.length) {
+      currentSearchParams.set(param, values.join(','));
+    } else {
+      currentSearchParams.delete(param);
+    }
+
+    currentSearchParams.set(VALID_PARAMS.PAGE, '1');
+
+    router.replace(`${pathname}?${currentSearchParams.toString()}`);
+  };
+
   const handleToggleSearchParam = (param: string, value: string) => {
     const currentValues = currentSearchParams.get(param)?.split(',') || [];
 
@@ -103,6 +115,7 @@ export const useFilterParams = ({ params }: useFilterParamsProps) => {
     handleSetSortParam,
     handleToggleSearchParam,
     handleRemoveAllSearchParams,
+    handleToggleSearchParamsBulk,
     handleSetPage,
     handleSetQueryParam,
   };

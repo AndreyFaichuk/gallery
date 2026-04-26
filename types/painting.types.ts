@@ -12,7 +12,7 @@ export type PaintingPageParams = ParamsBase<{ id: string }>;
 
 export type PaintingsSearchParamsProps = QueryParamsBase<{
   query?: string;
-  collection?: string;
+  collections?: string;
   availability?: '1' | '0';
   page?: string;
   sort?: SortParam;

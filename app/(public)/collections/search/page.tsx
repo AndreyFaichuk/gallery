@@ -82,10 +82,10 @@ const exchange = { EUR: 0.872334, UAH: 44.09512, USD: 1 };
 const wait = () => new Promise((res) => setTimeout(() => res(1), 10000));
 
 const AllPaintings = async ({ searchParams }: PaintingsSearchParamsProps) => {
-  const { collection, availability, query, page, sort } = await searchParams;
+  const { collections, availability, query, page, sort } = await searchParams;
 
   const { filters, items, totalCount, exchange } = await getAllPaintings({
-    collectionId: collection,
+    collectionId: collections,
     isAvailable: availability,
     page: page ? Number(page) : undefined,
     query,

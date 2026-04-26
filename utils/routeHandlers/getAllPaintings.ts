@@ -52,7 +52,11 @@ const getAllPaintings = async ({
   }
 
   if (isAvailable) {
-    conditions.push(eq(paintings.isAvailable, isAvailable === '1'));
+    const values = isAvailable.split(',');
+
+    if (values.length === 1) {
+      conditions.push(eq(paintings.isAvailable, values[0] === '1'));
+    }
   }
 
   const [items, availabilityCounts, collectionCounts, paintingsCount, currentExhange] =
