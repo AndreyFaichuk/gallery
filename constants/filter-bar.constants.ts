@@ -1,5 +1,10 @@
 import { SelectOption } from '@/app/components/ui/select';
-import { BaseFilterOptionNamesT, FilterOptionParamsT, MenuOptions } from '@/types';
+import {
+  BaseFilterOptionNamesT,
+  BaseSortingOptionNamesT,
+  FilterOptionParamsT,
+  SortOptionParamsT,
+} from '@/types';
 import { NAVIGATION_MENU_OPTIONS } from './navigation.constants';
 
 export const FILTER_BAR_MOBILE_OPTIONS: Record<
@@ -13,6 +18,16 @@ export const FILTER_BAR_MOBILE_OPTIONS: Record<
   collections: {
     param: 'collections',
     name: 'Collections',
+  },
+} as const;
+
+export const FILTER_BAR_MOBILE_SORT_OPTION: Record<
+  SortOptionParamsT,
+  { param: SortOptionParamsT; name: BaseSortingOptionNamesT }
+> = {
+  sort: {
+    param: 'sort',
+    name: 'Sort by',
   },
 } as const;
 
@@ -40,40 +55,5 @@ export const SORT_OPTIONS: SelectOption<string>[] = [
   {
     value: '-date',
     label: 'Date, new to old',
-  },
-] as const;
-
-export const DESKTOP_MENU_OPTIONS: MenuOptions = [
-  {
-    title: 'original oil paintings',
-    subMenu: [
-      {
-        title: NAVIGATION_MENU_OPTIONS.ALL_PAINTINGS.title,
-        link: NAVIGATION_MENU_OPTIONS.ALL_PAINTINGS.link,
-      },
-      {
-        title: NAVIGATION_MENU_OPTIONS.AVAILABLE_PAINTINGS.title,
-        link: NAVIGATION_MENU_OPTIONS.AVAILABLE_PAINTINGS.link,
-      },
-    ],
-  },
-  {
-    title: NAVIGATION_MENU_OPTIONS.ABOUT_ME.title,
-    link: NAVIGATION_MENU_OPTIONS.ABOUT_ME.link,
-  },
-] as const;
-
-export const MOBILE_MENU_OPTIONS: MenuOptions = [
-  {
-    title: NAVIGATION_MENU_OPTIONS.ALL_PAINTINGS.title,
-    link: NAVIGATION_MENU_OPTIONS.ALL_PAINTINGS.link,
-  },
-  {
-    title: NAVIGATION_MENU_OPTIONS.AVAILABLE_PAINTINGS.title,
-    link: NAVIGATION_MENU_OPTIONS.AVAILABLE_PAINTINGS.link,
-  },
-  {
-    title: NAVIGATION_MENU_OPTIONS.ABOUT_ME.title,
-    link: NAVIGATION_MENU_OPTIONS.ABOUT_ME.link,
   },
 ] as const;

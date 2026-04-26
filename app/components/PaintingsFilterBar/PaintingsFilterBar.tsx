@@ -48,6 +48,7 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
     handleToggleSearchParam,
     handleRemoveAllSearchParams,
     handleSetPage,
+    handleToggleSearchParamsBulk,
   } = usePaintingsFilterBar(filters, totalCount);
 
   const getLayout = () => {
@@ -58,7 +59,7 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
         filters={filters}
         currentParamsMap={currentParamsMap}
         handleSetSortParam={handleSetSortParam}
-        handleToggleSearchParam={handleToggleSearchParam}
+        handleToggleSearchParamsBulk={handleToggleSearchParamsBulk}
         totalCount={totalCount}
         sortParam={sortParam}
       />
