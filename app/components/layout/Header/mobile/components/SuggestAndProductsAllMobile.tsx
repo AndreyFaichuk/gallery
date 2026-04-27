@@ -125,7 +125,7 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
     <Drawer snapPoints={[1.05]} open={isOpen} onClose={handleClearQueryAndClose}>
       <DrawerContent className="bg-white gap-2">
         <VisuallyHidden.Root>
-          <DrawerTitle>''</DrawerTitle>
+          <DrawerTitle></DrawerTitle>
         </VisuallyHidden.Root>
 
         <Command shouldFilter={false} className="gap-2">

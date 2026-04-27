@@ -1,7 +1,7 @@
 'use client';
 
 import { Command as CommandPrimitive } from 'cmdk';
-import { CheckIcon, Cross, EyeOffIcon, SearchIcon, X } from 'lucide-react';
+import { SearchIcon, X } from 'lucide-react';
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog';
 import { cn } from '@/app/lib/utils';
