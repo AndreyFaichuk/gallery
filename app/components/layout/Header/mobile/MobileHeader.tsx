@@ -7,11 +7,14 @@ import { AnimatePresence } from 'framer-motion';
 import { Titles } from './components/Titles';
 import { Logo } from './components/Logo';
 import { NavigationMenu } from './components/NavigationMenu';
+import { SuggestAndProductsAllMobile } from './components/SuggestAndProductsAllMobile';
 
 export const MobileHeader = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isNavigationMenuOpen, setIsNavigationMenuOpen] = useState(false);
+  const [isSuggestAndProductsOpen, setIsSuggestAndProductsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const handleToggleNavigationMenu = () => setIsNavigationMenuOpen((prev) => !prev);
+  const handleToggleSuggestAndProducts = () => setIsSuggestAndProductsOpen((prev) => !prev);
 
   return (
     <header className="flex flex-col pt-2 gap-4 relative">
@@ -20,23 +23,30 @@ export const MobileHeader = () => {
       </div>
 
       <div className="flex justify-between items-center px-2">
-        {isOpen ? (
-          <X className="size-8 cursor-pointer" onClick={toggleMenu} />
+        {isNavigationMenuOpen ? (
+          <X className="size-8 cursor-pointer" onClick={handleToggleNavigationMenu} />
         ) : (
-          <Menu className="size-8 cursor-pointer" onClick={toggleMenu} />
+          <Menu className="size-8 cursor-pointer" onClick={handleToggleNavigationMenu} />
         )}
 
         <Logo />
 
         <div className="flex gap-2">
-          <Search className="size-8 cursor-pointer" />
+          <Search className="size-8 cursor-pointer" onClick={handleToggleSuggestAndProducts} />
           <Handbag className="size-8 cursor-pointer" />
         </div>
       </div>
 
       <AnimatePresence>
-        {isOpen && <NavigationMenu onClose={() => setIsOpen(false)} />}
+        {isNavigationMenuOpen && <NavigationMenu onClose={handleToggleNavigationMenu} />}
       </AnimatePresence>
+
+      {isSuggestAndProductsOpen && (
+        <SuggestAndProductsAllMobile
+          isOpen={isSuggestAndProductsOpen}
+          onClose={handleToggleSuggestAndProducts}
+        />
+      )}
     </header>
   );
 };

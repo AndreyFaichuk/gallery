@@ -1,6 +1,6 @@
 'use client';
 
-import { type KeyboardEvent, useState } from 'react';
+import { type KeyboardEvent, useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Suggestions } from './Suggestions';
