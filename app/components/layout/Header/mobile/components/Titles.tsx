@@ -1,6 +1,6 @@
 'use client';
 
-const TITLES_TO_RENDER = ['original oil paintings', 'fine artist', 'worldwide shipping'] as const;
+const TITLES_TO_RENDER = ['fine artist'] as const;
 
 export const Titles = () => (
   <>
