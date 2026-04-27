@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import {
   Command,
@@ -48,6 +48,10 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
     callback: handleSearch,
     initialValue: queryParam ?? '',
   });
+
+  useEffect(() => {
+    setValue(queryParam ?? '');
+  }, [queryParam]);
 
   const handleClearQueryAndClose = () => {
     setValue('');
@@ -122,7 +126,7 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
   };
 
   return (
-    <Drawer snapPoints={[1.05]} open={isOpen} onClose={handleClearQueryAndClose}>
+    <Drawer snapPoints={[1]} open={isOpen} onClose={handleClearQueryAndClose}>
       <DrawerContent className="bg-white gap-2">
         <VisuallyHidden.Root>
           <DrawerTitle></DrawerTitle>
