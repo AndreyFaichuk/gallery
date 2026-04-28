@@ -1,14 +1,8 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
-import {
-  Command,
-  CommandInput,
-  CommandGroup,
-  CommandItem,
-  CommandList,
-} from '@/app/components/ui/command';
+import { Command, CommandInput, CommandGroup, CommandList } from '@/app/components/ui/command';
 import { Drawer, DrawerContent, DrawerTitle } from '@/app/components/ui/drawer';
 import { VisuallyHidden } from 'radix-ui';
 import { SuggestionMobile } from './SuggestionMobile';
@@ -18,7 +12,6 @@ import { cn } from '@/app/lib/utils';
 import { useSearchParams } from 'next/navigation';
 import { usePaintings, VALID_PARAMS } from '@/hooks';
 import { InitialSearchState } from './InitialSearchState';
-import { Loader2 } from 'lucide-react';
 import { EmptyResults } from './EmptyResults';
 import { useDebounceValue } from 'usehooks-ts';
 import { SearchSkeleton } from './SearchSkeleton';
@@ -43,10 +36,6 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
     paintingsAndSuggestions: { paintings, suggestions },
     arePaintingsLoading,
   } = usePaintings({ query: deboucedValue });
-
-  useEffect(() => {
-    setValue(queryParam ?? '');
-  }, [queryParam]);
 
   const handleClearQueryAndClose = () => {
     setValue('');
