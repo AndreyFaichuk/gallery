@@ -7,7 +7,8 @@ import { Suggestions } from './Suggestions';
 import { Products } from './Products';
 import { VALID_PARAMS } from '@/hooks/use-filter-params';
 import { useSearchParams } from 'next/navigation';
-import { useDebouncedValue, usePaintings } from '@/hooks';
+import { usePaintings } from '@/hooks';
+import { useDebounceValue } from 'usehooks-ts';
 
 const PARTIAL_BACKGROUND_COLOR = '#F5F0EC';
 
@@ -17,15 +18,14 @@ export const SuggestionsAndProductsAll = () => {
 
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number | null>(null);
 
-  const { value, setValue } = useDebouncedValue({
-    callback: () => {}, // No-op callback, using value directly
-    initialValue: queryParam ?? '',
-  });
+  const [value, setValue] = useState(queryParam ?? '');
+
+  const [deboucedValue] = useDebounceValue(value, 500);
 
   const {
     paintingsAndSuggestions: { paintings, suggestions },
     arePaintingsLoading,
-  } = usePaintings({ query: value });
+  } = usePaintings({ query: deboucedValue });
 
   const handleClear = () => {
     setValue('');

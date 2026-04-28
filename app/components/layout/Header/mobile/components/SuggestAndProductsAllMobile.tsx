@@ -16,10 +16,11 @@ import { getMediaContentUrl } from '@/utils';
 import { ProductMobile } from './ProductMobile';
 import { cn } from '@/app/lib/utils';
 import { useSearchParams } from 'next/navigation';
-import { useDebouncedValue, usePaintings, VALID_PARAMS } from '@/hooks';
+import { usePaintings, VALID_PARAMS } from '@/hooks';
 import { InitialSearchState } from './InitialSearchState';
 import { Loader2 } from 'lucide-react';
 import { EmptyResults } from './EmptyResults';
+import { useDebounceValue } from 'usehooks-ts';
 
 type SuggestAndProductsAllMobileProps = {
   isOpen: boolean;
@@ -33,15 +34,14 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
   const searchParams = useSearchParams();
   const queryParam = searchParams.get(VALID_PARAMS.QUERY);
 
-  const { value, setValue } = useDebouncedValue({
-    callback: () => {}, // No-op callback, using value directly
-    initialValue: queryParam ?? '',
-  });
+  const [value, setValue] = useState(queryParam ?? '');
+
+  const [deboucedValue] = useDebounceValue(value, 500);
 
   const {
     paintingsAndSuggestions: { paintings, suggestions },
     arePaintingsLoading,
-  } = usePaintings({ query: value });
+  } = usePaintings({ query: deboucedValue });
 
   useEffect(() => {
     setValue(queryParam ?? '');
