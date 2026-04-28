@@ -52,15 +52,15 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
     onClose();
   };
 
-  const isInitialState = !value.trim();
+  const isInitialState = !deboucedValue.trim();
   const hasResults = suggestions.length > 0 || paintings.length > 0;
 
-  const isEmptySearch = value.trim() && !hasResults && !arePaintingsLoading;
+  const isEmptySearch = deboucedValue.trim() && !hasResults && !arePaintingsLoading;
 
   const renderContent = () => {
     if (isInitialState) return <InitialSearchState />;
 
-    if (isEmptySearch) return <EmptyResults query={value} />;
+    if (isEmptySearch) return <EmptyResults query={deboucedValue} />;
 
     if (arePaintingsLoading)
       return (
