@@ -21,6 +21,7 @@ import { InitialSearchState } from './InitialSearchState';
 import { Loader2 } from 'lucide-react';
 import { EmptyResults } from './EmptyResults';
 import { useDebounceValue } from 'usehooks-ts';
+import { SearchSkeleton } from './SearchSkeleton';
 
 type SuggestAndProductsAllMobileProps = {
   isOpen: boolean;
@@ -62,26 +63,17 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
 
     if (isEmptySearch) return <EmptyResults query={deboucedValue} />;
 
-    if (arePaintingsLoading)
-      return (
-        <div className="flex items-center justify-center py-8 h-2.5">
-          <Loader2 className="h-8 w-8 animate-spin" />
-        </div>
-      );
+    if (arePaintingsLoading) return <SearchSkeleton />;
 
     return (
       <>
         {suggestions.length > 0 && (
           <CommandGroup heading="Suggestions">
-            <div className="flex overflow-scroll h-14">
+            <div className="flex overflow-scroll h-14 gap-2">
               {suggestions.map((suggestion) => (
-                <CommandItem
-                  onSelect={handleClearQueryAndClose}
-                  key={suggestion}
-                  value={suggestion}
-                >
+                <div onClick={handleClearQueryAndClose} key={suggestion}>
                   <SuggestionMobile suggestion={suggestion} />
-                </CommandItem>
+                </div>
               ))}
             </div>
           </CommandGroup>
@@ -96,20 +88,19 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
                 const isLastElement = paintings.length - 1 === index;
 
                 return (
-                  <CommandItem
+                  <div
                     key={painting.id}
-                    value={painting.name}
-                    className={cn('border-b-1 border-gray-200 pb-4', {
-                      'border-b-0 pb-1': isLastElement,
+                    className={cn('border-b-1 border-gray-200 pb-2', {
+                      'border-b-0 pb-0': isLastElement,
                     })}
-                    onSelect={handleClearQueryAndClose}
+                    onClick={handleClearQueryAndClose}
                   >
                     <ProductMobile
                       painting={painting}
                       previewImagUrl={firstImageUrl}
                       key={painting.id}
                     />
-                  </CommandItem>
+                  </div>
                 );
               })}
             </div>
@@ -121,14 +112,14 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
 
   return (
     <Drawer snapPoints={[1]} open={isOpen} onClose={handleClearQueryAndClose}>
-      <DrawerContent className="bg-white gap-2">
+      <DrawerContent className="bg-white gap-2 w-full h-[100dvh] max-w-none rounded-none p-0">
         <VisuallyHidden.Root>
           <DrawerTitle></DrawerTitle>
         </VisuallyHidden.Root>
 
         <Command shouldFilter={false} className="gap-2">
           <CommandInput
-            className="h-[40px]"
+            className="h-[40px] text-base"
             placeholder="Search paintings..."
             value={value}
             onValueChange={setValue}
