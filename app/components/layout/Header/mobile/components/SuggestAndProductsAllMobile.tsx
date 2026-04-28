@@ -33,21 +33,15 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
   const searchParams = useSearchParams();
   const queryParam = searchParams.get(VALID_PARAMS.QUERY);
 
-  const [query, setQuery] = useState('');
+  const { value, setValue } = useDebouncedValue({
+    callback: () => {}, // No-op callback, using value directly
+    initialValue: queryParam ?? '',
+  });
 
   const {
     paintingsAndSuggestions: { paintings, suggestions },
     arePaintingsLoading,
-  } = usePaintings({ query });
-
-  const handleSearch = (search: string) => {
-    setQuery(search);
-  };
-
-  const { value, setValue } = useDebouncedValue({
-    callback: handleSearch,
-    initialValue: queryParam ?? '',
-  });
+  } = usePaintings({ query: value });
 
   useEffect(() => {
     setValue(queryParam ?? '');
@@ -58,10 +52,10 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
     onClose();
   };
 
-  const isInitialState = !query.trim();
+  const isInitialState = !value.trim();
   const hasResults = suggestions.length > 0 || paintings.length > 0;
 
-  const isEmptySearch = query.trim() && !hasResults && !arePaintingsLoading;
+  const isEmptySearch = value.trim() && !hasResults && !arePaintingsLoading;
 
   const renderContent = () => {
     if (isInitialState) return <InitialSearchState />;

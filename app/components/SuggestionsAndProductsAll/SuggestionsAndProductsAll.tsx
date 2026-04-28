@@ -15,22 +15,17 @@ export const SuggestionsAndProductsAll = () => {
   const searchParams = useSearchParams();
   const queryParam = searchParams.get(VALID_PARAMS.QUERY);
 
-  const [search, setSearch] = useState('');
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number | null>(null);
+
+  const { value, setValue } = useDebouncedValue({
+    callback: () => {}, // No-op callback, using value directly
+    initialValue: queryParam ?? '',
+  });
 
   const {
     paintingsAndSuggestions: { paintings, suggestions },
     arePaintingsLoading,
-  } = usePaintings({ query: search });
-
-  const handleSearch = (search: string) => {
-    setSearch(search);
-  };
-
-  const { value, setValue } = useDebouncedValue({
-    callback: handleSearch,
-    initialValue: queryParam ?? '',
-  });
+  } = usePaintings({ query: value });
 
   const handleClear = () => {
     setValue('');
@@ -58,7 +53,7 @@ export const SuggestionsAndProductsAll = () => {
     }
   };
 
-  const afterIcon = search ? (
+  const afterIcon = value ? (
     <button type="button" onClick={handleClear} className="cursor-pointer">
       <X className="size-4" />
     </button>
@@ -80,7 +75,7 @@ export const SuggestionsAndProductsAll = () => {
         }
       />
 
-      {search && (
+      {value && (
         <div
           className="absolute mt-2 w-full rounded-md shadow-md z-50 flex justify-around"
           style={{ backgroundColor: PARTIAL_BACKGROUND_COLOR }}
