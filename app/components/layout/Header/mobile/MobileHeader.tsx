@@ -24,16 +24,21 @@ export const MobileHeader = () => {
 
       <div className="flex justify-between items-center px-2">
         {isNavigationMenuOpen ? (
-          <X className="size-8 cursor-pointer" onClick={handleToggleNavigationMenu} />
+          <X className="size-8" onClick={handleToggleNavigationMenu} />
         ) : (
-          <Menu className="size-8 cursor-pointer" onClick={handleToggleNavigationMenu} />
+          <Menu className="size-8" onClick={handleToggleNavigationMenu} />
         )}
 
         <Logo />
 
-        <div className="flex gap-2">
-          <Search className="size-8 cursor-pointer" onClick={handleToggleSuggestAndProducts} />
-          <Handbag className="size-8 cursor-pointer" />
+        <div className="flex gap-2 relative">
+          {!isSuggestAndProductsOpen && (
+            <Search
+              className="size-8 absolute right-[40px]"
+              onClick={handleToggleSuggestAndProducts}
+            />
+          )}
+          <Handbag className="size-8" />
         </div>
       </div>
 
