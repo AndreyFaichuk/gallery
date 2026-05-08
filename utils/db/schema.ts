@@ -25,7 +25,10 @@ export const paintings = pgTable(
     width: numeric('width_cm', { mode: 'number' }).notNull().default(1),
     height: numeric('height_cm', { mode: 'number' }).notNull().default(1),
     imageUrls: jsonb('image_urls').$type<string[]>().notNull().default([]),
-    videoUrls: jsonb('video_urls').$type<string[]>().notNull().default([]),
+    videos: jsonb('videos')
+      .$type<{ src: string; thumbnail: string }[]>()
+      .notNull()
+      .default([{ src: '', thumbnail: '' }]),
     isAvailable: boolean('is_available').notNull().default(true),
     year: numeric('year', { mode: 'number' }).notNull().default(DateTime.now().year),
     specifications: text('specifications'),

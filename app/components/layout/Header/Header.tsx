@@ -1,21 +1,22 @@
 'use client';
 
-import { breakpointOptions, useBreakpoint } from '@/hooks';
-import { DesktopHeader } from './desktop/DesktopHeader';
+import { breakpointOptions, useBreakpoint, useHydrated } from '@/hooks';
 import { MobileHeader } from './mobile/MobileHeader';
 import { tailwindBreakpoints } from '@/types';
-import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const DesktopHeaderAsync = dynamic(() => import('./desktop/DesktopHeader'), {
+  ssr: false,
+  // TODO: add skeleton / loader
+  // loading: () => <p>Loading...</p>,
+});
 
 export const Header = () => {
-  const [isHydrated, setHydrated] = useState(false);
+  const isHydrated = useHydrated();
 
   const isBelowMobile = useBreakpoint(tailwindBreakpoints.XS, breakpointOptions.BELOW);
 
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
-
   if (!isHydrated) return null;
 
-  return isBelowMobile ? <MobileHeader /> : <DesktopHeader />;
+  return isBelowMobile ? <MobileHeader /> : <DesktopHeaderAsync />;
 };

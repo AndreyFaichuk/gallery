@@ -1,1 +1,0 @@
-export { PaintingDetails } from './PaintingDetails';

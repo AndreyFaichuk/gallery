@@ -8,21 +8,29 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 
 import 'yet-another-react-lightbox/styles.css';
 
-type PaintingPhotoGalleryProps = {
+type PaintingPhotoGalleryDesktopProps = {
+  paintingId: string;
+  isOpened: boolean;
   index: number;
-  setIndex: (index: number) => void;
+  onClose: VoidFunction;
   paintingPreparedImageUrls: string[];
   paintingPreparedVideoUrls: string[];
 };
 
-export const PaintingPhotoGallery: FC<PaintingPhotoGalleryProps> = ({
+export const PaintingPhotoGalleryDesktop: FC<PaintingPhotoGalleryDesktopProps> = ({
   index,
-  setIndex,
+  onClose,
+  isOpened,
   paintingPreparedImageUrls,
   paintingPreparedVideoUrls,
+  paintingId,
 }) => {
   const picturesSlides = paintingPreparedImageUrls.map((imageUrl) => ({
     src: imageUrl,
+
+    share: {
+      url: `${process.env.NEXT_PUBLIC_APP_URL}/paintings/${paintingId}`,
+    },
   }));
 
   const videosSlides = paintingPreparedVideoUrls.map((videoUrl) => ({
@@ -42,8 +50,8 @@ export const PaintingPhotoGallery: FC<PaintingPhotoGalleryProps> = ({
     <Lightbox
       index={index}
       plugins={[Share, Video, Zoom]}
-      open={index > -1}
-      close={() => setIndex(-1)}
+      open={isOpened && index > -1}
+      close={onClose}
       slides={[...picturesSlides, ...videosSlides]}
       animation={{ zoom: 500 }}
       zoom={{

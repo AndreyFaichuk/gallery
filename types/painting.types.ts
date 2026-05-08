@@ -1,4 +1,5 @@
 import type { SortParam } from '@/utils/routeHandlers/getAllPaintings';
+import { PaintingT } from './schema.types';
 
 type QueryParamsBase<T> = {
   searchParams: Promise<T>;
@@ -33,4 +34,8 @@ export type ExchangeT = {
     UAH: number;
     USD: number;
   };
+};
+
+export type PaintingDetailProps = ExchangeT & {
+  painting: PaintingT;
 };
