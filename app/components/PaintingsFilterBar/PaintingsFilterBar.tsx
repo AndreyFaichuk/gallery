@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useState, type FC, type ReactNode } from 'react';
+import { type FC, type ReactNode } from 'react';
 import { Pagination } from '../Pagination';
 import { usePaintingsFilterBar } from '@/hooks/use-paintings-filter-bar';
-import { PaintingFiltersDesktop } from './desktop/PaintingFiltersDesktop';
 import { FilterBarMobile } from './mobile/FilterBarMobile';
 import { BaseFilterOptionNamesT, FilterOptionParamsT } from '@/types';
+import { useHydrated } from '@/hooks';
+import dynamic from 'next/dynamic';
 
 export type Option = {
   label: string;
@@ -26,16 +27,18 @@ export type PaintingsFilterBarProps = {
   children: ReactNode;
 };
 
+const PaintingFiltersDesktopAsync = dynamic(() => import('./desktop/PaintingFiltersDesktop'), {
+  ssr: false,
+  // TODO: add skeleton / loader
+  // loading: () => <p>Loading...</p>,
+});
+
 export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
   filters,
   children,
   totalCount,
 }) => {
-  const [isHydrated, setHydrated] = useState(false);
-
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
+  const isHydrated = useHydrated();
 
   const {
     isBelowMobile,
@@ -64,7 +67,7 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
         sortParam={sortParam}
       />
     ) : (
-      <PaintingFiltersDesktop
+      <PaintingFiltersDesktopAsync
         filters={filters}
         currentParamsMap={currentParamsMap}
         handleSetSortParam={handleSetSortParam}

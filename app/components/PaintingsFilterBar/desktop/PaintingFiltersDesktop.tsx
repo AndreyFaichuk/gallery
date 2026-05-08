@@ -6,7 +6,7 @@ import { FilterBarDesktop, FilterBarDesktopProps } from './FilterBarDesktop';
 
 type PaintingFiltersDesktopProps = FilterBarDesktopProps & ActiveFiltersDesktopProps;
 
-export const PaintingFiltersDesktop: FC<PaintingFiltersDesktopProps> = ({ ...props }) => {
+const PaintingFiltersDesktop: FC<PaintingFiltersDesktopProps> = ({ ...props }) => {
   return (
     <>
       <FilterBarDesktop {...props} />
@@ -14,3 +14,5 @@ export const PaintingFiltersDesktop: FC<PaintingFiltersDesktopProps> = ({ ...pro
     </>
   );
 };
+
+export default PaintingFiltersDesktop;

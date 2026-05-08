@@ -2,14 +2,14 @@ import { useCurrency } from '@/hooks';
 import type { ExchangeT } from '@/types';
 import type { PaintingT } from '@/types';
 import type { FC } from 'react';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 import { formatDimension } from '@/utils';
 
-type PaintingInfoProps = ExchangeT & {
+type PaintingInfoDesktopProps = ExchangeT & {
   painting: PaintingT;
 };
 
-export const PaintingInfo: FC<PaintingInfoProps> = ({ painting, exchange }) => {
+export const PaintingInfoDesktop: FC<PaintingInfoDesktopProps> = ({ painting, exchange }) => {
   const { name, description, specifications, width, height, year } = painting;
 
   const formattedPrice = useCurrency({ exchange, price: painting.price });

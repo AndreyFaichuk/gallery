@@ -1,5 +1,4 @@
-import { PaintingDetails } from '@/app/components/PaintingDetails';
-import { YouMayAlsoLike } from '@/app/components/YouMayAlsoLike';
+import { PaintingPage } from '@/app/components/PaintingPage/PaintingPage';
 import type { PaintingPageParams } from '@/types';
 import getPainting from '@/utils/routeHandlers/getPainting';
 import getYouMayAlsoLikePaintings from '@/utils/routeHandlers/getYouMayAlsoLikePaintings';
@@ -78,7 +77,7 @@ const test = [
 
 const exchange = { EUR: 0.872334, UAH: 44.09512, USD: 1 };
 
-const PaintingPage = async ({ params }: PaintingPageParams) => {
+const Painting = async ({ params }: PaintingPageParams) => {
   const { id } = await params;
 
   const painting = await getPainting({ id });
@@ -91,11 +90,12 @@ const PaintingPage = async ({ params }: PaintingPageParams) => {
   });
 
   return (
-    <div className="grid grid-cols-12">
-      <PaintingDetails painting={painting} exchange={exchange} />
-      <YouMayAlsoLike paintings={youMayAlsoLikePaintings} exchange={exchange} />
-    </div>
+    <PaintingPage
+      exchange={exchange}
+      painting={painting}
+      youMayAlsoLikePaintings={youMayAlsoLikePaintings}
+    />
   );
 };
 
-export default PaintingPage;
+export default Painting;

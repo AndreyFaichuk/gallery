@@ -7,7 +7,7 @@ import { Logo } from './components/Logo';
 import { CurrencySellector } from './components/CurrencySellector';
 import { NavigationMenu } from './components/NavigationMenu';
 
-export const DesktopHeader = () => {
+const DesktopHeader = () => {
   return (
     <header className="h-[210px] pt-9">
       <div className="flex flex-col items-center gap-20 ">
@@ -39,3 +39,5 @@ export const DesktopHeader = () => {
     </header>
   );
 };
+
+export default DesktopHeader;

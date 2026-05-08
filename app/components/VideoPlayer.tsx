@@ -16,13 +16,7 @@ interface Props {
 const VideoPlayer: FC<Props> = ({ url, className }) => {
   return (
     <div className={cn('h-full w-full', className)}>
-      <ReactPlayer
-        src={url}
-        width="100%"
-        height="100%"
-        controls
-        className="h-full w-full object-cover"
-      />
+      <ReactPlayer src={url} width="100%" height="100%" controls className="object-contain" />
     </div>
   );
 };
