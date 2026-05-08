@@ -44,6 +44,10 @@ export const PaintingPhotoGalleryDesktop: FC<PaintingPhotoGalleryDesktopProps> =
         height: 720,
       },
     ],
+
+    share: {
+      url: `${process.env.NEXT_PUBLIC_APP_URL}/paintings/${paintingId}`,
+    },
   }));
 
   return (
