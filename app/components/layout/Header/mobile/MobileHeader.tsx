@@ -46,12 +46,10 @@ export const MobileHeader = () => {
         {isNavigationMenuOpen && <NavigationMenu onClose={handleToggleNavigationMenu} />}
       </AnimatePresence>
 
-      {isSuggestAndProductsOpen && (
-        <SuggestAndProductsAllMobile
-          isOpen={isSuggestAndProductsOpen}
-          onClose={handleToggleSuggestAndProducts}
-        />
-      )}
+      <SuggestAndProductsAllMobile
+        isOpen={isSuggestAndProductsOpen}
+        onClose={handleToggleSuggestAndProducts}
+      />
     </header>
   );
 };
