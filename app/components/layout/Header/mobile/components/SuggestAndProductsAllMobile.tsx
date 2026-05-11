@@ -115,7 +115,7 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
   onClose,
 }) => {
   return (
-    <Drawer snapPoints={[0.8, 1]} fadeFromIndex={0} open={isOpen} onClose={onClose}>
+    <Drawer snapPoints={[1]} fadeFromIndex={0} open={isOpen} onClose={onClose}>
       <DrawerContent className="bg-white gap-2 w-full h-[100dvh] max-w-none rounded-none p-0">
         <VisuallyHidden.Root>
           <DrawerTitle></DrawerTitle>
