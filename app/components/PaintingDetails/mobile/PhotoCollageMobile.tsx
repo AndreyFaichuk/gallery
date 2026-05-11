@@ -1,12 +1,13 @@
 'use client';
 
 import { FC, useState } from 'react';
-import { PaintingPhotoGalleryDesktop, PhotoCollageDesktopProps } from '../desktop';
+import { PhotoCollageDesktopProps } from '../desktop';
 import { getMediaContentUrl } from '@/utils';
 import { Maximize2, Play } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/app/lib/utils';
 import { Button } from '../../ui/button';
+import { PaintingPhotoGallery } from '../../PaintingPhotoGallery';
 
 type GalleryItem = {
   type: 'image' | 'video';
@@ -27,9 +28,12 @@ export const PhotoCollageMobile: FC<PhotoCollageMobileProps> = ({
   const handleSetCurrentPictureIndex = (index: number) => {
     setActiveIndex(index);
   };
+
   const handleOpenPhotoGallery = () => {
     setIsOpenedPhotoGallery(true);
   };
+
+  const isVideoExists = videos.some((video) => video.src && video.thumbnail);
 
   const paintingPreparedImageUrls = imageUrls.map((image) => getMediaContentUrl(`${id}/${image}`));
 
@@ -47,10 +51,12 @@ export const PhotoCollageMobile: FC<PhotoCollageMobileProps> = ({
       src: preparedImageUrl,
     })),
 
-    ...paintingThumbnailVideoUrls.map((preparedThumbnailUrl) => ({
-      type: 'video' as const,
-      src: preparedThumbnailUrl,
-    })),
+    ...(isVideoExists
+      ? paintingThumbnailVideoUrls.map((preparedVideoUrl) => ({
+          type: 'video' as const,
+          src: preparedVideoUrl,
+        }))
+      : []),
   ];
 
   const active = items[activeIndex];
@@ -103,7 +109,7 @@ export const PhotoCollageMobile: FC<PhotoCollageMobileProps> = ({
                 className="object-cover"
               />
 
-              {item.type === 'video' && (
+              {item.type === 'video' && isVideoExists && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Play className="size-6 fill-white text-white" />
                 </div>
@@ -112,15 +118,13 @@ export const PhotoCollageMobile: FC<PhotoCollageMobileProps> = ({
           ))}
         </div>
       </div>
-      <PaintingPhotoGalleryDesktop
+      <PaintingPhotoGallery
         paintingId={id}
         isOpened={isOpenedPhotoGallery}
         index={activeIndex}
-        onClose={() => {
-          setIsOpenedPhotoGallery(false);
-        }}
+        onClose={() => setIsOpenedPhotoGallery(false)}
         paintingPreparedImageUrls={paintingPreparedImageUrls}
-        paintingPreparedVideoUrls={paintingPreparedVideoUrls ?? []}
+        paintingPreparedVideoUrls={isVideoExists ? paintingPreparedVideoUrls : []}
       />
     </>
   );

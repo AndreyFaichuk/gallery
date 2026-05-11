@@ -8,7 +8,7 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 
 import 'yet-another-react-lightbox/styles.css';
 
-type PaintingPhotoGalleryDesktopProps = {
+type PaintingPhotoGalleryProps = {
   paintingId: string;
   isOpened: boolean;
   index: number;
@@ -17,7 +17,7 @@ type PaintingPhotoGalleryDesktopProps = {
   paintingPreparedVideoUrls: string[];
 };
 
-export const PaintingPhotoGalleryDesktop: FC<PaintingPhotoGalleryDesktopProps> = ({
+export const PaintingPhotoGallery: FC<PaintingPhotoGalleryProps> = ({
   index,
   onClose,
   isOpened,

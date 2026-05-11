@@ -2,8 +2,8 @@
 
 import { FC, useState } from 'react';
 
-import { Command, CommandInput, CommandGroup, CommandList } from '@/app/components/ui/command';
-import { Drawer, DrawerContent, DrawerTitle } from '@/app/components/ui/drawer';
+import { Command, CommandInput, CommandGroup, CommandList } from '@/app/components/ui';
+import { Drawer, DrawerContent, DrawerTitle } from '@/app/components/ui';
 import { VisuallyHidden } from 'radix-ui';
 import { SuggestionMobile } from './SuggestionMobile';
 import { getMediaContentUrl } from '@/utils';

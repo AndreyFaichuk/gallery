@@ -1,6 +1,6 @@
 'use client';
 
-import { Select, type SelectOption } from '@/app/components/ui/select';
+import { Select, type SelectOption } from '@/app/components/ui';
 import { CURRENCY_SYMBOLS } from '@/utils';
 import {
   BASE_CURRENCY,
