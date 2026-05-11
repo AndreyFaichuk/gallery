@@ -16,15 +16,7 @@ import { EmptyResults } from './EmptyResults';
 import { useDebounceValue } from 'usehooks-ts';
 import { SearchSkeleton } from './SearchSkeleton';
 
-type SuggestAndProductsAllMobileProps = {
-  isOpen: boolean;
-  onClose: VoidFunction;
-};
-
-export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> = ({
-  isOpen,
-  onClose,
-}) => {
+const SuggestAndProductsAllMobileContent = ({ onClose }: { onClose: VoidFunction }) => {
   const searchParams = useSearchParams();
   const queryParam = searchParams.get(VALID_PARAMS.QUERY);
 
@@ -38,11 +30,11 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
   } = usePaintings({ query: deboucedValue });
 
   const handleClearQueryAndClose = () => {
-    setValue('');
     onClose();
   };
 
   const isInitialState = !deboucedValue.trim();
+
   const hasResults = suggestions.length > 0 || paintings.length > 0;
 
   const isEmptySearch = deboucedValue.trim() && !hasResults && !arePaintingsLoading;
@@ -100,22 +92,35 @@ export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> =
   };
 
   return (
-    <Drawer snapPoints={[1]} open={isOpen} onClose={handleClearQueryAndClose}>
+    <Command shouldFilter={false} className="gap-2">
+      <CommandInput
+        className="h-[40px] text-base"
+        placeholder="Search paintings..."
+        value={value}
+        onValueChange={setValue}
+      />
+
+      <CommandList>{renderContent()}</CommandList>
+    </Command>
+  );
+};
+
+type SuggestAndProductsAllMobileProps = {
+  isOpen: boolean;
+  onClose: VoidFunction;
+};
+
+export const SuggestAndProductsAllMobile: FC<SuggestAndProductsAllMobileProps> = ({
+  isOpen,
+  onClose,
+}) => {
+  return (
+    <Drawer snapPoints={[0.8, 1]} fadeFromIndex={0} open={isOpen} onClose={onClose}>
       <DrawerContent className="bg-white gap-2 w-full h-[100dvh] max-w-none rounded-none p-0">
         <VisuallyHidden.Root>
           <DrawerTitle></DrawerTitle>
         </VisuallyHidden.Root>
-
-        <Command shouldFilter={false} className="gap-2">
-          <CommandInput
-            className="h-[40px] text-base"
-            placeholder="Search paintings..."
-            value={value}
-            onValueChange={setValue}
-          />
-
-          <CommandList>{renderContent()}</CommandList>
-        </Command>
+        <SuggestAndProductsAllMobileContent onClose={onClose} />
       </DrawerContent>
     </Drawer>
   );

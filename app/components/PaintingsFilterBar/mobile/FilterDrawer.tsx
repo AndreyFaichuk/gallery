@@ -21,14 +21,12 @@ export const FilterDrawer: FC<FilterDrawerProps> = ({
   handleFilterSnapshotChange,
   handleFilterSnapshotApply,
 }) => {
-  if (!activeFilter) return null;
-
   return (
     <Drawer snapPoints={[1.1]} open={!!activeFilter} onClose={() => setActiveFilter(null)}>
       <DrawerContent className="bg-white">
         <DrawerHeader className="w-full">
           <div className="flex gap-2 items-center justify-between w-full">
-            <DrawerTitle>{activeFilter.name}</DrawerTitle>
+            {activeFilter?.name && <DrawerTitle>{activeFilter.name}</DrawerTitle>}
 
             <Button
               onClick={handleFilterSnapshotApply}
@@ -41,8 +39,8 @@ export const FilterDrawer: FC<FilterDrawerProps> = ({
           </div>
         </DrawerHeader>
         <DrawerFooter>
-          {activeFilter.currentFilters.map((filter, index) => {
-            const isLastBlock = index === activeFilter.currentFilters.length - 1;
+          {activeFilter?.currentFilters.map((filter, index) => {
+            const isLastBlock = index === activeFilter?.currentFilters.length - 1;
 
             return (
               <div key={filter.label} className="flex flex-col gap-4">
