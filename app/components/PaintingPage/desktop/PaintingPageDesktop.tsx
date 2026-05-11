@@ -1,9 +1,10 @@
 'use client';
 
 import { FC } from 'react';
-import { YouMayAlsoLike } from '../../YouMayAlsoLike';
+
 import { PaintingDetailProps, PaintingT } from '@/types';
 import { PhotoCollageDesktop, PaintingInfoDesktop } from '../../PaintingDetails/desktop';
+import { YouMayAlsoLikeDesktop } from '../../PaintingDetails/desktop/YouMayAlsoLikeDesktop';
 
 export type PaintingPageDesktopProps = PaintingDetailProps & {
   youMayAlsoLikePaintings: PaintingT[];
@@ -16,8 +17,6 @@ const PaintingPageDesktop: FC<PaintingPageDesktopProps> = ({
 }) => {
   const { imageUrls, name, id, videos } = painting;
 
-  console.log(imageUrls, 'imageUrls');
-
   return (
     <div className="grid grid-cols-12">
       <div className="col-start-1 xl:col-start-3 col-span-12 gap-10">
@@ -26,7 +25,7 @@ const PaintingPageDesktop: FC<PaintingPageDesktopProps> = ({
           <PaintingInfoDesktop painting={painting} exchange={exchange} />
         </div>
       </div>
-      <YouMayAlsoLike paintings={youMayAlsoLikePaintings} exchange={exchange} />
+      <YouMayAlsoLikeDesktop paintings={youMayAlsoLikePaintings} exchange={exchange} />
     </div>
   );
 };

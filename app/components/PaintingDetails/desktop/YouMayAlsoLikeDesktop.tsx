@@ -1,13 +1,13 @@
 import type { PaintingT } from '@/types/schema.types';
 import type { FC } from 'react';
-import { PaintingItem } from './PaintingsCatalog/PaintingItem';
+import { PaintingItem } from '../../PaintingsCatalog/PaintingItem';
 import { PAINTING_ITEM_VARIANT, type ExchangeT } from '@/types';
 
-type YouMayAlsoLikeProps = ExchangeT & {
+type YouMayAlsoLikeDesktopProps = ExchangeT & {
   paintings: PaintingT[];
 };
 
-export const YouMayAlsoLike: FC<YouMayAlsoLikeProps> = ({ paintings, exchange }) => {
+export const YouMayAlsoLikeDesktop: FC<YouMayAlsoLikeDesktopProps> = ({ paintings, exchange }) => {
   return (
     <div className="col-start-1 xl:col-start-3 col-span-10 mt-20">
       <div className="flex flex-col justify-center gap-8">

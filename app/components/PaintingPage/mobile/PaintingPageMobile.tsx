@@ -2,7 +2,8 @@
 
 import { FC } from 'react';
 import { PaintingDetailProps, PaintingT } from '@/types';
-import { PhotoCollageMobile } from '../../PaintingDetails/mobile/PhotoCollageMobile';
+import { PhotoCollageMobile, YouMayAlsoLikeMobile } from '../../PaintingDetails/mobile';
+import { PaintingInfoMobile } from '../../PaintingDetails/mobile';
 
 export type PaintingPageMobileProps = PaintingDetailProps & {
   youMayAlsoLikePaintings: PaintingT[];
@@ -14,8 +15,10 @@ export const PaintingPageMobile: FC<PaintingPageMobileProps> = ({
   youMayAlsoLikePaintings,
 }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <PhotoCollageMobile {...painting} />
+      <PaintingInfoMobile painting={painting} exchange={exchange} />
+      <YouMayAlsoLikeMobile exchange={exchange} paintings={youMayAlsoLikePaintings} />
     </div>
   );
 };

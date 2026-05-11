@@ -1,4 +1,4 @@
-import { SelectOption } from '@/app/components/ui/select';
+import { SelectOption } from '@/app/components/ui';
 import {
   BaseFilterOptionNamesT,
   BaseSortingOptionNamesT,

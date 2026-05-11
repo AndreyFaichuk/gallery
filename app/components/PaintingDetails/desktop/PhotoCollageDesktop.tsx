@@ -3,7 +3,7 @@ import { getMediaContentUrl } from '@/utils';
 import Image from 'next/image';
 import { useState, type FC } from 'react';
 import VideoPlayer from '../../VideoPlayer';
-import { PaintingPhotoGalleryDesktop } from './PaintingPhotoGalleryDesktop';
+import { PaintingPhotoGallery } from '../../PaintingPhotoGallery';
 
 export type PhotoCollageDesktopProps = Pick<PaintingT, 'name' | 'imageUrls' | 'id' | 'videos'>;
 
@@ -69,7 +69,7 @@ export const PhotoCollageDesktop: FC<PhotoCollageDesktopProps> = ({
           </div>
         )}
       </div>
-      <PaintingPhotoGalleryDesktop
+      <PaintingPhotoGallery
         paintingId={id}
         isOpened={isOpenedPhotoGallery}
         index={isPhotoGalleryIndex}

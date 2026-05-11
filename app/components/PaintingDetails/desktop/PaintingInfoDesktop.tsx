@@ -23,9 +23,7 @@ export const PaintingInfoDesktop: FC<PaintingInfoDesktopProps> = ({ painting, ex
           <span className="text-lg">{formattedPrice ?? null}</span>
 
           <div className="w-1/2">
-            <Button variant="outline" size="lg">
-              Add to cart
-            </Button>
+            <Button size="lg">Add to cart</Button>
           </div>
         </div>
 

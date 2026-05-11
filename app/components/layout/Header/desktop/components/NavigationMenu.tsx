@@ -8,7 +8,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuContent,
   NavigationMenuLink,
-} from '@/app/components/ui/navigation-menu';
+} from '@/app/components/ui';
 import { DESKTOP_MENU_OPTIONS } from '@/constants';
 
 export const NavigationMenu = () => {

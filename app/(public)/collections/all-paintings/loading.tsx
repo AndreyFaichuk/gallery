@@ -1,4 +1,4 @@
-import { PaintingItemSkeleton } from '@/app/components/ui/skeleton';
+import { PaintingItemSkeleton } from '@/app/components/ui';
 
 const Loading = () => <PaintingItemSkeleton />;
 
