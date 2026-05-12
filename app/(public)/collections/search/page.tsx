@@ -92,14 +92,8 @@ const AllPaintings = async ({ searchParams }: PaintingsSearchParamsProps) => {
     sort,
   });
 
-  const [suggestions, paintings] = await Promise.all([
-    getSuggestions({ query: query ?? '' }),
-    getPaintings({ query: query ?? '' }),
-  ]);
-
   return (
     <>
-      <SuggestionsAndProductsSearch paintings={paintings} suggestions={suggestions} />
       <PaintingsFilterBar filters={filters} totalCount={totalCount}>
         <PaintingSearchCatalog items={items} exchange={exchange} />
       </PaintingsFilterBar>
