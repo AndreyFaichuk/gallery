@@ -38,8 +38,6 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
   children,
   totalCount,
 }) => {
-  const isHydrated = useHydrated();
-
   const {
     isBelowMobile,
     currentParamsMap,
@@ -55,28 +53,30 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
   } = usePaintingsFilterBar(filters, totalCount);
 
   const getLayout = () => {
-    if (!isHydrated) return null;
-
     return isBelowMobile ? (
-      <FilterBarMobile
-        filters={filters}
-        currentParamsMap={currentParamsMap}
-        handleSetSortParam={handleSetSortParam}
-        handleToggleSearchParamsBulk={handleToggleSearchParamsBulk}
-        totalCount={totalCount}
-        sortParam={sortParam}
-      />
+      <div className="xs:hidden">
+        <FilterBarMobile
+          filters={filters}
+          currentParamsMap={currentParamsMap}
+          handleSetSortParam={handleSetSortParam}
+          handleToggleSearchParamsBulk={handleToggleSearchParamsBulk}
+          totalCount={totalCount}
+          sortParam={sortParam}
+        />
+      </div>
     ) : (
-      <PaintingFiltersDesktopAsync
-        filters={filters}
-        currentParamsMap={currentParamsMap}
-        handleSetSortParam={handleSetSortParam}
-        handleToggleSearchParam={handleToggleSearchParam}
-        totalCount={totalCount}
-        sortParam={sortParam}
-        filtersToRender={filtersToRender}
-        handleRemoveAllSearchParams={handleRemoveAllSearchParams}
-      />
+      <div className="hidden xs:block">
+        <PaintingFiltersDesktopAsync
+          filters={filters}
+          currentParamsMap={currentParamsMap}
+          handleSetSortParam={handleSetSortParam}
+          handleToggleSearchParam={handleToggleSearchParam}
+          totalCount={totalCount}
+          sortParam={sortParam}
+          filtersToRender={filtersToRender}
+          handleRemoveAllSearchParams={handleRemoveAllSearchParams}
+        />
+      </div>
     );
   };
 
