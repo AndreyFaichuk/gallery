@@ -22,9 +22,7 @@ export const MobileSearchPageSkeleton = () => {
 
       {/* catalog */}
       <div className="flex flex-col">
-        {Array.from({ length: 4 }).map((_, index) => (
-          <PaintingItemSkeleton key={index} variant={PAINTING_ITEM_VARIANT.SEARCH} />
-        ))}
+        <PaintingItemSkeleton variant={PAINTING_ITEM_VARIANT.SEARCH} />
       </div>
     </div>
   );

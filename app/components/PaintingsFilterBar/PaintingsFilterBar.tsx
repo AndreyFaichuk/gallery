@@ -55,14 +55,16 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
   const getLayout = () => {
     return isBelowMobile ? (
       <div className="xs:hidden">
-        <FilterBarMobile
-          filters={filters}
-          currentParamsMap={currentParamsMap}
-          handleSetSortParam={handleSetSortParam}
-          handleToggleSearchParamsBulk={handleToggleSearchParamsBulk}
-          totalCount={totalCount}
-          sortParam={sortParam}
-        />
+        {filters.length > 0 && (
+          <FilterBarMobile
+            filters={filters}
+            currentParamsMap={currentParamsMap}
+            handleSetSortParam={handleSetSortParam}
+            handleToggleSearchParamsBulk={handleToggleSearchParamsBulk}
+            totalCount={totalCount}
+            sortParam={sortParam}
+          />
+        )}
       </div>
     ) : (
       <div className="hidden xs:block">
