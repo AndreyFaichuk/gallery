@@ -139,6 +139,8 @@ const AllPaintings = async ({ searchParams }: PaintingsSearchParamsProps) => {
     sort,
   });
 
+  await wait();
+
   return (
     <>
       <PaintingsFilterBar filters={filters} totalCount={totalCount}>

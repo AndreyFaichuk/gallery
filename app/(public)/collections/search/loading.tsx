@@ -1,5 +1,4 @@
-import { MobileSearchPageSkeleton } from '@/app/components/Skeletons';
-import { PaintingItemSkeleton } from '@/app/components/Skeletons';
+import { DesktopSearchPageSkeleton, MobileSearchPageSkeleton } from '@/app/components/Skeletons';
 import { PAINTING_ITEM_VARIANT } from '@/types';
 
 const Loading = () => {
@@ -10,7 +9,7 @@ const Loading = () => {
       </div>
 
       <div className="hidden xs:block">
-        <PaintingItemSkeleton variant={PAINTING_ITEM_VARIANT.SEARCH} />
+        <DesktopSearchPageSkeleton variant={PAINTING_ITEM_VARIANT.SEARCH} />
       </div>
     </>
   );
