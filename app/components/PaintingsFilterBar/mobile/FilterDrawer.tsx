@@ -1,12 +1,11 @@
 'use client';
 
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Button } from '../../ui/button';
 import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle } from '../../ui/drawer';
-import { Nullable } from '@/types';
-import { DrawerFilterSnaphotT } from './FilterBarMobile';
-import { Checkbox } from '../../ui/checkbox';
-import { Separator } from '../../ui/separator';
+import { DrawerFilterSnaphotT, Nullable } from '@/types';
+import { FilterItem } from '../../ui/filter-item';
+import { Separator } from '../../ui';
 
 type FilterDrawerProps = {
   activeFilter: Nullable<DrawerFilterSnaphotT>;
@@ -43,21 +42,10 @@ export const FilterDrawer: FC<FilterDrawerProps> = ({
             const isLastBlock = index === activeFilter?.currentFilters.length - 1;
 
             return (
-              <div key={filter.label} className="flex flex-col gap-4">
-                <div
-                  className="flex gap-2 justify-between"
-                  onClick={() => handleFilterSnapshotChange(filter.value)}
-                >
-                  <span>{filter.label}</span>
-                  <Checkbox
-                    id={`${filter.label}-checkbox`}
-                    checked={filter.isSelected}
-                    value={filter.value}
-                    onChange={() => handleFilterSnapshotChange(filter.value)}
-                  />
-                </div>
+              <React.Fragment key={filter.label}>
+                <FilterItem filter={filter} onFilterChange={handleFilterSnapshotChange} />
                 {!isLastBlock && <Separator />}
-              </div>
+              </React.Fragment>
             );
           })}
         </DrawerFooter>

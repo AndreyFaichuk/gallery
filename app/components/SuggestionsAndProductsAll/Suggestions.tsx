@@ -1,69 +1,50 @@
+'use client';
+
 import { Loader2 } from 'lucide-react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
-import { PopoverClose } from '../ui/popover';
+
+import { CommandEmpty, CommandItem } from '../ui/command';
 
 type SuggestionsProps = {
   suggestions: string[];
-  setActiveSuggestionIndex: (i: number | null) => void;
-  activeSuggestionIndex: number | null;
   isLoading: boolean;
+  onClose: VoidFunction;
 };
 
-export const Suggestions: FC<SuggestionsProps> = ({
-  suggestions,
-  setActiveSuggestionIndex,
-  activeSuggestionIndex,
-  isLoading,
-}) => {
+export const Suggestions: FC<SuggestionsProps> = ({ suggestions, isLoading, onClose }) => {
+  const router = useRouter();
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-8">
+        <Loader2 className="size-8 animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col flex-1 px-3 py-2">
       <p className="text-xs text-muted-foreground">Suggestions</p>
+
       <hr className="my-2" />
 
-      {isLoading ? (
-        <div className="flex items-center justify-center py-8 h-2.5">
-          <Loader2 className="h-8 w-8 animate-spin" />
-        </div>
+      {!suggestions.length && !isLoading ? (
+        <CommandEmpty className="py-4 text-center text-sm">No suggestions</CommandEmpty>
       ) : (
-        <ul id="search-listbox" className="flex flex-col gap-1">
-          {suggestions.map((item, index) => {
-            const isActive = activeSuggestionIndex === index;
-
-            return (
-              <li
-                key={item}
-                id={`option-${index}`}
-                aria-selected={isActive}
-                onMouseEnter={() => setActiveSuggestionIndex(index)}
-                onMouseLeave={() => setActiveSuggestionIndex(null)}
-                className="w-full rounded-md"
-              >
-                <PopoverClose asChild>
-                  <Link
-                    href={`/collections/search?query=${item}`}
-                    className={`
-                      block w-full px-3 py-2
-                      ${
-                        isActive
-                          ? 'bg-gray-50 underline decoration-2 underline-offset-2'
-                          : 'hover:bg-gray-50 hover:underline hover:decoration-2 hover:underline-offset-2'
-                      }
-                    `}
-                  >
-                    {item}
-                  </Link>
-                </PopoverClose>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-
-      {!isLoading && !suggestions.length && (
-        <div className="flex justify-center">
-          <p className="px-3 py-2 text-sm">No suggestions</p>
-        </div>
+        suggestions.map((item) => (
+          <CommandItem
+            key={item}
+            value={item}
+            onSelect={() => {
+              router.push(`/collections/search?query=${item}`);
+              onClose();
+            }}
+            className="rounded-md px-3 py-2 cursor-pointer data-[selected=true]:bg-gray-50 data-[selected=true]:underline data-[selected=true]:decoration-2 data-[selected=true]:underline-offset-2"
+          >
+            {item}
+          </CommandItem>
+        ))
       )}
     </div>
   );

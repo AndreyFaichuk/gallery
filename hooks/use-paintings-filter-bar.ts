@@ -1,6 +1,5 @@
-import { FilterOptions } from '@/app/components/PaintingsFilterBar/PaintingsFilterBar';
 import { breakpointOptions, useBreakpoint } from './use-breakpoint';
-import { tailwindBreakpoints } from '@/types';
+import { FilterOptions, tailwindBreakpoints } from '@/types';
 import { useFilterParams } from './use-filter-params';
 
 const LIMIT = 8;

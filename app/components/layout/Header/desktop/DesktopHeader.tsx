@@ -6,13 +6,18 @@ import { SuggestionsAndProductsAll } from '../../../SuggestionsAndProductsAll';
 import { Logo } from './components/Logo';
 import { CurrencySellector } from './components/CurrencySellector';
 import { NavigationMenu } from './components/NavigationMenu';
+import { useState } from 'react';
 
 const DesktopHeader = () => {
+  const [isOpenedSearch, setIsOpenedSearch] = useState(false);
+
+  const handleOpenSuggestionsAndProductsAll = (isOpened: boolean) => setIsOpenedSearch(isOpened);
+
   return (
     <header className="h-[210px] pt-9">
       <div className="flex flex-col items-center gap-20 ">
         <div className="flex justify-between w-full items-center">
-          <Popover>
+          <Popover open={isOpenedSearch} onOpenChange={handleOpenSuggestionsAndProductsAll}>
             <PopoverTrigger>
               <Search className="size-8 cursor-pointer" />
             </PopoverTrigger>
@@ -22,9 +27,11 @@ const DesktopHeader = () => {
               align="start"
               alignOffset={0}
               sideOffset={20}
-              className="border-0 w-[90vw] max-w-[600px] p-0"
+              className="w-[calc(100vw-32px)] max-w-[600px] p-0"
             >
-              <SuggestionsAndProductsAll />
+              <SuggestionsAndProductsAll
+                onClose={() => handleOpenSuggestionsAndProductsAll(false)}
+              />
             </PopoverContent>
           </Popover>
 

@@ -3,54 +3,57 @@
 import type { PaintingT } from '@/types/schema.types';
 import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { memo, type FC } from 'react';
-import { PopoverClose } from '../ui/popover';
+import { useRouter } from 'next/navigation';
+import { CommandItem } from '../ui';
 import { getMediaContentUrl } from '@/utils';
-
-export type Product = {
-  logoUrl: string;
-  name: string;
-};
 
 type ProductsProps = {
   paintings: PaintingT[];
   isLoading: boolean;
+  onClose: VoidFunction;
 };
 
-const ProductsComponent: FC<ProductsProps> = ({ paintings, isLoading = false }) => {
+const ProductsComponent: FC<ProductsProps> = ({ paintings, isLoading = false, onClose }) => {
+  const router = useRouter();
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-8">
+        <Loader2 className="size-8 animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col flex-1 px-3 py-2">
       <p className="text-xs text-muted-foreground">Products</p>
+
       <hr className="my-2" />
 
-      {isLoading ? (
-        <div className="flex items-center justify-center py-8 h-2.5">
-          <Loader2 className="h-8 w-8 animate-spin" />
-        </div>
-      ) : (
-        <ul className="flex flex-col gap-1">
-          {paintings.map((item) => {
-            const firstImageUrl = getMediaContentUrl(`${item.id}/${item.imageUrls[0]}`);
+      <>
+        {paintings.map((item) => {
+          const firstImageUrl = getMediaContentUrl(`${item.id}/${item.imageUrls[0]}`);
 
-            return (
-              <li key={item.name} className="w-full rounded-md">
-                <PopoverClose asChild>
-                  <Link
-                    href={`/paintings/${item.id}`}
-                    className="block w-full px-3 py-2 hover:bg-gray-50 hover:underline hover:decoration-2 hover:underline-offset-2"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Image src={firstImageUrl} alt={item.name} width={50} height={60} />
-                      {item.name}
-                    </div>
-                  </Link>
-                </PopoverClose>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+          return (
+            <CommandItem
+              key={item.id}
+              value={item.name}
+              onSelect={() => {
+                router.push(`/paintings/${item.id}`);
+                onClose();
+              }}
+              className="rounded-md px-3 py-2 cursor-pointer data-[selected=true]:bg-gray-50"
+            >
+              <div className="flex items-center gap-2">
+                <Image src={firstImageUrl} alt={item.name} width={50} height={60} />
+
+                <span>{item.name}</span>
+              </div>
+            </CommandItem>
+          );
+        })}
+      </>
 
       {!isLoading && !paintings.length && (
         <div className="flex justify-center">

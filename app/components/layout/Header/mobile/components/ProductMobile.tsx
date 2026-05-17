@@ -1,4 +1,3 @@
-import { Product } from '@/app/components/SuggestionsAndProductsAll/Products';
 import { PaintingT } from '@/types';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
