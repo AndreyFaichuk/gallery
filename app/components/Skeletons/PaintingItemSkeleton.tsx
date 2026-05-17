@@ -11,17 +11,18 @@ const PAINTING_ITEM_SKELETON_STYLES: Record<
   }
 > = {
   [PAINTING_ITEM_VARIANT.CATALOG]: {
-    rootClassName: 'w-[480px] max-w-full',
-    containerClassName: 'grid xl:grid-cols-2 gap-20 justify-items-center max-w-[90%] mx-auto',
+    rootClassName: 'w-full xl:w-[480px] max-w-full',
+    containerClassName:
+      'grid w-full xl:w-auto xl:grid-cols-2 gap-20 justify-items-center max-w-[90%] mx-auto',
   },
   [PAINTING_ITEM_VARIANT.SEARCH]: {
-    rootClassName: 'w-[270px] max-w-full',
+    rootClassName: 'w-full md:w-[270px] max-w-full',
     containerClassName:
-      'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20 justify-items-center max-w-[90%] mx-auto',
+      'grid w-full md:w-auto md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20 justify-items-center max-w-[90%] mx-auto',
   },
   [PAINTING_ITEM_VARIANT.ALSO_LIKE]: {
-    rootClassName: 'w-[200px] max-w-full',
-    containerClassName: 'grid xl:grid-cols-4 gap-2',
+    rootClassName: 'w-full xl:w-[200px] max-w-full',
+    containerClassName: 'grid w-full xl:w-auto xl:grid-cols-4 gap-2',
   },
 };
 
