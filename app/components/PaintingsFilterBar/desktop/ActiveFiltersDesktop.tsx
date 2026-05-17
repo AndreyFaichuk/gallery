@@ -1,16 +1,8 @@
+'use client';
+
 import type { FC } from 'react';
 import { ActiveFilter } from '../ActiveFilter';
-
-export type ActiveFiltersDesktopProps = {
-  handleToggleSearchParam: (param: string, value: string) => void;
-  handleRemoveAllSearchParams: VoidFunction;
-  filtersToRender: {
-    param: string;
-    paramLabel: string;
-    value: string;
-    label: string;
-  }[];
-};
+import { ActiveFiltersDesktopProps } from '@/types';
 
 export const ActiveFiltersDesktop: FC<ActiveFiltersDesktopProps> = ({
   filtersToRender,

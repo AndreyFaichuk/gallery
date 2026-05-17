@@ -1,8 +1,7 @@
 'use client';
 
-import { type KeyboardEvent, useEffect, useState } from 'react';
-import { X } from 'lucide-react';
-import { Input } from '../ui/input';
+import { FC, useState } from 'react';
+import { Command, CommandInput, CommandList, CommandGroup } from '@/app/components/ui/command';
 import { Suggestions } from './Suggestions';
 import { Products } from './Products';
 import { VALID_PARAMS } from '@/hooks/use-filter-params';
@@ -10,86 +9,56 @@ import { useSearchParams } from 'next/navigation';
 import { usePaintings } from '@/hooks';
 import { useDebounceValue } from 'usehooks-ts';
 
-const PARTIAL_BACKGROUND_COLOR = '#F5F0EC';
+type SuggestionsAndProductsAllProps = {
+  onClose: VoidFunction;
+};
 
-export const SuggestionsAndProductsAll = () => {
+export const SuggestionsAndProductsAll: FC<SuggestionsAndProductsAllProps> = ({ onClose }) => {
   const searchParams = useSearchParams();
-  const queryParam = searchParams.get(VALID_PARAMS.QUERY);
 
-  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number | null>(null);
+  const queryParam = searchParams.get(VALID_PARAMS.QUERY);
 
   const [value, setValue] = useState(queryParam ?? '');
 
-  const [deboucedValue] = useDebounceValue(value, 500);
+  const [debouncedValue] = useDebounceValue(value, 500);
 
   const {
     paintingsAndSuggestions: { paintings, suggestions },
     arePaintingsLoading,
-  } = usePaintings({ query: deboucedValue });
-
-  const handleClear = () => {
-    setValue('');
-  };
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (!suggestions.length) return;
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setActiveSuggestionIndex((prev) =>
-        prev === null || prev === suggestions.length - 1 ? 0 : prev + 1,
-      );
-    }
-
-    if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setActiveSuggestionIndex((prev) =>
-        prev === null || prev === 0 ? suggestions.length - 1 : prev - 1,
-      );
-    }
-
-    if (e.key === 'Enter' && activeSuggestionIndex !== null) {
-      return;
-    }
-  };
-
-  const afterIcon = value ? (
-    <button type="button" onClick={handleClear} className="cursor-pointer">
-      <X className="size-4" />
-    </button>
-  ) : undefined;
+  } = usePaintings({
+    query: debouncedValue,
+  });
 
   return (
-    <div className="relative w-full" aria-controls="search-listbox">
-      <Input
-        style={{ backgroundColor: PARTIAL_BACKGROUND_COLOR }}
-        placeholder="Search paintings..."
-        autoFocus
-        onChange={(e) => setValue(e.target.value)}
-        onKeyDown={handleKeyDown}
-        value={value}
-        afterIcon={afterIcon}
-        aria-autocomplete="list"
-        aria-activedescendant={
-          activeSuggestionIndex !== null ? `option-${activeSuggestionIndex}` : undefined
-        }
-      />
+    <Command className="overflow-visible rounded-md" shouldFilter={false}>
+      <div className="relative">
+        <CommandInput
+          value={value}
+          onValueChange={setValue}
+          placeholder="Search paintings..."
+          className="h-11"
+        />
+      </div>
 
-      {value && (
-        <div
-          className="absolute mt-2 w-full rounded-md shadow-md z-50 flex justify-around"
-          style={{ backgroundColor: PARTIAL_BACKGROUND_COLOR }}
-        >
-          <Suggestions
-            activeSuggestionIndex={activeSuggestionIndex}
-            suggestions={suggestions}
-            setActiveSuggestionIndex={setActiveSuggestionIndex}
-            isLoading={arePaintingsLoading}
-          />
+      {debouncedValue && (
+        <CommandList className="max-h-none overflow-visible">
+          <div className="flex flex-col md:flex-row gap-4 p-2">
+            <CommandGroup className="w-full md:flex-1 overflow-hidden p-0">
+              <Suggestions
+                suggestions={suggestions}
+                isLoading={arePaintingsLoading}
+                onClose={onClose}
+              />
+            </CommandGroup>
 
-          <Products paintings={paintings} isLoading={arePaintingsLoading} />
-        </div>
+            <div className="w-px bg-border" />
+
+            <CommandGroup className="w-full md:flex-1 overflow-hidden p-0">
+              <Products paintings={paintings} isLoading={arePaintingsLoading} onClose={onClose} />
+            </CommandGroup>
+          </div>
+        </CommandList>
       )}
-    </div>
+    </Command>
   );
 };

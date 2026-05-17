@@ -1,94 +1,136 @@
 'use client';
 
-import { type FC, Fragment } from 'react';
+import React, { type FC } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { ChevronDown } from 'lucide-react';
-import { FilterOption } from '../FilterOption';
-import type { FilterOptions } from '../PaintingsFilterBar';
-import { Select } from '../../ui/select';
-import type { Nullable } from '@/types';
-import { SORT_OPTIONS } from '@/constants';
-
-const PARTIAL_BACKGROUND_COLOR = '#F0EBE5';
-
-export type FilterBarDesktopProps = {
-  totalCount: number;
-  filters: FilterOptions;
-  handleToggleSearchParam: (param: string, value: string) => void;
-  handleSetSortParam: (value: string) => void;
-  currentParamsMap: {
-    [x: string]: string[];
-  };
-  sortParam: Nullable<string>;
-};
+import type { FilterBarDesktopProps } from '@/types';
+import { FILTER_BAR_MOBILE_SORT_OPTION, SORT_OPTIONS } from '@/constants';
+import { Button, Separator } from '../../ui';
+import { FilterItem } from '../../ui/filter-item';
+import { useFilterManage } from '@/hooks';
 
 export const FilterBarDesktop: FC<FilterBarDesktopProps> = ({
   filters,
-  handleToggleSearchParam,
   handleSetSortParam,
   currentParamsMap,
   totalCount,
   sortParam,
+  handleToggleSearchParamsBulk,
+  handleRemoveAllSearchParams,
 }) => {
+  const {
+    filtersSnapshot,
+    handleFilterOpen,
+    handleSortOpen,
+    handleFilterSnapshotChange,
+    handleFilterSnapshotApply,
+    setFiltersSnapshot,
+  } = useFilterManage({
+    currentParamsMap,
+    sortParam,
+    handleSetSortParam,
+    handleToggleSearchParamsBulk,
+  });
+
   const currentSortOption =
     SORT_OPTIONS.find((option) => option.value === sortParam) ?? SORT_OPTIONS[0];
 
   return (
     <div className="flex items-center justify-between">
-      <Popover>
-        <div className="flex items-center gap-2">
-          <p>Filter: </p>
+      <div className="flex gap-6 flex-wrap">
+        {filters.map((filter) => (
+          <Popover
+            key={filter.name}
+            open={filtersSnapshot?.name === filter.name}
+            onOpenChange={(open) => {
+              if (!open) setFiltersSnapshot(null);
+            }}
+          >
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                size="lg"
+                className="gap-2 border-1 border-gray-200 bg-gray-100 text-gray-600"
+                onClick={() => handleFilterOpen(filter)}
+              >
+                {filter.name} <ChevronDown className="text-gray-500" />
+              </Button>
+            </PopoverTrigger>
+
+            <PopoverContent side="bottom" align="start" alignOffset={0} sideOffset={10}>
+              <div className="flex flex-col gap-2">
+                <span className="text-foreground font-medium">{filter.name}</span>
+                <Separator />
+                {filtersSnapshot?.currentFilters.map((filter, index) => {
+                  const isLastBlock = index === filtersSnapshot?.currentFilters.length - 1;
+
+                  return (
+                    <React.Fragment key={filter.label}>
+                      <FilterItem filter={filter} onFilterChange={handleFilterSnapshotChange} />
+                      <Separator />
+                    </React.Fragment>
+                  );
+                })}
+                <div className="flex w-full justify-around mt-4">
+                  <Button
+                    className="w-1/3"
+                    variant="ghost"
+                    onClick={() => {
+                      handleRemoveAllSearchParams();
+                      setFiltersSnapshot(null);
+                    }}
+                  >
+                    Reset
+                  </Button>
+                  <Button className="w-1/3" onClick={handleFilterSnapshotApply}>
+                    Apply
+                  </Button>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+        ))}
+      </div>
+      <div className="flex items-center gap-6">
+        <Popover
+          open={filtersSnapshot?.name === FILTER_BAR_MOBILE_SORT_OPTION.sort.name}
+          onOpenChange={(open) => {
+            if (!open) setFiltersSnapshot(null);
+          }}
+        >
           <PopoverTrigger asChild>
-            <div className="flex items-center gap-1">
-              <span className="hover:opacity-70 hover:underline decoration-1 underline-offset-2 cursor-pointer">
-                {filters.map((filter) => filter.name).join(', ')}
-              </span>
-              <ChevronDown className="size-3" />
+            <div className="flex gap-2 justify-center items-center">
+              <span>Sort by</span>
+              <Button
+                variant="outline"
+                size="lg"
+                className="gap-2 border-1 border-gray-200 bg-gray-100 text-gray-600"
+                onClick={() => handleSortOpen(FILTER_BAR_MOBILE_SORT_OPTION.sort.param)}
+              >
+                {currentSortOption.label} <ChevronDown className="text-gray-500" />
+              </Button>
             </div>
           </PopoverTrigger>
-        </div>
 
-        <PopoverContent align="start" className="border-0 p-0 w-[300px] " sideOffset={10}>
-          <ul
-            className="flex flex-col gap-2  rounded-md shadow-md p-3"
-            style={{ backgroundColor: PARTIAL_BACKGROUND_COLOR }}
-          >
-            {filters.map((block, blockIndex) => {
-              return block.options.map((option, optionIndex) => {
-                const isLastBlock = blockIndex === filters.length - 1;
-                const isFirstOption = optionIndex === 0;
-                const currentValue = currentParamsMap[block.param];
+          <PopoverContent side="bottom" align="start" alignOffset={0} sideOffset={10}>
+            {filtersSnapshot?.currentFilters.map((filter, index) => {
+              const isLastBlock = index === filtersSnapshot?.currentFilters.length - 1;
 
-                return (
-                  <Fragment key={option.value}>
-                    {isFirstOption && <p className="text-xs text-muted-foreground">{block.name}</p>}
-                    <FilterOption
-                      disabled={option.count === 0}
-                      checked={currentValue.includes(option.value)}
-                      label={`${option.label} (${option.count})`}
-                      onChange={() => handleToggleSearchParam(block.param, option.value)}
-                    />
-                    {option.shoudAddDivider && !isLastBlock && <hr className="border-t" />}
-                  </Fragment>
-                );
-              });
+              return (
+                <React.Fragment key={filter.label}>
+                  <FilterItem filter={filter} onFilterChange={handleFilterSnapshotChange} />
+                  {!isLastBlock && <Separator />}
+                </React.Fragment>
+              );
             })}
-          </ul>
-        </PopoverContent>
-      </Popover>
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2">
-          <p>Sort by: </p>
-          <Select
-            instanceId="sort-select"
-            optionClassName="bg-[#FBFFF5]"
-            className="min-w-[170px]"
-            value={currentSortOption}
-            onChange={(option) => handleSetSortParam(option?.value ?? '')}
-            options={SORT_OPTIONS}
-            isSearchable={false}
-          />
-        </div>
+            <div className="flex w-full justify-around mt-4">
+              <Button className="w-2/3" onClick={handleFilterSnapshotApply}>
+                Apply
+              </Button>
+            </div>
+          </PopoverContent>
+        </Popover>
+
         {`${totalCount} paintings`}
       </div>
     </div>
