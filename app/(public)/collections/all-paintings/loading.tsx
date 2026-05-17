@@ -1,5 +1,5 @@
 import { MobileSearchPageSkeleton } from '@/app/components/Skeletons';
-import { PaintingItemSkeleton } from '@/app/components/Skeletons';
+import { DesktopSearchPageSkeleton } from '@/app/components/Skeletons';
 
 const Loading = () => {
   return (
@@ -9,7 +9,7 @@ const Loading = () => {
       </div>
 
       <div className="hidden xs:block">
-        <PaintingItemSkeleton />
+        <DesktopSearchPageSkeleton />
       </div>
     </>
   );

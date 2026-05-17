@@ -38,30 +38,20 @@ export const PaintingItemSkeleton: FC<PaintingItemSkeletonProps> = ({
   return (
     <Suspense>
       <PaintingsFilterBar filters={[]} totalCount={0}>
-        <div className="w-full max-w-[90%] mx-auto">
-          <div className="flex items-center justify-between mb-10 gap-4">
-            <div className="flex items-center gap-4">
-              <div className="h-10 w-[140px] rounded-md bg-neutral-200 animate-pulse" />
-              <div className="h-10 w-[140px] rounded-md bg-neutral-200 animate-pulse" />
+        <div
+          className={cn(
+            'w-full grid gap-20 max-w-[90%] mx-auto justify-items-center',
+            styles.gridClassName,
+          )}
+        >
+          {Array.from({ length: 8 }).map((_, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: we won't add/delete/move new elements here, so index as a key is ok here
+            <div key={i} className={styles.rootClassName}>
+              <div className="aspect-[3/4] w-full rounded bg-neutral-200 animate-pulse" />
+              <div className="mt-4 h-5 w-2/3 rounded bg-neutral-200 animate-pulse" />
+              <div className="mt-2 h-4 w-1/3 rounded bg-neutral-200 animate-pulse" />
             </div>
-
-            <div className="flex items-center gap-4">
-              <div className="h-5 w-16 rounded bg-neutral-200 animate-pulse" />
-              <div className="h-10 w-[160px] rounded-md bg-neutral-200 animate-pulse" />
-              <div className="h-5 w-24 rounded bg-neutral-200 animate-pulse" />
-            </div>
-          </div>
-
-          <div className={cn('w-full grid gap-20 justify-items-center', styles.gridClassName)}>
-            {Array.from({ length: 8 }).map((_, i) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: we won't add/delete/move new elements here, so index as a key is ok here
-              <div key={i} className={styles.rootClassName}>
-                <div className="aspect-[3/4] w-full rounded bg-neutral-200 animate-pulse" />
-                <div className="mt-4 h-5 w-2/3 rounded bg-neutral-200 animate-pulse" />
-                <div className="mt-2 h-4 w-1/3 rounded bg-neutral-200 animate-pulse" />
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </PaintingsFilterBar>
     </Suspense>
