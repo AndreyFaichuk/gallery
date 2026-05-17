@@ -1,29 +1,34 @@
-import { PAINTING_ITEM_VARIANT } from '@/types/painting.types';
+import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types/painting.types';
 import { Skeleton } from '../ui/skeleton';
+import { PaintingsFilterBarSkeleton } from './FilterBarSkeleton';
 import { PaintingItemSkeleton } from './PaintingItemSkeleton';
 
-export const MobileSearchPageSkeleton = () => {
+type MobileSearchPageSkeletonProps = {
+  variant?: PaintingItemVariantT;
+  showPagination?: boolean;
+};
+
+export const MobileSearchPageSkeleton = ({
+  variant = PAINTING_ITEM_VARIANT.CATALOG,
+  showPagination = true,
+}: MobileSearchPageSkeletonProps) => {
   return (
-    <div className="flex flex-col">
-      {/* top filters section */}
-      <div className="flex flex-col gap-4">
-        {/* paintings count */}
-        <div className="flex justify-end">
-          <Skeleton className="h-4 w-20 rounded-md" />
-        </div>
+    <div className="flex w-full flex-col gap-12">
+      <PaintingsFilterBarSkeleton />
 
-        {/* filter buttons */}
-        <div className="flex gap-2 flex-wrap">
-          <Skeleton className="h-11 w-28 rounded-xl" />
-          <Skeleton className="h-11 w-28 rounded-xl" />
-          <Skeleton className="h-11 w-28 rounded-xl" />
-        </div>
-      </div>
+      <PaintingItemSkeleton variant={variant} />
 
-      {/* catalog */}
-      <div className="flex flex-col">
-        <PaintingItemSkeleton variant={PAINTING_ITEM_VARIANT.SEARCH} />
-      </div>
+      {showPagination && (
+        <div className="flex justify-center mt-4">
+          <div className="flex flex-row items-center gap-1">
+            <Skeleton className="h-9 w-[92px] rounded-sm" />
+            <Skeleton className="h-9 w-9 rounded-sm" />
+            <Skeleton className="h-9 w-9 rounded-sm" />
+            <Skeleton className="h-9 w-9 rounded-sm" />
+            <Skeleton className="h-9 w-[68px] rounded-sm" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

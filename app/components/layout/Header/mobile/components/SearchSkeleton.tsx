@@ -1,43 +1,41 @@
+import { CommandGroup } from '@/app/components/ui';
+import { Skeleton } from '@/app/components/ui/skeleton';
+
 export const SearchSkeleton = () => {
   return (
-    <div className="w-full max-w-md mx-auto rounded-2xl bg-white p-2">
-      <div className="">
-        <span className="text-muted-foreground font-medium ml-1">Suggestions</span>
-
-        <div className="mt-3 flex gap-2 overflow-hidden">
+    <>
+      <CommandGroup heading="Suggestions">
+        <div className="flex overflow-scroll h-14 gap-2">
           {[94, 68, 52, 86, 48, 34].map((width, index) => (
-            <div
-              key={index}
-              className="h-8 shrink-0 animate-pulse rounded-lg bg-gray-100"
-              style={{ width: `${width}px` }}
-            />
+            // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
+            <Skeleton key={index} className="h-8 shrink-0 rounded-lg" style={{ width }} />
           ))}
         </div>
-      </div>
+      </CommandGroup>
 
-      {/* results */}
-      <div className="mt-6">
-        <span className="text-muted-foreground font-medium ml-1">Products</span>
+      <CommandGroup heading="Products">
+        <div className="flex flex-col border-1 border-gray-200 rounded-md p-2 gap-2">
+          {[136, 112, 152].map((width, index) => {
+            const isLastElement = index === 2;
 
-        <div className="mt-3 overflow-hidden rounded-xl border border-gray-100">
-          {[1, 2, 3].map((item) => (
-            <div
-              key={item}
-              className="flex min-h-[180px] items-center gap-4 border-b border-gray-100 p-2 last:border-b-0 sm:min-h-[170px]"
-            >
-              {/* image */}
-              <div className="h-40 w-36 shrink-0 animate-pulse rounded-lg bg-gray-200 sm:h-36 sm:w-32" />
-
-              {/* text */}
-              <div className="flex min-w-0 flex-1 items-center justify-between gap-3">
-                <div className="h-5 w-[70%] max-w-40 animate-pulse rounded bg-gray-200" />
-
-                <div className="h-5 w-5 shrink-0 animate-pulse rounded bg-gray-200" />
+            return (
+              <div
+                // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
+                key={index}
+                className={isLastElement ? 'border-b-0 pb-0' : 'border-b-1 border-gray-200 pb-2'}
+              >
+                <div className="flex items-center gap-4 justify-between">
+                  <div className="flex gap-4 items-center">
+                    <Skeleton className="h-[150px] w-[140px] shrink-0 rounded-sm" />
+                    <Skeleton className="h-6 rounded-sm" style={{ width }} />
+                  </div>
+                  <Skeleton className="size-4 shrink-0 rounded-sm" />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-      </div>
-    </div>
+      </CommandGroup>
+    </>
   );
 };
