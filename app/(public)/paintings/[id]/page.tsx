@@ -75,6 +75,8 @@ const test = [
   },
 ];
 
+const wait = () => new Promise((res) => setTimeout(() => res(1), 10000));
+
 const exchange = { EUR: 0.872334, UAH: 44.09512, USD: 1 };
 
 const Painting = async ({ params }: PaintingPageParams) => {

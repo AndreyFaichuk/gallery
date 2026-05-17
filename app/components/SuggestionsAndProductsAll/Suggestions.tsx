@@ -1,10 +1,10 @@
 'use client';
 
-import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
 
 import { CommandEmpty, CommandItem } from '../ui/command';
+import { SuggestionsSkeleton } from '../Skeletons';
 
 type SuggestionsProps = {
   suggestions: string[];
@@ -16,11 +16,7 @@ export const Suggestions: FC<SuggestionsProps> = ({ suggestions, isLoading, onCl
   const router = useRouter();
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center py-8">
-        <Loader2 className="size-8 animate-spin" />
-      </div>
-    );
+    return <SuggestionsSkeleton />;
   }
 
   return (

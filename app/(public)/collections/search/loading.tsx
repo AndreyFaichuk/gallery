@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <>
       <div className="xs:hidden">
-        <MobileSearchPageSkeleton />
+        <MobileSearchPageSkeleton variant={PAINTING_ITEM_VARIANT.SEARCH} />
       </div>
 
       <div className="hidden xs:block">
