@@ -1,11 +1,9 @@
-import { SelectOption } from '@/app/components/ui';
 import {
   BaseFilterOptionNamesT,
   BaseSortingOptionNamesT,
   FilterOptionParamsT,
   SortOptionParamsT,
 } from '@/types';
-import { NAVIGATION_MENU_OPTIONS } from './navigation.constants';
 
 export const FILTER_BAR_MOBILE_OPTIONS: Record<
   FilterOptionParamsT,
@@ -31,7 +29,7 @@ export const FILTER_BAR_MOBILE_SORT_OPTION: Record<
   },
 } as const;
 
-export const SORT_OPTIONS: SelectOption<string>[] = [
+export const SORT_OPTIONS = [
   {
     value: 'name',
     label: 'Alphabetically, A-Z',

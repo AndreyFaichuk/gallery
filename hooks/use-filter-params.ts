@@ -90,7 +90,7 @@ export const useFilterParams = ({ params }: useFilterParamsProps) => {
       currentSearchParams.delete(param);
     }
 
-    router.replace(`?${currentSearchParams.toString()}`);
+    router.replace(pathname);
   };
 
   const handleSetQueryParam = (value: string) => {
