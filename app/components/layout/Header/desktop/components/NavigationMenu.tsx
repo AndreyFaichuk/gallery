@@ -8,13 +8,60 @@ import {
   NavigationMenuTrigger,
   NavigationMenuContent,
   NavigationMenuLink,
+  Separator,
+  Button,
 } from '@/app/components/ui';
 import { DESKTOP_MENU_OPTIONS } from '@/constants';
+import { MenuOptionBase } from '@/types';
+import { FC, Fragment } from 'react';
+import { Image } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+
+type NavigationSubMenuProps = {
+  subMenu: MenuOptionBase[];
+};
+
+const NavigationSubMenu: FC<NavigationSubMenuProps> = ({ subMenu }) => {
+  const router = useRouter();
+
+  const handleNavigate = (link?: string) => {
+    if (!link) return;
+
+    router.push(link);
+  };
+
+  return (
+    <div className="min-w-56 rounded-xl bg-background p-2 shadow-md">
+      <div className="flex flex-col gap-2">
+        {subMenu.map((subOption, index) => {
+          const isLastElement = subMenu.length - 1 === index;
+
+          return (
+            <Fragment key={subOption.title}>
+              <NavigationMenuLink>
+                <Button
+                  variant="ghost"
+                  onClick={() => handleNavigate(subOption.link)}
+                  className="flex justify-start gap-3"
+                >
+                  <Image className="size-5" />
+                  <span className="text-md font-medium">{subOption.title}</span>
+                </Button>
+              </NavigationMenuLink>
+
+              {!isLastElement && <Separator />}
+            </Fragment>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 export const NavigationMenu = () => {
   return (
     <NavigationMenuRoot className="w-2/3 justify-evenly">
-      <NavigationMenuList>
+      <NavigationMenuList className="gap-6">
         {DESKTOP_MENU_OPTIONS.map((option) => {
           if (option.link) {
             return (
@@ -32,15 +79,7 @@ export const NavigationMenu = () => {
                 <NavigationMenuTrigger>{option.title}</NavigationMenuTrigger>
 
                 <NavigationMenuContent>
-                  <ul className="flex flex-col gap-1">
-                    {option.subMenu.map((subOption) => (
-                      <li key={subOption.title}>
-                        <NavigationMenuLink asChild>
-                          <Link href={subOption.link || '#'}>{subOption.title}</Link>
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
+                  <NavigationSubMenu subMenu={option.subMenu} />
                 </NavigationMenuContent>
               </NavigationMenuItem>
             );

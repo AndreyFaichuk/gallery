@@ -5,6 +5,7 @@ import './globals.css';
 import { cn } from './lib/utils';
 import ReactQueryProvider from './components/providers/tanstack-query-provider';
 import { Header } from './components/layout/Header';
+import { Separator } from './components/ui';
 
 const forum = localFont({
   src: './fonts/Forum-Regular.ttf',
@@ -34,6 +35,11 @@ const RootLayout: FC<Props> = ({ children }) => {
         <ReactQueryProvider>
           <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-60">
             <Header />
+          </div>
+
+          <Separator className="text-gray-300 mt-1" />
+
+          <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-60">
             <main className="mt-16 mb-4 flex flex-col gap-4">{children}</main>
           </div>
         </ReactQueryProvider>

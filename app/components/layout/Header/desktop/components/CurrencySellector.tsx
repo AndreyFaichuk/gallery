@@ -1,6 +1,14 @@
 'use client';
 
-import { Select, type SelectOption } from '@/app/components/ui';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/app/components/ui';
 import { CURRENCY_SYMBOLS } from '@/utils';
 import {
   BASE_CURRENCY,
@@ -9,7 +17,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 
-export const CURRENCY_OPTIONS: SelectOption<ExchangeRatesCurrency>[] = [
+export const CURRENCY_OPTIONS = [
   {
     value: BASE_CURRENCY.USD,
     label: `${CURRENCY_SYMBOLS[BASE_CURRENCY.USD]} ${BASE_CURRENCY.USD}`,
@@ -48,13 +56,30 @@ export const CurrencySellector = () => {
     <div className="w-[120px] absolute right-14">
       {isMounted && (
         <Select
-          optionClassName="bg-[#FBFFF5]"
-          instanceId="currency-select"
-          value={currentOption}
-          onChange={(option) => handleSetCurrency(option?.value)}
-          options={CURRENCY_OPTIONS}
-          isSearchable={false}
-        />
+          value={currency}
+          onValueChange={(value) => handleSetCurrency(value as ExchangeRatesCurrency)}
+        >
+          <SelectTrigger className="w-full max-w-48">
+            <SelectValue placeholder={currentOption?.label} />
+          </SelectTrigger>
+          <SelectContent
+            side="bottom"
+            align="end"
+            sideOffset={8}
+            avoidCollisions
+            className="min-w-[20px]"
+          >
+            <SelectGroup>
+              {CURRENCY_OPTIONS.map((option) => {
+                return (
+                  <SelectItem key={option.label} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                );
+              })}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       )}
     </div>
   );
