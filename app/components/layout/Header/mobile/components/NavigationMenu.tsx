@@ -1,44 +1,106 @@
 'use client';
-
-import { MOBILE_MENU_OPTIONS } from '@/constants';
-import { motion } from 'framer-motion';
+import {
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  Separator,
+} from '@/app/components/ui';
+import { ToggleGroup, ToggleGroupItem } from '@/app/components/ui/toggle-group';
+import { cn } from '@/app/lib/utils';
+import { CURRENCY_OPTIONS, MOBILE_MENU_OPTIONS } from '@/constants';
+import { ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
+import { Image, X } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { FC } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
 import Link from 'next/link';
-import { RefObject, useRef } from 'react';
-import { useOnClickOutside } from 'usehooks-ts';
 
-type Props = {
-  onClose: () => void;
-};
+type NavigationMenuProps = { isOpen: boolean; onClose: VoidFunction };
 
-export const NavigationMenu = ({ onClose }: Props) => {
-  const ref = useRef<HTMLDivElement>(null);
+export const NavigationMenu: FC<NavigationMenuProps> = ({ onClose, isOpen }) => {
+  const router = useRouter();
+  const pathname = usePathname();
 
-  useOnClickOutside(ref as RefObject<HTMLElement>, () => {
-    onClose();
-  });
+  const [currency, setCurrency] = useLocalStorage<ExchangeRatesCurrency>(
+    'currency',
+    CURRENCY_OPTIONS[0].value,
+  );
+
+  const handleSetCurrency = (currency?: ExchangeRatesCurrency) => {
+    if (!currency) return;
+    setCurrency(currency);
+  };
+
+  const handleNavigate = (link?: string) => {
+    if (!link) return;
+    router.push(link);
+    requestAnimationFrame(() => onClose());
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 1, y: -20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -10, scale: 0.95 }}
-      transition={{ duration: 0.25 }}
-      className="absolute top-[170px] left-0 w-full px-4 mt-2  z-50"
-    >
-      <div ref={ref} className="rounded-3xl bg-white/60 backdrop-blur-md p-6 shadow-lg">
-        <nav className="flex flex-col gap-2 text-lg">
-          {MOBILE_MENU_OPTIONS.map((option) => (
-            <Link
-              key={option.title}
-              href={option.link || '#'}
-              onClick={onClose}
-              className="block w-full rounded-xl px-4 py-2 hover:bg-black/5 transition"
+    <Drawer direction="left" snapPoints={[0.9]} fadeFromIndex={0} open={isOpen} onClose={onClose}>
+      <DrawerContent className="bg-white gap-2 w-full max-w-none rounded-none pr-2 ml-12 h-full">
+        <DrawerHeader className="justify-end h-40">
+          <DrawerTitle className="">
+            <X className="size-8 mb-15" onClick={onClose} />
+          </DrawerTitle>
+        </DrawerHeader>
+
+        <div className="flex flex-col gap-6">
+          <Separator />
+
+          <div className="flex flex-col gap-4 ">
+            {MOBILE_MENU_OPTIONS.map((option) => {
+              return (
+                <Button
+                  variant="ghost"
+                  onClick={() => handleNavigate(option.link)}
+                  className={cn('flex h-12 justify-start gap-4 rounded-md font-medium', {
+                    'bg-muted': option.link === pathname,
+                  })}
+                >
+                  <Image className="size-5 ml-2" />
+                  <span className="text-base font-medium">{option.title}</span>
+                </Button>
+              );
+            })}
+          </div>
+
+          <Separator />
+        </div>
+        <ToggleGroup
+          variant="outline"
+          type="single"
+          className="w-full mt-2"
+          onValueChange={(value) => handleSetCurrency(value as ExchangeRatesCurrency)}
+          value={currency}
+        >
+          {CURRENCY_OPTIONS.map((currency) => (
+            <ToggleGroupItem
+              key={currency.value}
+              value={currency.value}
+              aria-label={currency.value}
+              className="flex-1 h-9"
             >
-              {option.title}
-            </Link>
+              {currency.label}
+            </ToggleGroupItem>
           ))}
-        </nav>
-      </div>
-    </motion.div>
+        </ToggleGroup>
+
+        <Link href="/home" onClick={onClose} className="mt-auto mb-10 flex justify-center">
+          <div className="flex flex-col items-center leading-none text-center">
+            <div className="flex items-center gap-1 relative">
+              <span className="font-body text-[50px] absolute left-[-40px] top-[-75px]">JB</span>
+              <span className="font-artist absolute left-[-15px] text-[40px] top-[-40px]">
+                Atelier
+              </span>
+            </div>
+            <span className="text-[14px] whitespace-nowrap tracking-wide">— fine artist —</span>
+          </div>
+        </Link>
+      </DrawerContent>
+    </Drawer>
   );
 };
