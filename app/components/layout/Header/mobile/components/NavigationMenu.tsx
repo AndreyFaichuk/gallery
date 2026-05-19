@@ -55,6 +55,7 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({ onClose, isOpen }) => 
             {MOBILE_MENU_OPTIONS.map((option) => {
               return (
                 <Button
+                  key={option.title}
                   variant="ghost"
                   onClick={() => handleNavigate(option.link)}
                   className={cn('flex h-12 justify-start gap-4 rounded-md font-medium', {
