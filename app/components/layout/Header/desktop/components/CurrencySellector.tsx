@@ -5,32 +5,13 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/app/components/ui';
-import { CURRENCY_SYMBOLS } from '@/utils';
-import {
-  BASE_CURRENCY,
-  type ExchangeRatesCurrency,
-} from '@/utils/routeHandlers/getCurrencyExchange';
+import { CURRENCY_OPTIONS } from '@/constants';
+import { type ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
-
-export const CURRENCY_OPTIONS = [
-  {
-    value: BASE_CURRENCY.USD,
-    label: `${CURRENCY_SYMBOLS[BASE_CURRENCY.USD]} ${BASE_CURRENCY.USD}`,
-  },
-  {
-    value: BASE_CURRENCY.EUR,
-    label: `${CURRENCY_SYMBOLS[BASE_CURRENCY.EUR]} ${BASE_CURRENCY.EUR}`,
-  },
-  {
-    value: BASE_CURRENCY.UAH,
-    label: `${CURRENCY_SYMBOLS[BASE_CURRENCY.UAH]} ${BASE_CURRENCY.UAH}`,
-  },
-];
 
 export const CurrencySellector = () => {
   const [isMounted, setIsMounted] = useState(false);
