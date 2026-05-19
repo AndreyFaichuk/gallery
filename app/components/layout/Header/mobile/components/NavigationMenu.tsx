@@ -40,18 +40,18 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({ onClose, isOpen }) => 
   };
 
   return (
-    <Drawer direction="left" snapPoints={[0.9]} fadeFromIndex={0} open={isOpen} onClose={onClose}>
-      <DrawerContent className="bg-white gap-2 w-full max-w-none rounded-none pr-2 ml-12 h-full">
-        <DrawerHeader className="justify-end h-40">
-          <DrawerTitle className="">
-            <X className="size-8 mb-15" onClick={onClose} />
+    <Drawer direction="left" snapPoints={[1]} open={isOpen} onClose={onClose}>
+      <DrawerContent className="bg-white gap-2 w-full max-w-none rounded-none h-full">
+        <DrawerHeader className="justify-end">
+          <DrawerTitle>
+            <X className="size-8 mt-8 ml-2" onClick={onClose} />
           </DrawerTitle>
         </DrawerHeader>
 
         <div className="flex flex-col gap-6">
           <Separator />
 
-          <div className="flex flex-col gap-4 ">
+          <div className="flex flex-col gap-4 px-2">
             {MOBILE_MENU_OPTIONS.map((option) => {
               return (
                 <Button
@@ -74,7 +74,7 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({ onClose, isOpen }) => 
         <ToggleGroup
           variant="outline"
           type="single"
-          className="w-full mt-2"
+          className="w-full mt-2 px-2"
           onValueChange={(value) => handleSetCurrency(value as ExchangeRatesCurrency)}
           value={currency}
         >

@@ -1,14 +1,14 @@
 import { MenuOptions } from '@/types';
 
 export const NAVIGATION_MENU_OPTIONS = {
-  ALL_PAINTINGS: { title: 'All paintings', link: '/collections/all-paintings' },
-  AVAILABLE_PAINTINGS: { title: 'Available paintings', link: '/collections/available-paintings' },
-  ABOUT_ME: { title: 'About me', link: '/about' },
+  ALL_PAINTINGS: { title: 'all paintings', link: '/collections/all-paintings' },
+  AVAILABLE_PAINTINGS: { title: 'available paintings', link: '/collections/available-paintings' },
+  ABOUT_ME: { title: 'about me', link: '/about' },
 } as const;
 
 export const DESKTOP_MENU_OPTIONS: MenuOptions = [
   {
-    title: 'Original oil paintings',
+    title: 'original oil paintings',
     subMenu: [
       {
         title: NAVIGATION_MENU_OPTIONS.ALL_PAINTINGS.title,
