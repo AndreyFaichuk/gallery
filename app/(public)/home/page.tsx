@@ -1,7 +1,7 @@
-import { Header } from '@/app/components/layout/Header';
+import { HomePage } from '@/app/components/HomePage/HomePage';
 
-const GeneralPage = async () => {
-  return <></>;
+const Page = async () => {
+  return <HomePage />;
 };
 
-export default GeneralPage;
+export default Page;
