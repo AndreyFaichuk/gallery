@@ -60,14 +60,16 @@ const NavigationSubMenu: FC<NavigationSubMenuProps> = ({ subMenu }) => {
 
 export const NavigationMenu = () => {
   return (
-    <NavigationMenuRoot className="w-2/3 justify-evenly">
+    <NavigationMenuRoot className="w-2/3 justify-evenly flex-wrap">
       <NavigationMenuList className="gap-6">
         {DESKTOP_MENU_OPTIONS.map((option) => {
           if (option.link) {
             return (
               <NavigationMenuItem key={option.title}>
                 <NavigationMenuLink asChild>
-                  <Link href={option.link}>{option.title}</Link>
+                  <Link className="text-[16px]" href={option.link}>
+                    {option.title}
+                  </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             );
@@ -76,7 +78,9 @@ export const NavigationMenu = () => {
           if (option.subMenu) {
             return (
               <NavigationMenuItem key={option.title}>
-                <NavigationMenuTrigger>{option.title}</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="text-[16px]">
+                  {option.title}
+                </NavigationMenuTrigger>
 
                 <NavigationMenuContent>
                   <NavigationSubMenu subMenu={option.subMenu} />

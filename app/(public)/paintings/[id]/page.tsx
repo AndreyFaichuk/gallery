@@ -79,7 +79,7 @@ const wait = () => new Promise((res) => setTimeout(() => res(1), 10000));
 
 const exchange = { EUR: 0.872334, UAH: 44.09512, USD: 1 };
 
-const Painting = async ({ params }: PaintingPageParams) => {
+const Page = async ({ params }: PaintingPageParams) => {
   const { id } = await params;
 
   const painting = await getPainting({ id });
@@ -100,4 +100,4 @@ const Painting = async ({ params }: PaintingPageParams) => {
   );
 };
 
-export default Painting;
+export default Page;

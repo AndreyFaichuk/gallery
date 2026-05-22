@@ -32,7 +32,7 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
   } = usePaintingsFilterBar(filters, totalCount);
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 mt-16">
       <div className="w-full flex flex-col gap-4">
         {filters.length > 0 && (
           <>
