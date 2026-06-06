@@ -1,0 +1,1 @@
+export { PaintingsShop } from './PaintingsShop';

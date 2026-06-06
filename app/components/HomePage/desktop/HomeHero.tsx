@@ -25,8 +25,8 @@ export const HomeHero = () => {
 
           <div className="flex items-center gap-4 mt-2">
             <Button asChild>
-              <Link href={NAVIGATION_MENU_OPTIONS.ALL_PAINTINGS.link}>
-                view {NAVIGATION_MENU_OPTIONS.ALL_PAINTINGS.title}
+              <Link href={NAVIGATION_MENU_OPTIONS.SHOP.link}>
+                view {NAVIGATION_MENU_OPTIONS.SHOP.title}
               </Link>
             </Button>
 

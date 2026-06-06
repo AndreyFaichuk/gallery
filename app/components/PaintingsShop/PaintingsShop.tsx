@@ -9,7 +9,7 @@ type PaintingsCatalogProps = ExchangeT & {
   items: PaintingT[];
 };
 
-export const PaintingsCatalog: FC<PaintingsCatalogProps> = ({ items, exchange }) => {
+export const PaintingsShop: FC<PaintingsCatalogProps> = ({ items, exchange }) => {
   return (
     <div className="grid xl:grid-cols-2 gap-20 justify-items-center max-w-[90%] mx-auto">
       {items.map((item) => (

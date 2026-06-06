@@ -62,7 +62,7 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({ onClose, isOpen }) => 
                     'bg-muted': option.link === pathname,
                   })}
                 >
-                  <Image className="size-5 ml-2" />
+                  {option.icon}
                   <span className="text-base font-medium">{option.title}</span>
                 </Button>
               );
