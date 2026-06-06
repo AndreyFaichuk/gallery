@@ -15,7 +15,8 @@ import { DESKTOP_MENU_OPTIONS } from '@/constants';
 import { MenuOptionBase } from '@/types';
 import { FC, Fragment } from 'react';
 import { Image } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { cn } from '@/app/lib/utils';
 
 type NavigationSubMenuProps = {
   subMenu: MenuOptionBase[];
@@ -59,6 +60,8 @@ const NavigationSubMenu: FC<NavigationSubMenuProps> = ({ subMenu }) => {
 };
 
 export const NavigationMenu = () => {
+  const pathname = usePathname();
+
   return (
     <NavigationMenuRoot className="w-2/3 justify-evenly flex-wrap">
       <NavigationMenuList className="gap-6">
@@ -66,8 +69,16 @@ export const NavigationMenu = () => {
           if (option.link) {
             return (
               <NavigationMenuItem key={option.title}>
-                <NavigationMenuLink asChild>
-                  <Link className="text-[16px]" href={option.link}>
+                <NavigationMenuLink asChild className="rounded-none">
+                  <Link
+                    className={cn(
+                      'relative pb-[15px]',
+                      'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-primary',
+                      'after:scale-x-0 after:origin-left after:transition-transform',
+                      option.link === pathname && 'after:scale-x-100',
+                    )}
+                    href={option.link}
+                  >
                     {option.title}
                   </Link>
                 </NavigationMenuLink>

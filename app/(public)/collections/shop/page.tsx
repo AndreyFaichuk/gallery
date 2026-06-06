@@ -1,4 +1,4 @@
-import { PaintingsCatalog } from '@/app/components/PaintingsCatalog';
+import { PaintingsShop } from '@/app/components/PaintingsShop';
 import { PaintingsFilterBar } from '@/app/components/PaintingsFilterBar';
 import type { PaintingsSearchParamsProps } from '@/types';
 import getAllPaintings from '@/utils/routeHandlers/getAllPaintings';
@@ -142,7 +142,7 @@ const Page = async ({ searchParams }: PaintingsSearchParamsProps) => {
   return (
     <>
       <PaintingsFilterBar filters={filters} totalCount={totalCount}>
-        <PaintingsCatalog items={items} exchange={exchange} />
+        <PaintingsShop items={items} exchange={exchange} />
       </PaintingsFilterBar>
     </>
   );
