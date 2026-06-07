@@ -6,7 +6,7 @@ type Options = {
   query: string;
 };
 
-const getSuggestions = async ({ query }: Options) => {
+export const getSuggestions = async ({ query }: Options) => {
   if (!query.trim()) return [];
 
   const result = await db
@@ -19,5 +19,3 @@ const getSuggestions = async ({ query }: Options) => {
 
   return result.map((row) => row.term);
 };
-
-export default getSuggestions;

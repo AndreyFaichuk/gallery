@@ -1,0 +1,16 @@
+import { db } from '@/utils/db/db';
+import { paintings } from '@/utils/db/schema';
+import { and, SQL, sql } from 'drizzle-orm';
+
+type Options = {
+  conditions: SQL[];
+};
+
+export const getPaintingsCounts = async ({ conditions }: Options) => {
+  return db
+    .select({
+      count: sql<number>`count(${paintings.id})`,
+    })
+    .from(paintings)
+    .where(conditions.length ? and(...conditions) : undefined);
+};

@@ -21,6 +21,7 @@ export const paintings = pgTable(
       .primaryKey(),
     name: text('name').notNull(),
     description: text('description'),
+    isExclusive: boolean('is_exclusive').notNull().default(false),
     price: numeric('price').notNull(),
     width: numeric('width_cm', { mode: 'number' }).notNull().default(1),
     height: numeric('height_cm', { mode: 'number' }).notNull().default(1),
