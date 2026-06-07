@@ -1,14 +1,14 @@
 import { PaintingsFilterBar } from '@/app/components/PaintingsFilterBar';
 import type { PaintingsSearchParamsProps } from '@/types';
-import getAllPaintings from '@/utils/routeHandlers/getAllPaintings';
 import { PaintingsGallery } from '@/app/components/PaintingsGallery';
+import { getAllGalleryPaintings } from '@/utils/route-handlers/get-all-gallery-paintings';
 
 const wait = () => new Promise((res) => setTimeout(() => res(1), 10000));
 
 const Page = async ({ searchParams }: PaintingsSearchParamsProps) => {
   const { collections, availability, query, page, sort } = await searchParams;
 
-  const { filters, items, totalCount, exchange } = await getAllPaintings({
+  const { filters, allItems, totalCount, exchange, exclusiveItems } = await getAllGalleryPaintings({
     collectionId: collections,
     isAvailable: availability,
     page: page ? Number(page) : undefined,

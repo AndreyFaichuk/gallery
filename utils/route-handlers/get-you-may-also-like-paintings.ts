@@ -7,11 +7,9 @@ type Options = {
   excludePaintingId: string;
 };
 
-const getYouMayAlsoLikePaintings = async ({ collectionId, excludePaintingId }: Options) =>
-  await db
+export const getYouMayAlsoLikePaintings = async ({ collectionId, excludePaintingId }: Options) =>
+  db
     .select()
     .from(paintings)
     .where(and(eq(paintings.collectionId, collectionId), ne(paintings.id, excludePaintingId)))
     .limit(4);
-
-export default getYouMayAlsoLikePaintings;

@@ -10,7 +10,7 @@ import {
 import { ToggleGroup, ToggleGroupItem } from '@/app/components/ui/toggle-group';
 import { cn } from '@/app/lib/utils';
 import { CURRENCY_OPTIONS, MOBILE_MENU_OPTIONS } from '@/constants';
-import { ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
+import { ExchangeRatesCurrency } from '@/utils/route-handlers/get-currency-exchange';
 import { Image, X } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { FC } from 'react';

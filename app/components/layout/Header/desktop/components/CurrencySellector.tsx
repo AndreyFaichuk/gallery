@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from '@/app/components/ui';
 import { CURRENCY_OPTIONS } from '@/constants';
-import { type ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
+import { ExchangeRatesCurrency } from '@/utils/route-handlers/get-currency-exchange';
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 

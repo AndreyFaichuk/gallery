@@ -1,4 +1,4 @@
-import type { SortParam } from '@/utils/routeHandlers/getAllPaintings';
+import type { SortParam } from '@/utils/route-handlers/types/filter-options.type';
 import { PaintingT } from './schema.types';
 
 type QueryParamsBase<T> = {

@@ -36,7 +36,7 @@ export type ExchangeRatesCurrency = ExchangeRatesResponse['base'];
 
 const currencyExchangeUrl = 'https://openexchangerates.org/api';
 
-const getCurrencyExchange = async () => {
+export const getCurrencyExchange = async () => {
   const [existingExchangeRate] = await db
     .select()
     .from(exchangeRates)
@@ -74,5 +74,3 @@ const getCurrencyExchange = async () => {
 
   return { EUR, UAH, USD };
 };
-
-export default getCurrencyExchange;

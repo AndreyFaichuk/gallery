@@ -1,7 +1,7 @@
 import { CURRENCY_OPTIONS } from '@/constants';
 import type { ExchangeT } from '@/types';
 import { formatCurrency } from '@/utils';
-import type { ExchangeRatesCurrency } from '@/utils/routeHandlers/getCurrencyExchange';
+import type { ExchangeRatesCurrency } from '@/utils/route-handlers/get-currency-exchange';
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 

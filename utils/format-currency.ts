@@ -1,4 +1,4 @@
-import { BASE_CURRENCY, type ExchangeRatesCurrency } from './routeHandlers/getCurrencyExchange';
+import { BASE_CURRENCY, type ExchangeRatesCurrency } from './route-handlers/get-currency-exchange';
 
 export const CURRENCY_SYMBOLS: Record<ExchangeRatesCurrency, string> = {
   [BASE_CURRENCY.USD]: '$',
