@@ -1,5 +1,5 @@
 export const PaintingsGallery = () => {
-  console.log('test1');
+  console.log('test11111');
 
   return <div>PaintingsGallery</div>;
 };
