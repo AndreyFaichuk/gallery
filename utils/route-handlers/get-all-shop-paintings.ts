@@ -35,9 +35,9 @@ export const getAllShopPaintings = async ({
         limit,
       }),
 
-      getAvailabilityCounts({ conditions }),
+      getAvailabilityCounts(),
 
-      getCollectionCounts({ conditions }),
+      getCollectionCounts(),
 
       getPaintingsCounts({ conditions }),
 

@@ -2,11 +2,7 @@ import { db } from '@/utils/db/db';
 import { collections, paintings } from '@/utils/db/schema';
 import { and, eq, SQL, sql } from 'drizzle-orm';
 
-type Options = {
-  conditions: SQL[];
-};
-
-export const getCollectionCounts = async ({ conditions }: Options) => {
+export const getCollectionCounts = async () => {
   return db
     .select({
       id: collections.id,
@@ -15,6 +11,6 @@ export const getCollectionCounts = async ({ conditions }: Options) => {
     })
     .from(collections)
     .leftJoin(paintings, eq(paintings.collectionId, collections.id))
-    .where(conditions.length ? and(...conditions) : undefined)
+    .where(eq(paintings.isExclusive, false))
     .groupBy(collections.id);
 };

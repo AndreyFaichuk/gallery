@@ -15,7 +15,7 @@ export const PaintingPageMobile: FC<PaintingPageMobileProps> = ({
   youMayAlsoLikePaintings,
 }) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 mt-12">
       <PhotoCollageMobile {...painting} />
       <PaintingInfoMobile painting={painting} exchange={exchange} />
       <YouMayAlsoLikeMobile exchange={exchange} paintings={youMayAlsoLikePaintings} />

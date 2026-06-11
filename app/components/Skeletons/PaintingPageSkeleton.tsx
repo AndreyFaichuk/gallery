@@ -115,7 +115,7 @@ const MobilePaintingInfoSkeleton = () => {
 const MobilePaintingPageSkeleton = () => {
   return (
     <div className="xs:hidden">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mt-12">
         <div className="w-full">
           <Skeleton className="relative aspect-[4/5] overflow-hidden rounded-xl" />
 
