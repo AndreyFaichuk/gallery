@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { ilike } from 'drizzle-orm';
+import { eq, ilike } from 'drizzle-orm';
 import { paintings as paintingsTable } from '@/utils/db/schema';
 import { getSuggestions } from '@/utils/route-handlers/get-suggestions';
 import { getPaintings } from '@/utils/route-handlers/get-paintings';
@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
   const [suggestions, paintings] = await Promise.all([
     getSuggestions({ query }),
     getPaintings({
-      conditions: [ilike(paintingsTable.name, `%${query}%`)],
+      conditions: [ilike(paintingsTable.name, `%${query}%`), eq(paintingsTable.isExclusive, false)],
       formattedSortParam: 'name',
       offset: 0,
       sortOrderAsc: true,
