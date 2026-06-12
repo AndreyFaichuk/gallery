@@ -1,10 +1,18 @@
-export const PaintingsGallery = () => {
-  console.log('test');
-  console.log('test 2');
-  console.log('test 3');
+'use client';
 
-  console.log('test 4');
-  console.log('test 5');
+import { PaintingT } from '@/types';
+import { FC } from 'react';
+import { ExclusiveWorks } from './components/ExclusiveWorks';
 
-  return <div>PaintingsGallery</div>;
+type PaintingsGalleryProps = {
+  allItems: PaintingT[];
+  exclusiveItems: PaintingT[];
+};
+
+export const PaintingsGallery: FC<PaintingsGalleryProps> = ({ allItems, exclusiveItems }) => {
+  return (
+    <div className="flex">
+      <ExclusiveWorks exclusiveItems={exclusiveItems} />
+    </div>
+  );
 };

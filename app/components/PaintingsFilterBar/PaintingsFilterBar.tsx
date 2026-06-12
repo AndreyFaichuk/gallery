@@ -6,6 +6,7 @@ import { usePaintingsFilterBar } from '@/hooks/use-paintings-filter-bar';
 import { FilterBarMobile } from './mobile/FilterBarMobile';
 import { FilterOptions } from '@/types';
 import PaintingFiltersDesktop from './desktop/PaintingFiltersDesktop';
+import { Separator } from '../ui';
 
 export type PaintingsFilterBarProps = {
   filters: FilterOptions;

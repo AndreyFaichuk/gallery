@@ -28,7 +28,7 @@ const Page = async ({ searchParams }: PaintingsSearchParamsProps) => {
         </div>
       </div>
       <PaintingsFilterBar filters={filters} totalCount={totalCount}>
-        <PaintingsGallery />
+        <PaintingsGallery allItems={allItems} exclusiveItems={exclusiveItems} />
       </PaintingsFilterBar>
     </div>
   );
