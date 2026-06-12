@@ -17,7 +17,7 @@ export const PhotoCollageDesktop: FC<PhotoCollageDesktopProps> = ({
   const [isOpenedPhotoGallery, setIsOpenedPhotoGallery] = useState(false);
 
   const paintingPreparedImageUrls = imageUrls.map((image) => getMediaContentUrl(`${id}/${image}`));
-  1;
+
   const paintingPreparedVideoUrls = videos?.map((video) =>
     getMediaContentUrl(`${id}/videos/${video.src}`),
   );
