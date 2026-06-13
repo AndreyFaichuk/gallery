@@ -140,11 +140,11 @@ const Page = async ({ searchParams }: PaintingsSearchParamsProps) => {
   });
 
   return (
-    <>
+    <div className="mt-6">
       <PaintingsFilterBar filters={filters} totalCount={totalCount}>
         <PaintingsShop items={items} exchange={exchange} />
       </PaintingsFilterBar>
-    </>
+    </div>
   );
 };
 

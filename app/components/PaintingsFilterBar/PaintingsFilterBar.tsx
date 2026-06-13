@@ -1,16 +1,20 @@
 'use client';
 
 import { type FC, type ReactNode } from 'react';
-import { Pagination } from '../Pagination';
 import { usePaintingsFilterBar } from '@/hooks/use-paintings-filter-bar';
 import { FilterBarMobile } from './mobile/FilterBarMobile';
 import { FilterOptions } from '@/types';
 import PaintingFiltersDesktop from './desktop/PaintingFiltersDesktop';
-import { Separator } from '../ui';
+import { PaginationStrategy } from '../layout/Header/mobile/components/PaginationStrategy';
+import {
+  ALL_PAINTINGS_API_MODE,
+  PaginationStrategyVariantT,
+} from '@/utils/route-handlers/types/filter-options.type';
 
 export type PaintingsFilterBarProps = {
   filters: FilterOptions;
   totalCount: number;
+  variant?: PaginationStrategyVariantT;
   children: ReactNode;
 };
 
@@ -18,6 +22,7 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
   filters,
   children,
   totalCount,
+  variant = ALL_PAINTINGS_API_MODE.PAGINATION,
 }) => {
   const {
     currentParamsMap,
@@ -33,7 +38,7 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
   } = usePaintingsFilterBar(filters, totalCount);
 
   return (
-    <div className="flex flex-col gap-12 mt-16">
+    <div className="flex flex-col gap-6">
       <div className="w-full flex flex-col gap-4">
         {filters.length > 0 && (
           <>
@@ -65,10 +70,15 @@ export const PaintingsFilterBar: FC<PaintingsFilterBarProps> = ({
           </>
         )}
       </div>
+
       {children}
-      {totalPages > 1 && (
-        <Pagination currentPage={page} setPage={handleSetPage} totalPages={totalPages} />
-      )}
+
+      <PaginationStrategy
+        currentPage={page}
+        setPage={handleSetPage}
+        totalPages={totalPages}
+        variant={variant}
+      />
     </div>
   );
 };

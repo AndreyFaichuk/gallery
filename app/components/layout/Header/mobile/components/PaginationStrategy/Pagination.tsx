@@ -1,3 +1,6 @@
+'use client';
+
+import { FC } from 'react';
 import {
   PaginationContent,
   PaginationItem,
@@ -5,15 +8,10 @@ import {
   PaginationPrevious,
   PaginationNext,
   PaginationEllipsis,
-} from './ui/pagination';
+} from '../../../../../ui/pagination';
+import { PaginationProps } from './types';
 
-type PaginationProps = {
-  totalPages: number;
-  setPage: (currentPage: number) => string;
-  currentPage: number;
-};
-
-export const Pagination = ({ totalPages, currentPage, setPage }: PaginationProps) => {
+export const Pagination: FC<PaginationProps> = ({ totalPages, currentPage, setPage }) => {
   if (!totalPages) return null;
 
   return (

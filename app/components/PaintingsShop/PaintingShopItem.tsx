@@ -3,7 +3,7 @@
 import type { PaintingT } from '@/types/schema.types';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { cn } from '@/app/lib/utils';
 import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types';
 import { useRouter } from 'next/navigation';
@@ -20,32 +20,68 @@ type PaintingItemProps = {
   variant?: PaintingItemVariantT;
 };
 
-const PAINTING_ITEM_STYLES: Record<
+export const PAINTING_ITEM_STYLES: Record<
   PaintingItemVariantT,
   {
     rootClassName: string;
     imageWidth: number;
     imageHeight: number;
+    placeholderAspectRatio: string;
   }
 > = {
   [PAINTING_ITEM_VARIANT.CATALOG]: {
     rootClassName: 'max-w-[600px]',
     imageWidth: 600,
     imageHeight: 600,
+    placeholderAspectRatio: '3 / 4',
   },
   [PAINTING_ITEM_VARIANT.SEARCH]: {
     rootClassName: 'max-w-[270px]',
     imageWidth: 270,
     imageHeight: 270,
+    placeholderAspectRatio: '1 / 1',
   },
   [PAINTING_ITEM_VARIANT.ALSO_LIKE]: {
     rootClassName: 'max-w-[200px]',
     imageWidth: 200,
     imageHeight: 200,
+    placeholderAspectRatio: '1 / 1',
   },
 };
 
-export const PaintingItem: FC<PaintingItemProps> = ({
+type PaintingItemShellProps = {
+  children: ReactNode;
+  variant?: PaintingItemVariantT;
+  onClick?: () => void;
+  interactive?: boolean;
+};
+
+export const PaintingItemShell: FC<PaintingItemShellProps> = ({
+  children,
+  variant = PAINTING_ITEM_VARIANT.CATALOG,
+  onClick,
+  interactive = false,
+}) => {
+  const styles = PAINTING_ITEM_STYLES[variant];
+
+  return (
+    <motion.div
+      onClick={onClick}
+      className={cn(
+        'w-full flex flex-col gap-4',
+        interactive && 'cursor-pointer group',
+        styles.rootClassName,
+      )}
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export const PaintingShopItem: FC<PaintingItemProps> = ({
   item,
   exchange,
   variant = PAINTING_ITEM_VARIANT.CATALOG,
@@ -63,12 +99,10 @@ export const PaintingItem: FC<PaintingItemProps> = ({
   };
 
   return (
-    <motion.div
+    <PaintingItemShell
+      variant={variant}
       onClick={() => handleRedirect(item.id)}
-      className={cn('w-full flex flex-col gap-4 cursor-pointer group', styles.rootClassName)}
-      initial="rest"
-      whileHover="hover"
-      animate="rest"
+      interactive
     >
       <div className="relative overflow-hidden">
         <motion.div
@@ -112,6 +146,8 @@ export const PaintingItem: FC<PaintingItemProps> = ({
         </h3>
         {formattedPrice ?? null}
       </div>
-    </motion.div>
+    </PaintingItemShell>
   );
 };
+
+export const PaintingItem = PaintingShopItem;
