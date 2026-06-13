@@ -8,7 +8,6 @@ import { formatDimension, getMediaContentUrl } from '@/utils';
 import { PaintingPhotoGallery } from '@/app/components/PaintingPhotoGallery';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/app/lib/utils';
-import { Separator } from '@/app/components/ui';
 
 type ExclusiveWorksProps = {
   exclusiveItems: PaintingT[];
@@ -73,16 +72,34 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
   return (
     <div className="flex flex-col w-full gap-6">
       <div className="flex-wrap flex w-full items-center justify-between">
-        <div className="flex gap-4 items-start">
+        {/* Desktop block */}
+        <div className="gap-4 items-start hidden xs:flex">
+          <div className="flex gap-4">
+            <Sparkles />
+            <div className="w-[200px] xs:w-[250px] md:w-[400px] flex flex-col items-start gap-2">
+              <h2 className="text-2xl font-semibold leading-none -mt-1">Exclusive Works</h2>
+              <span>
+                These paintings are represented by our art parthers and are not available for
+                purchase through the website
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile block */}
+        <div className="flex gap-2 w-full justify-center mb-2 xs:hidden">
           <Sparkles />
-          <div className="w-[200px] xs:w-[250px] md:w-[400px] flex flex-col items-start gap-2">
-            <h2 className="text-2xl font-semibold leading-none -mt-1">Exclusive Works</h2>
+          <h2 className="text-2xl font-semibold leading-none -mt-1">Exclusive Works</h2>
+        </div>
+        <div className="flex gap-4 items-start flex-col xs:hidden">
+          <div className="w-[260px] md:w-[400px] flex flex-col items-start gap-2">
             <span>
               These paintings are represented by our art parthers and are not available for purchase
               through the website
             </span>
           </div>
         </div>
+
         <div className="gap-4 md:gap-2 flex">
           <CircleChevronLeft
             className={cn('size-10 md:size-8 cursor-pointer', {
@@ -130,8 +147,6 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
       <span className="m-auto">
         {exclusiveWorkIndex + 1} / {exclusiveItems.length}
       </span>
-
-      <Separator />
 
       <PaintingPhotoGallery
         paintingId={exclusiveItems[exclusiveWorkIndex].id}

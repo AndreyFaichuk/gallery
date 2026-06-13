@@ -1,5 +1,6 @@
 import { paintings } from '@/utils/db/schema';
 import { eq, ilike, inArray, SQL } from 'drizzle-orm';
+import { FilterOptionsT } from '../types/filter-options.type';
 
 const SORT_PARAM_MAP = {
   name: paintings.name,
@@ -11,30 +12,16 @@ type SortField = keyof typeof SORT_PARAM_MAP;
 
 export type SortParam = SortField | `-${SortField}`;
 
-type Options = {
-  query?: string;
-  collectionId?: string;
-  isAvailable?: '1' | '0';
-  page?: number;
-  limit?: number;
-  sort?: SortParam;
-  isExclusive?: '1' | '0';
-};
+type Options = Omit<FilterOptionsT, 'page' | 'limit' | 'mode'>;
 
 export const getPaintingsFilterConditions = ({
   query,
   collectionId,
   isAvailable,
-  page,
   sort = 'name',
-  limit = 8,
-  isExclusive,
+  isExclusive = '0',
 }: Options) => {
   const conditions: SQL[] = [];
-
-  const pageNumber = page && page > 0 ? page : 1;
-
-  const offset = (pageNumber - 1) * limit;
 
   const sortOrderAsc = !sort?.startsWith('-');
 
@@ -64,9 +51,7 @@ export const getPaintingsFilterConditions = ({
 
   return {
     conditions,
-    offset,
     sortOrderAsc,
     formattedSortParam,
-    limit,
   };
 };

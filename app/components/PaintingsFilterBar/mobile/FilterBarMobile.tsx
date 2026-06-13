@@ -34,31 +34,33 @@ export const FilterBarMobile: FC<FilterBarMobileProps> = ({
     <>
       <div className="flex gap-2 flex-wrap">
         <div className="flex flex-col gap-2 w-full">
-          <div className="w-full flex justify-end">
-            <span className="text-sm">{`${totalCount} paintings`}</span>
-          </div>
-
           <div className="flex gap-2 flex-wrap">
-            {filters.map((filter) => (
-              <Button
-                key={filter.name}
-                onClick={() => handleFilterOpen(filter)}
-                variant="outline"
-                size="lg"
-                className="gap-2 border-1 border-gray-200 bg-gray-100 text-gray-600"
-              >
-                {filter.name} <ChevronDown className="text-gray-500" />
-              </Button>
-            ))}
+            <div className="flex items-center justify-between gap-2 w-full">
+              <div className="flex gap-2">
+                {filters.map((filter) => (
+                  <Button
+                    key={filter.name}
+                    onClick={() => handleFilterOpen(filter)}
+                    variant="outline"
+                    size="lg"
+                    className="px-1 border-1 border-gray-200 bg-gray-100 text-gray-600"
+                  >
+                    {filter.name} <ChevronDown className="text-gray-500" />
+                  </Button>
+                ))}
 
-            <Button
-              variant="outline"
-              size="lg"
-              className="gap-2 border-1 border-gray-200 bg-gray-100 text-gray-600"
-              onClick={() => handleSortOpen(FILTER_BAR_MOBILE_SORT_OPTION.sort.param)}
-            >
-              Sort by <ChevronDown className="text-gray-500" />
-            </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="px-1 border-1 border-gray-200 bg-gray-100 text-gray-600"
+                  onClick={() => handleSortOpen(FILTER_BAR_MOBILE_SORT_OPTION.sort.param)}
+                >
+                  Sort by <ChevronDown className="text-gray-500" />
+                </Button>
+              </div>
+
+              <span className="text-sm">{`${totalCount} items`}</span>
+            </div>
           </div>
         </div>
       </div>

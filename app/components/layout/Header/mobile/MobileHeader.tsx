@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { Handbag, Menu, Search, X } from 'lucide-react';
-import { AnimatePresence } from 'framer-motion';
 
 import { Titles } from './components/Titles';
 import { Logo } from './components/Logo';
@@ -17,7 +16,7 @@ export const MobileHeader = () => {
   const handleToggleSuggestAndProducts = () => setIsSuggestAndProductsOpen((prev) => !prev);
 
   return (
-    <header className="flex flex-col pt-2 gap-4 relative">
+    <header className="flex flex-col pt-2 gap-4 relative mb-10">
       <div className="flex flex-wrap justify-center gap-x-10">
         <Titles />
       </div>

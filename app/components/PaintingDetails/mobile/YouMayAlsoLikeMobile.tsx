@@ -1,6 +1,6 @@
 import { ExchangeT, PAINTING_ITEM_VARIANT, PaintingT } from '@/types';
 import { FC } from 'react';
-import { PaintingItem } from '../../PaintingsShop/PaintingItem';
+import { PaintingItem } from '../../PaintingsShop/PaintingShopItem';
 
 type YouMayAlsoLikeMobile = ExchangeT & {
   paintings: PaintingT[];

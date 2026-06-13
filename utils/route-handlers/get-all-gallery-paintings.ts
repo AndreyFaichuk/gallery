@@ -9,6 +9,7 @@ export const getAllGalleryPaintings = async ({
   page,
   sort = 'name',
   limit = 8,
+  mode,
 }: FilterOptionsT) => {
   const [{ exchange, filters, items, totalCount }, exclusiveItems] = await Promise.all([
     getAllShopPaintings({
@@ -18,6 +19,7 @@ export const getAllGalleryPaintings = async ({
       query,
       sort,
       limit,
+      mode,
     }),
 
     getExclusivePaintings(),

@@ -1,0 +1,1 @@
+export { PaginationStrategy } from './PaginationStrategy';

@@ -4,7 +4,7 @@ import { getPaintings } from './get-paintings';
 import { getAvailabilityCounts, getCollectionCounts } from './counts';
 import { getPaintingsCounts } from './counts/get-paintings-counts';
 import { getPaintingsFilterConditions } from './shared/get-paintings-filter-conditions';
-import { FilterOptionsT } from './types/filter-options.type';
+import { ALL_PAINTINGS_API_MODE, FilterOptionsT } from './types/filter-options.type';
 
 export const getAllShopPaintings = async ({
   query,
@@ -13,16 +13,19 @@ export const getAllShopPaintings = async ({
   page,
   sort = 'name',
   limit = 8,
-  isExclusive = '0',
+  mode = ALL_PAINTINGS_API_MODE.PAGINATION,
 }: FilterOptionsT) => {
-  const { conditions, formattedSortParam, offset, sortOrderAsc } = getPaintingsFilterConditions({
+  const pageNumber = page && page > 0 ? page : 1;
+
+  const offset = mode === ALL_PAINTINGS_API_MODE.LOAD_MORE ? 0 : (pageNumber - 1) * limit;
+
+  const finalLimit = mode === ALL_PAINTINGS_API_MODE.LOAD_MORE ? pageNumber * limit : limit;
+
+  const { conditions, formattedSortParam, sortOrderAsc } = getPaintingsFilterConditions({
     collectionId,
     isAvailable,
     query,
-    page,
     sort,
-    limit,
-    isExclusive,
   });
 
   const [items, availabilityCounts, collectionCounts, paintingsCount, currentExhange] =
@@ -32,7 +35,7 @@ export const getAllShopPaintings = async ({
         formattedSortParam,
         offset,
         sortOrderAsc,
-        limit,
+        limit: finalLimit,
       }),
 
       getAvailabilityCounts(),
