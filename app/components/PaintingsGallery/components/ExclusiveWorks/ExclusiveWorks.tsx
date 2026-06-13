@@ -4,10 +4,11 @@ import { PaintingT } from '@/types';
 import { CircleChevronLeft, CircleChevronRight, Sparkles } from 'lucide-react';
 import { FC, useState } from 'react';
 import { ExclusivePaintingPreview } from './ExclusivePaintingPreview';
-import { getMediaContentUrl } from '@/utils';
+import { formatDimension, getMediaContentUrl } from '@/utils';
 import { PaintingPhotoGallery } from '@/app/components/PaintingPhotoGallery';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/app/lib/utils';
+import { Separator } from '@/app/components/ui';
 
 type ExclusiveWorksProps = {
   exclusiveItems: PaintingT[];
@@ -37,6 +38,13 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
 
   const images = exclusiveItems[exclusiveWorkIndex].imageUrls.map((path) =>
     getMediaContentUrl(`${exclusiveItems[exclusiveWorkIndex].id}/${path}`),
+  );
+
+  const imageName = exclusiveItems[exclusiveWorkIndex].name;
+
+  const dimensions = formatDimension(
+    exclusiveItems[exclusiveWorkIndex].width,
+    exclusiveItems[exclusiveWorkIndex].height,
   );
 
   const handleSetCurrentPictureIndex = (index: number) => {
@@ -105,12 +113,25 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
             ease: 'easeOut',
           }}
         >
-          <ExclusivePaintingPreview
-            images={images}
-            onPaintingClick={handleSetCurrentPictureIndex}
-          />
+          <div className="relative">
+            <ExclusivePaintingPreview
+              images={images}
+              onPaintingClick={handleSetCurrentPictureIndex}
+            />
+
+            <div className="absolute flex flex-col gap-2 bottom-[15px] left-3.5">
+              <h2 className="text-lg font-medium text-white">{imageName}</h2>
+              <span className="text-xs font-normal text-white">{dimensions}</span>
+            </div>
+          </div>
         </motion.div>
       </AnimatePresence>
+
+      <span className="m-auto">
+        {exclusiveWorkIndex + 1} / {exclusiveItems.length}
+      </span>
+
+      <Separator />
 
       <PaintingPhotoGallery
         paintingId={exclusiveItems[exclusiveWorkIndex].id}
