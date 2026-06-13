@@ -28,7 +28,7 @@ export const getAllGalleryPaintings = async ({
   return {
     exclusiveItems,
     allItems: items,
-    totalCount: Number(totalCount) + exclusiveItems.length,
+    totalCount,
     filters,
     exchange,
   };
