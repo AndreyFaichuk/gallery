@@ -2,8 +2,8 @@
 
 import type { PaintingT } from '@/types/schema.types';
 import type { FC } from 'react';
-import { PaintingItem } from '../../PaintingsShop/PaintingItem';
 import { PAINTING_ITEM_VARIANT, type ExchangeT } from '@/types';
+import { PaintingItem } from '../../PaintingsShop/PaintingShopItem';
 
 type PaintingsCatalogProps = ExchangeT & {
   items: PaintingT[];
