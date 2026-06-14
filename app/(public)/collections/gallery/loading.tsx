@@ -89,7 +89,7 @@ const AllPaintingsGallerySkeleton = () => {
           // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
           <div
             key={index}
-            className="flex w-full max-w-[270px] flex-col gap-4 min-[2500px]:max-w-[420px]"
+            className="flex w-full max-w-[350px] flex-col gap-4 min-[2500px]:max-w-[420px]"
           >
             <Skeleton className="aspect-square w-full rounded-lg" />
 

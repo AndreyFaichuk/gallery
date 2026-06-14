@@ -15,7 +15,7 @@ type ExclusiveWorksProps = {
 
 const variants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 40 : -40,
+    x: direction > 0 ? 80 : -80,
     opacity: 0,
   }),
   center: {
@@ -23,7 +23,7 @@ const variants = {
     opacity: 1,
   },
   exit: (direction: number) => ({
-    x: direction > 0 ? -40 : 40,
+    x: direction > 0 ? -80 : 80,
     opacity: 0,
   }),
 };
@@ -35,16 +35,17 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
   const [isPhotoGalleryIndex, setIsPhotoGalleryIndex] = useState(-1);
   const [isOpenedPhotoGallery, setIsOpenedPhotoGallery] = useState(false);
 
-  const images = exclusiveItems[exclusiveWorkIndex].imageUrls.map((path) =>
-    getMediaContentUrl(`${exclusiveItems[exclusiveWorkIndex].id}/${path}`),
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const currentItem = exclusiveItems[exclusiveWorkIndex];
+
+  const images = currentItem.imageUrls.map((path) =>
+    getMediaContentUrl(`${currentItem.id}/${path}`),
   );
 
-  const imageName = exclusiveItems[exclusiveWorkIndex].name;
+  const imageName = currentItem.name;
 
-  const dimensions = formatDimension(
-    exclusiveItems[exclusiveWorkIndex].width,
-    exclusiveItems[exclusiveWorkIndex].height,
-  );
+  const dimensions = formatDimension(currentItem.width, currentItem.height);
 
   const handleSetCurrentPictureIndex = (index: number) => {
     setIsPhotoGalleryIndex(index);
@@ -52,27 +53,32 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
   };
 
   const handleIncreaseExclusiveWorkIndex = () => {
+    if (isAnimating) return;
+
     setDirection(1);
 
     setExclusiveWorkIndex((prev) => {
       if (prev === exclusiveItems.length - 1) return prev;
-      return (prev += 1);
+
+      return prev + 1;
     });
   };
 
   const handleDecreaseExclusiveWorkIndex = () => {
+    if (isAnimating) return;
+
     setDirection(-1);
 
     setExclusiveWorkIndex((prev) => {
       if (prev === 0) return prev;
-      return (prev -= 1);
+
+      return prev - 1;
     });
   };
 
   return (
     <div className="flex flex-col w-full gap-6">
       <div className="flex-wrap flex w-full items-center justify-between">
-        {/* Desktop block */}
         <div className="gap-4 items-start hidden xs:flex">
           <div className="flex gap-4">
             <Sparkles />
@@ -86,7 +92,6 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
           </div>
         </div>
 
-        {/* Mobile block */}
         <div className="flex gap-2 w-full justify-center mb-2 xs:hidden">
           <Sparkles />
           <h2 className="text-2xl font-semibold leading-none -mt-1">Exclusive Works</h2>
@@ -119,16 +124,29 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
 
       <AnimatePresence mode="wait" custom={direction}>
         <motion.div
-          key={exclusiveItems[exclusiveWorkIndex].id}
+          key={currentItem.id}
           custom={direction}
           variants={variants}
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{
-            duration: 0.3,
-            ease: 'easeOut',
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={(_, info) => {
+            const threshold = 80;
+
+            if (info.offset.x < -threshold) {
+              handleIncreaseExclusiveWorkIndex();
+            }
+
+            if (info.offset.x > threshold) {
+              handleDecreaseExclusiveWorkIndex();
+            }
           }}
+          onAnimationStart={() => setIsAnimating(true)}
+          onAnimationComplete={() => setIsAnimating(false)}
         >
           <div className="relative">
             <ExclusivePaintingPreview
@@ -149,7 +167,7 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
       </span>
 
       <PaintingPhotoGallery
-        paintingId={exclusiveItems[exclusiveWorkIndex].id}
+        paintingId={currentItem.id}
         isOpened={isOpenedPhotoGallery}
         index={isPhotoGalleryIndex}
         onClose={() => {
