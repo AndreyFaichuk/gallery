@@ -13,7 +13,7 @@ export const DesktopSearchPageSkeleton = ({
   showPagination = true,
 }: DesktopSearchPageSkeletonProps) => {
   return (
-    <div className="flex w-full flex-col gap-12 mt-16">
+    <div className="flex w-full flex-col gap-6 mt-6">
       <PaintingsFilterBarSkeleton />
 
       <PaintingItemSkeleton variant={variant} />

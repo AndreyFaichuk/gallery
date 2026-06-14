@@ -75,18 +75,14 @@ export const DesktopFilterBarSkeleton = () => {
 export const MobileFilterBarSkeleton = () => {
   return (
     <div className="xs:hidden">
-      <div className="flex gap-2 flex-wrap">
-        <div className="flex flex-col gap-2 w-full">
-          <div className="w-full flex justify-end">
-            <Skeleton className="h-5 w-20 rounded-sm" />
-          </div>
-
-          <div className="flex gap-2 flex-wrap">
-            <Skeleton className="h-9 w-[112px] rounded-lg" />
-            <Skeleton className="h-9 w-[104px] rounded-lg" />
-            <Skeleton className="h-9 w-[88px] rounded-lg" />
-          </div>
+      <div className="flex items-center justify-between gap-2 w-full">
+        <div className="flex gap-2">
+          <Skeleton className="h-9 w-[100px] rounded-lg" />
+          <Skeleton className="h-9 w-[105px] rounded-lg" />
+          <Skeleton className="h-9 w-[80px] rounded-lg" />
         </div>
+
+        <Skeleton className="h-5 w-10 rounded-sm" />
       </div>
     </div>
   );

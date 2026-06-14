@@ -126,7 +126,7 @@ const filters = [
   },
 ] as const;
 
-const wait = () => new Promise((res) => setTimeout(() => res(1), 10000));
+const wait = () => new Promise((res) => setTimeout(() => res(1), 3000));
 
 const Page = async ({ searchParams }: PaintingsSearchParamsProps) => {
   const { collections, availability, query, page, sort } = await searchParams;

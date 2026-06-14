@@ -9,30 +9,22 @@ const PREVIEW_SLOTS = [
   'col-[1_/_3] row-[4_/_5] md:col-[10_/_13] md:row-[2_/_3]',
 ];
 
-const PaginationSkeleton = () => {
+const ALL_PAINTINGS_SKELETON_COUNT = 8;
+
+const LoadMoreSkeleton = () => {
   return (
-    <div className="flex justify-center mt-4">
-      <div className="flex flex-row items-center gap-1">
-        <Skeleton className="h-9 w-[92px] rounded-sm" />
-        <Skeleton className="h-9 w-9 rounded-sm" />
-        <Skeleton className="h-9 w-9 rounded-sm" />
-        <Skeleton className="h-9 w-9 rounded-sm" />
-        <Skeleton className="h-9 w-[68px] rounded-sm" />
-      </div>
+    <div className="m-auto">
+      <Skeleton className="h-8 w-[166px] rounded-lg" />
     </div>
   );
 };
 
 const GalleryHeroSkeleton = () => {
   return (
-    <div className="flex justify-center">
-      <div className="flex w-[350px] max-w-full flex-col items-center gap-2 px-4 xs:px-0">
+    <div className="mb-5 flex justify-center">
+      <div className="flex w-[350px] max-w-full flex-col items-center gap-2">
         <Skeleton className="h-9 w-28 rounded-sm" />
-        <div className="flex w-full flex-col items-center gap-2">
-          <Skeleton className="h-6 w-full rounded-sm" />
-          <Skeleton className="h-6 w-11/12 rounded-sm" />
-          <Skeleton className="h-6 w-2/3 rounded-sm" />
-        </div>
+        <Skeleton className="h-5 w-44 rounded-sm" />
       </div>
     </div>
   );
@@ -51,13 +43,28 @@ const ExclusivePaintingPreviewSkeleton = () => {
 const ExclusiveWorksSkeleton = () => {
   return (
     <div className="flex w-full flex-col gap-6">
-      <div className="flex w-full flex-wrap items-center justify-between gap-4">
-        <div className="flex items-start gap-4">
+      <div className="flex w-full flex-wrap items-center justify-between">
+        <div className="hidden items-start gap-4 xs:flex">
+          <div className="flex gap-4">
+            <Skeleton className="size-6 shrink-0 rounded-sm" />
+            <div className="flex w-[200px] flex-col items-start gap-2 xs:w-[250px] md:w-[400px]">
+              <Skeleton className="h-8 w-48 rounded-sm" />
+              <Skeleton className="h-5 w-full rounded-sm" />
+              <Skeleton className="h-5 w-11/12 rounded-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-2 flex w-full justify-center gap-2 xs:hidden">
           <Skeleton className="size-6 shrink-0 rounded-sm" />
-          <div className="flex w-[200px] flex-col items-start gap-2 xs:w-[250px] md:w-[400px]">
-            <Skeleton className="h-8 w-48 rounded-sm" />
-            <Skeleton className="h-6 w-full rounded-sm" />
-            <Skeleton className="h-6 w-11/12 rounded-sm" />
+          <Skeleton className="h-8 w-48 rounded-sm" />
+        </div>
+
+        <div className="flex flex-col items-start gap-4 xs:hidden">
+          <div className="flex w-[260px] flex-col items-start gap-2 md:w-[400px]">
+            <Skeleton className="h-5 w-full rounded-sm" />
+            <Skeleton className="h-5 w-11/12 rounded-sm" />
+            <Skeleton className="h-5 w-4/5 rounded-sm" />
           </div>
         </div>
 
@@ -72,19 +79,54 @@ const ExclusiveWorksSkeleton = () => {
   );
 };
 
+const AllPaintingsGallerySkeleton = () => {
+  return (
+    <div className="flex flex-col gap-5">
+      <Skeleton className="h-8 w-40 rounded-sm" />
+
+      <div className="grid grid-cols-1 justify-items-center gap-y-8 xs:grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] xs:gap-x-6 md:grid-cols-[repeat(auto-fit,minmax(min(100%,13.5rem),1fr))] min-[2500px]:grid-cols-[repeat(auto-fit,minmax(min(100%,26rem),1fr))]">
+        {Array.from({ length: ALL_PAINTINGS_SKELETON_COUNT }).map((_, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
+          <div
+            key={index}
+            className="flex w-full max-w-[270px] flex-col gap-4 min-[2500px]:max-w-[420px]"
+          >
+            <Skeleton className="aspect-square w-full rounded-lg" />
+
+            <div className="flex flex-col gap-2">
+              <Skeleton className="h-5 w-3/4 rounded-sm" />
+              <Skeleton className="h-5 w-1/2 rounded-sm" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const PaintingsGallerySkeleton = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <ExclusiveWorksSkeleton />
+
+      <div className="h-[1px] w-full shrink-0 bg-border" />
+
+      <AllPaintingsGallerySkeleton />
+    </div>
+  );
+};
+
 const Loading = () => {
   return (
-    <div className="flex flex-col mt-10">
+    <div className="mt-4 flex flex-col">
       <GalleryHeroSkeleton />
 
-      <div className="flex flex-col gap-12 mt-16">
+      <div className="flex flex-col gap-6">
         <PaintingsFilterBarSkeleton />
 
-        <div className="flex">
-          <ExclusiveWorksSkeleton />
-        </div>
+        <PaintingsGallerySkeleton />
 
-        <PaginationSkeleton />
+        <LoadMoreSkeleton />
       </div>
     </div>
   );

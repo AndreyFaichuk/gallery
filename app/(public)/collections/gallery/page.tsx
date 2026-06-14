@@ -4,7 +4,7 @@ import { PaintingsGallery } from '@/app/components/PaintingsGallery';
 import { getAllGalleryPaintings } from '@/utils/route-handlers/get-all-gallery-paintings';
 import { ALL_PAINTINGS_API_MODE } from '@/utils/route-handlers/types/filter-options.type';
 
-const wait = () => new Promise((res) => setTimeout(() => res(1), 10000));
+const wait = () => new Promise((res) => setTimeout(() => res(1), 3000));
 
 const Page = async ({ searchParams }: PaintingsSearchParamsProps) => {
   const { collections, availability, query, page, sort } = await searchParams;

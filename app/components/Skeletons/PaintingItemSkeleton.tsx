@@ -11,7 +11,7 @@ const PAINTING_ITEM_SKELETON_STYLES: Record<
   }
 > = {
   [PAINTING_ITEM_VARIANT.CATALOG]: {
-    rootClassName: 'w-full xl:w-[480px] max-w-full',
+    rootClassName: 'w-full xs:w-[480px] max-w-full',
     containerClassName:
       'grid w-full xl:w-auto xl:grid-cols-2 gap-20 justify-items-center max-w-[90%] mx-auto',
   },
