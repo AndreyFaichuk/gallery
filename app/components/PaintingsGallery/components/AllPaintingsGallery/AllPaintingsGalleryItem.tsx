@@ -19,7 +19,7 @@ export const AllPaintingsGalleryItemShell: FC<AllPaintingsGalleryItemShellProps>
 }) => {
   return (
     <motion.div
-      className="w-full flex flex-col gap-4  group max-w-[270px] min-[2500px]:max-w-[420px]"
+      className="w-full flex flex-col gap-4 group max-w-[350px] min-[2500px]:max-w-[420px]"
       initial="rest"
       whileHover="hover"
       animate="rest"
