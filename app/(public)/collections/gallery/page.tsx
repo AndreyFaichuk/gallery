@@ -18,8 +18,6 @@ const Page = async ({ searchParams }: PaintingsSearchParamsProps) => {
     mode: ALL_PAINTINGS_API_MODE.LOAD_MORE,
   });
 
-  await wait();
-
   return (
     <div className="flex flex-col mt-4">
       <div className="flex justify-center mb-5">
