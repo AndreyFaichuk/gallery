@@ -30,8 +30,8 @@ export const AllPaintingsGalleryItemShell: FC<AllPaintingsGalleryItemShellProps>
 };
 
 export const AllPaintingsGalleryItem: FC<AllPaintingsGalleryItemProps> = ({ painting }) => {
-  const firstImage = getMediaContentUrl(`${painting.id}/${painting.imageUrls[0]}`);
-  const secondImage = getMediaContentUrl(`${painting.id}/${painting.imageUrls[1]}`);
+  const firstImage = getMediaContentUrl(`paintings/${painting.id}/${painting.imageUrls[0]}`);
+  const secondImage = getMediaContentUrl(`paintings/${painting.id}/${painting.imageUrls[1]}`);
 
   return (
     <AllPaintingsGalleryItemShell>

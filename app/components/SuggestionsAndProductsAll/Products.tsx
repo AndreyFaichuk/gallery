@@ -29,7 +29,7 @@ const ProductsComponent: FC<ProductsProps> = ({ paintings, isLoading = false, on
 
       <>
         {paintings.map((item) => {
-          const firstImageUrl = getMediaContentUrl(`${item.id}/${item.imageUrls[0]}`);
+          const firstImageUrl = getMediaContentUrl(`paintings/${item.id}/${item.imageUrls[0]}`);
 
           return (
             <CommandItem

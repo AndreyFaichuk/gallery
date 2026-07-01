@@ -71,6 +71,13 @@
       "when": 1780824272699,
       "tag": "0009_tan_tigra",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1782217251205,
+      "tag": "0010_damp_mother_askani",
+      "breakpoints": true
     }
   ]
 }

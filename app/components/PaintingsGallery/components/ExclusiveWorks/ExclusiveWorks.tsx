@@ -40,7 +40,7 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
   const currentItem = exclusiveItems[exclusiveWorkIndex];
 
   const images = currentItem.imageUrls.map((path) =>
-    getMediaContentUrl(`${currentItem.id}/${path}`),
+    getMediaContentUrl(`paintings/${currentItem.id}/${path}`),
   );
 
   const imageName = currentItem.name;

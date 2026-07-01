@@ -1,0 +1,1 @@
+ALTER TABLE "collections" ADD COLUMN "image_urls" jsonb DEFAULT '[]'::jsonb NOT NULL;

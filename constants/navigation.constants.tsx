@@ -1,9 +1,10 @@
 import { MenuOptions } from '@/types';
-import { Images, Palette, ShoppingBag } from 'lucide-react';
+import { Group, Images, Palette, ShoppingBag } from 'lucide-react';
 
 export const NAVIGATION_MENU_OPTIONS = {
   SHOP: { title: 'shop', link: '/collections/shop' },
   GALLERY: { title: 'gallery', link: '/collections/gallery' },
+  COLLECTIONS: { title: 'collections', link: '/collections' },
   ABOUT_ME: { title: 'about me', link: '/about' },
 } as const;
 
@@ -15,6 +16,10 @@ export const DESKTOP_MENU_OPTIONS: MenuOptions = [
   {
     title: NAVIGATION_MENU_OPTIONS.GALLERY.title,
     link: NAVIGATION_MENU_OPTIONS.GALLERY.link,
+  },
+  {
+    title: NAVIGATION_MENU_OPTIONS.COLLECTIONS.title,
+    link: NAVIGATION_MENU_OPTIONS.COLLECTIONS.link,
   },
   {
     title: NAVIGATION_MENU_OPTIONS.ABOUT_ME.title,
@@ -32,6 +37,11 @@ export const MOBILE_MENU_OPTIONS: MenuOptions = [
     title: NAVIGATION_MENU_OPTIONS.GALLERY.title,
     link: NAVIGATION_MENU_OPTIONS.GALLERY.link,
     icon: <Images className="size-5 ml-2" />,
+  },
+  {
+    title: NAVIGATION_MENU_OPTIONS.COLLECTIONS.title,
+    link: NAVIGATION_MENU_OPTIONS.COLLECTIONS.link,
+    icon: <Group className="size-5 ml-2" />,
   },
   {
     title: NAVIGATION_MENU_OPTIONS.ABOUT_ME.title,

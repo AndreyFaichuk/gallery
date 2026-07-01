@@ -91,19 +91,15 @@ export const PaintingShopItem: FC<PaintingItemProps> = ({
 
   const styles = PAINTING_ITEM_STYLES[variant];
 
-  const firstImage = getMediaContentUrl(`${item.id}/${item.imageUrls[0]}`);
-  const secondImage = getMediaContentUrl(`${item.id}/${item.imageUrls[1]}`);
+  const firstImage = getMediaContentUrl(`paintings/${item.id}/${item.imageUrls[0]}`);
+  const secondImage = getMediaContentUrl(`paintings/${item.id}/${item.imageUrls[1]}`);
 
   const handleRedirect = (id: string) => {
     router.push(`/paintings/${id}`);
   };
 
   return (
-    <PaintingItemShell
-      variant={variant}
-      onClick={() => handleRedirect(item.id)}
-      interactive
-    >
+    <PaintingItemShell variant={variant} onClick={() => handleRedirect(item.id)} interactive>
       <div className="relative overflow-hidden">
         <motion.div
           variants={{

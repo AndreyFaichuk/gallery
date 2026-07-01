@@ -35,14 +35,16 @@ export const PhotoCollageMobile: FC<PhotoCollageMobileProps> = ({
 
   const isVideoExists = videos.some((video) => video.src && video.thumbnail);
 
-  const paintingPreparedImageUrls = imageUrls.map((image) => getMediaContentUrl(`${id}/${image}`));
+  const paintingPreparedImageUrls = imageUrls.map((image) =>
+    getMediaContentUrl(`paintings/${id}/${image}`),
+  );
 
   const paintingPreparedVideoUrls = videos?.map((video) =>
-    getMediaContentUrl(`${id}/videos/${video.src}`),
+    getMediaContentUrl(`paintings/${id}/videos/${video.src}`),
   );
 
   const paintingThumbnailVideoUrls = videos?.map((video) =>
-    getMediaContentUrl(`${id}/thumbnails/${video.thumbnail}`),
+    getMediaContentUrl(`paintings/${id}/thumbnails/${video.thumbnail}`),
   );
 
   const items: GalleryItem[] = [
