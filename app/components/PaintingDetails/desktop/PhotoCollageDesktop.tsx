@@ -16,10 +16,12 @@ export const PhotoCollageDesktop: FC<PhotoCollageDesktopProps> = ({
   const [isPhotoGalleryIndex, setIsPhotoGalleryIndex] = useState(-1);
   const [isOpenedPhotoGallery, setIsOpenedPhotoGallery] = useState(false);
 
-  const paintingPreparedImageUrls = imageUrls.map((image) => getMediaContentUrl(`${id}/${image}`));
+  const paintingPreparedImageUrls = imageUrls.map((image) =>
+    getMediaContentUrl(`paintings/${id}/${image}`),
+  );
 
   const paintingPreparedVideoUrls = videos?.map((video) =>
-    getMediaContentUrl(`${id}/videos/${video.src}`),
+    getMediaContentUrl(`paintings/${id}/videos/${video.src}`),
   );
 
   const mainImage = paintingPreparedImageUrls[0];

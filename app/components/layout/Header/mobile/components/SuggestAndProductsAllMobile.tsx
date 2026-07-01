@@ -64,7 +64,9 @@ const SuggestAndProductsAllMobileContent = ({ onClose }: { onClose: VoidFunction
           <CommandGroup heading="Products">
             <div className="flex flex-col border-1 border-gray-200 rounded-md p-2 gap-2">
               {paintings.map((painting, index) => {
-                const firstImageUrl = getMediaContentUrl(`${painting.id}/${painting.imageUrls[0]}`);
+                const firstImageUrl = getMediaContentUrl(
+                  `paintings/${painting.id}/${painting.imageUrls[0]}`,
+                );
 
                 const isLastElement = paintings.length - 1 === index;
 

@@ -67,6 +67,7 @@ export const collections = pgTable('collections', {
   name: text('name').notNull(),
   description: text('description'),
   createdAt: timestamp().defaultNow(),
+  imageUrls: jsonb('image_urls').$type<string[]>().notNull().default([]),
 });
 
 export const exchangeRatesBaseCurrencyEnum = pgEnum('base_currency', ['EUR', 'USD', 'UAH']);
