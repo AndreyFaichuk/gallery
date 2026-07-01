@@ -2,7 +2,7 @@ import { Collections } from '@/app/components/Collections';
 import { getAllCollections } from '@/utils/route-handlers/get-all-collections';
 
 const Page = async () => {
-  const collections = await getAllCollections();
+  // const collections = await getAllCollections();
 
   return (
     <div className="flex flex-col mt-4">
@@ -11,7 +11,7 @@ const Page = async () => {
           <h1 className="text-3xl font-semibold">Collections</h1>
         </div>
       </div>
-      <Collections collections={collections} />
+      {/* <Collections collections={collections} /> */}
     </div>
   );
 };
