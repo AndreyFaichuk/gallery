@@ -37,7 +37,7 @@ const RootLayout: FC<Props> = ({ children }) => {
             <Header />
           </div>
 
-          <Separator className="text-gray-300 mt-2 hidden xs:block" />
+          <Separator className="mt-2 hidden xs:block text-gray-300 shadow-[0_5px_13px_rgba(0,0,0,0.7)]" />
 
           <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-60">
             <main className="mb-4 flex flex-col gap-4">{children}</main>
