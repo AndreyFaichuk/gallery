@@ -1,5 +1,3 @@
-'use client';
-
 import { Collections } from '@/app/components/Collections';
 import { getAllCollections } from '@/utils/route-handlers/get-all-collections';
 
