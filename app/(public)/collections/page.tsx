@@ -1,9 +1,9 @@
-import { Collections } from '@/app/components/Collections';
-import { getAllCollections } from '@/utils/route-handlers/get-all-collections';
+import { CollectionsPreview } from '@/app/components/Collections/components/CollectionsPreview';
+import { MoreCollections } from '@/app/components/Collections/components/MoreCollections';
+import { CollectionsPreviewSkeleton } from '@/app/components/Skeletons';
+import { Suspense } from 'react';
 
 const Page = async () => {
-  const collections = await getAllCollections();
-
   return (
     <section className="flex flex-col mt-4">
       <div className="flex justify-center mb-5">
@@ -11,7 +11,13 @@ const Page = async () => {
           <h1 className="text-3xl font-semibold">Collections</h1>
         </div>
       </div>
-      <Collections collections={collections} />
+
+      <div className="flex flex-col gap-6">
+        <Suspense fallback={<CollectionsPreviewSkeleton />}>
+          <CollectionsPreview />
+        </Suspense>
+        <MoreCollections />
+      </div>
     </section>
   );
 };
