@@ -32,6 +32,7 @@ export const CollectionItem: FC<CollectionItemProps> = ({
       <Image
         fill
         src={image}
+        sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) calc(62vw - 40px), (max-width: 1279px) calc(62vw - 59px), (max-width: 1535px) calc(62vw - 99px), calc(62vw - 295px)"
         alt={collection.name}
         className={cn(
           'object-cover transition-transform duration-500 group-hover:scale-[2.3] md:group-hover:scale-[2.1]',
