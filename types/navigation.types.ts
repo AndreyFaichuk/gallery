@@ -1,6 +1,11 @@
-import { JSX, ReactNode } from 'react';
+import { JSX } from 'react';
 
-export type FilterOptionParamsT = 'availability' | 'collections';
+export const FILTER_OPTION_PARAMS = {
+  AVAILABILITY: 'availability',
+  COLLECTIONS: 'collections',
+} as const;
+
+export type FilterOptionParamsT = (typeof FILTER_OPTION_PARAMS)[keyof typeof FILTER_OPTION_PARAMS];
 export type BaseFilterOptionNamesT = 'Availability' | 'Collections';
 
 export type SortOptionParamsT = 'sort';
