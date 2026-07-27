@@ -2,6 +2,7 @@ import { CollectionPreview } from '@/app/components/Collections/components';
 import { MoreCollections } from '@/app/components/Collections/components/MoreCollections';
 import { PaintingsCollection } from '@/app/components/PaintingsCollection';
 import { PaintingsFilterBar } from '@/app/components/PaintingsFilterBar';
+import { CollectionPreviewSkeleton } from '@/app/components/Skeletons';
 import { FILTER_OPTION_PARAMS, PaintingPageParams, PaintingsSearchParamsProps } from '@/types';
 import { getAllShopPaintings } from '@/utils/route-handlers/get-all-shop-paintings';
 import { Suspense } from 'react';
@@ -27,7 +28,7 @@ const Page = async ({ params, searchParams }: PageProps) => {
     <section className="flex flex-col">
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-6">
-          <Suspense fallback={<span>Loading collection...</span>}>
+          <Suspense fallback={<CollectionPreviewSkeleton />}>
             <CollectionPreview id={id} />
           </Suspense>
         </div>

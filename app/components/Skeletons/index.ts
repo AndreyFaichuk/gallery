@@ -5,3 +5,4 @@ export * from './FilterBarSkeleton';
 export * from './SearchAutocompleteSkeletons';
 export * from './PaintingPageSkeleton';
 export * from './CollectionsPreviewSkeleton';
+export * from './CollectionPreviewSkeleton';
