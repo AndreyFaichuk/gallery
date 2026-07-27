@@ -1,0 +1,1 @@
+export { PaintingsCollection } from './PaintingsCollection';
