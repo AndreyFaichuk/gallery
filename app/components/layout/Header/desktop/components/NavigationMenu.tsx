@@ -73,7 +73,7 @@ export const NavigationMenu = () => {
                   <Link
                     className={cn(
                       'relative pb-[15px]',
-                      'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-primary',
+                      'after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-[#d5d1d1]',
                       'after:scale-x-0 after:origin-left after:transition-transform',
                       option.link === pathname && 'after:scale-x-100',
                     )}
