@@ -28,8 +28,9 @@ export const Statement = () => {
 
         <div className="flex w-[85%] min-w-[70%] max-w-[90%] flex-col gap-6">
           <p className="text-xl leading-tight mb-2 italic text-zinc-800">
-            My paintings emerge from the dialogue between intuition and observation. I'm interested
-            in the invisible: the atmosphere of a moment, the trace of light, the echo of feeling.
+            My paintings emerge from the dialogue between intuition and observation. I&apos;m
+            interested in the invisible: the atmosphere of a moment, the trace of light, the echo of
+            feeling.
           </p>
 
           <div className="flex flex-col gap-6 border-r border-amber-600 pr-6">
@@ -42,10 +43,10 @@ export const Statement = () => {
             <p>My subject is not the outside world, but the inner one.</p>
 
             <p>
-              I'm drawn to the quiet power of colour, to the way it can hold memory without naming
-              it. I work slowly, allowing each layer to speak before the next one is laid down. Over
-              time, the painting becomes a record of presence — of looking, of listening, of
-              becoming.
+              I&apos;m drawn to the quiet power of colour, to the way it can hold memory without
+              naming it. I work slowly, allowing each layer to speak before the next one is laid
+              down. Over time, the painting becomes a record of presence — of looking, of listening,
+              of becoming.
             </p>
           </div>
 
