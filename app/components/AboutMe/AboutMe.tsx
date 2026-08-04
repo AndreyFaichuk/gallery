@@ -1,12 +1,15 @@
 import { Separator } from '../ui';
 import { Hero } from './components';
+import { Statement } from './components';
 
 export const AboutMe = () => {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-10">
       <Hero />
 
       <Separator />
+
+      <Statement />
     </div>
   );
 };

@@ -11,9 +11,9 @@ export const Hero = () => {
     <section className="font-body text-stone-900 flex flex-col gap-8">
       <div className="flex">
         <div className="mx-auto max-w-xl px-6 lg:px-12">
-          <p className="text-xs uppercase tracking-widest text-stone-500 sm:text-lg">
+          <h2 className="text-xs uppercase tracking-widest text-stone-500 sm:text-lg">
             About the artist
-          </p>
+          </h2>
 
           <h1 className="mt-4 text-5xl leading-none font-normal tracking-tight sm:text-6xl lg:text-7xl">
             <span className="block">Juliette</span>
