@@ -1,0 +1,1 @@
+export { AnimatedSlider } from './AnimatedSlider';

@@ -6,8 +6,9 @@ import { FC, useState } from 'react';
 import { ExclusivePaintingPreview } from './ExclusivePaintingPreview';
 import { formatDimension, getMediaContentUrl } from '@/utils';
 import { PaintingPhotoGallery } from '@/app/components/PaintingPhotoGallery';
-import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/app/lib/utils';
+import { useSlideContent } from '@/hooks';
+import { AnimatedSlider } from '@/app/components/AnimatedSlider';
 
 type ExclusiveWorksProps = {
   exclusiveItems: PaintingT[];
@@ -29,15 +30,13 @@ const variants = {
 };
 
 export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
-  const [exclusiveWorkIndex, setExclusiveWorkIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const { currentIndex, direction, handleDecreaseIndex, handleIncreaseIndex, setIsAnimating } =
+    useSlideContent();
 
   const [isPhotoGalleryIndex, setIsPhotoGalleryIndex] = useState(-1);
   const [isOpenedPhotoGallery, setIsOpenedPhotoGallery] = useState(false);
 
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const currentItem = exclusiveItems[exclusiveWorkIndex];
+  const currentItem = exclusiveItems[currentIndex];
 
   const images = currentItem.imageUrls.map((path) =>
     getMediaContentUrl(`paintings/${currentItem.id}/${path}`),
@@ -50,30 +49,6 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
   const handleSetCurrentPictureIndex = (index: number) => {
     setIsPhotoGalleryIndex(index);
     setIsOpenedPhotoGallery(true);
-  };
-
-  const handleIncreaseExclusiveWorkIndex = () => {
-    if (isAnimating) return;
-
-    setDirection(1);
-
-    setExclusiveWorkIndex((prev) => {
-      if (prev === exclusiveItems.length - 1) return prev;
-
-      return prev + 1;
-    });
-  };
-
-  const handleDecreaseExclusiveWorkIndex = () => {
-    if (isAnimating) return;
-
-    setDirection(-1);
-
-    setExclusiveWorkIndex((prev) => {
-      if (prev === 0) return prev;
-
-      return prev - 1;
-    });
   };
 
   return (
@@ -108,62 +83,52 @@ export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {
         <div className="gap-4 md:gap-2 flex">
           <CircleChevronLeft
             className={cn('size-10 md:size-8 cursor-pointer', {
-              'text-gray-400': exclusiveWorkIndex === 0,
+              'text-gray-400': currentIndex === 0,
             })}
-            onClick={handleDecreaseExclusiveWorkIndex}
+            onClick={() => {
+              if (currentIndex === 0) return;
+
+              handleDecreaseIndex();
+            }}
           />
 
           <CircleChevronRight
             className={cn('size-10 md:size-8 cursor-pointer', {
-              'text-gray-400': exclusiveWorkIndex === exclusiveItems.length - 1,
+              'text-gray-400': currentIndex === exclusiveItems.length - 1,
             })}
-            onClick={handleIncreaseExclusiveWorkIndex}
+            onClick={() => {
+              if (currentIndex === exclusiveItems.length - 1) return;
+
+              handleIncreaseIndex();
+            }}
           />
         </div>
       </div>
 
-      <AnimatePresence mode="wait" custom={direction}>
-        <motion.div
-          key={currentItem.id}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 0.3, ease: 'easeOut' }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
-          onDragEnd={(_, info) => {
-            const threshold = 80;
+      <AnimatedSlider
+        direction={direction}
+        id={currentItem.id}
+        handleIncreaseIndex={handleIncreaseIndex}
+        handleDecreaseIndex={handleDecreaseIndex}
+        setIsAnimating={setIsAnimating}
+        shouldStopBackward={currentIndex === 0}
+        shouldStopForward={currentIndex === exclusiveItems.length - 1}
+      >
+        <div className="relative">
+          <ExclusivePaintingPreview
+            images={images}
+            onPaintingClick={handleSetCurrentPictureIndex}
+          />
 
-            if (info.offset.x < -threshold) {
-              handleIncreaseExclusiveWorkIndex();
-            }
-
-            if (info.offset.x > threshold) {
-              handleDecreaseExclusiveWorkIndex();
-            }
-          }}
-          onAnimationStart={() => setIsAnimating(true)}
-          onAnimationComplete={() => setIsAnimating(false)}
-        >
-          <div className="relative">
-            <ExclusivePaintingPreview
-              images={images}
-              onPaintingClick={handleSetCurrentPictureIndex}
-            />
-
-            <div className="absolute flex flex-col gap-2 bottom-[15px] left-3.5">
-              <h2 className="text-lg font-medium text-white">{imageName}</h2>
-              <span className="text-xs font-normal text-white">{dimensions}</span>
-            </div>
+          <div className="absolute flex flex-col gap-2 bottom-[15px] left-3.5">
+            <h2 className="text-lg font-medium text-white">{imageName}</h2>
+            <span className="text-xs font-normal text-white">{dimensions}</span>
           </div>
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      </AnimatedSlider>
 
       <span className="m-auto">
-        {exclusiveWorkIndex + 1} / {exclusiveItems.length}
+        {currentIndex + 1} / {exclusiveItems.length}
       </span>
 
       <PaintingPhotoGallery

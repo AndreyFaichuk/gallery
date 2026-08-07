@@ -1,11 +1,11 @@
 import { getMediaContentUrl } from '@/utils';
-import { IMAGES_CONFIG } from '../constants';
+import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../constants';
 import Image from 'next/image';
 
 export const Statement = () => {
   const { statement } = IMAGES_CONFIG;
 
-  const statementImageUrl = getMediaContentUrl(statement);
+  const statementImageUrl = getMediaContentUrl(`${ABOUT_ME_PREFIX}/${statement}`);
 
   return (
     <section className="flex px-6 lg:px-12 gap-10 font-body">
