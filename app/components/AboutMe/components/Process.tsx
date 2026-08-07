@@ -39,7 +39,7 @@ export const Process = () => {
       </div>
 
       <div className="flex items-start justify-between">
-        <div className="flex flex-col mt-60 w-32 gap-4">
+        <div className="flex flex-col mt-56 w-32 gap-4">
           <MoveLeft
             className={cn('size-10 md:size-8 cursor-pointer', {
               'text-gray-400': currentIndex === 0,
@@ -51,7 +51,10 @@ export const Process = () => {
             }}
           />
 
-          <p>A glimpse into my world and the living process behind each work</p>
+          <p>
+            A glimpse into my world and the living process behind each work, from the first spark of
+            inspiration.
+          </p>
         </div>
         <div className="flex flex-col gap-4">
           <AnimatedSlider
@@ -76,7 +79,7 @@ export const Process = () => {
         </div>
 
         <MoveRight
-          className={cn('size-10 md:size-8 cursor-pointer mt-60', {
+          className={cn('size-10 md:size-8 cursor-pointer mt-56', {
             'text-gray-400': currentIndex === Object.values(process).length - 1,
           })}
           onClick={() => {
