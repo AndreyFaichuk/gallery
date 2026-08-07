@@ -7,3 +7,4 @@ export * from './use-currency';
 export * from './use-debounce';
 export * from './use-hydrated';
 export * from './use-filter-manage';
+export * from './use-slide-content';

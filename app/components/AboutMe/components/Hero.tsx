@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import { IMAGES_CONFIG } from '../constants';
+import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../constants';
 import { getMediaContentUrl } from '@/utils';
 
 export const Hero = () => {
   const { hero } = IMAGES_CONFIG;
 
-  const heroImageUrl = getMediaContentUrl(hero);
+  const heroImageUrl = getMediaContentUrl(`${ABOUT_ME_PREFIX}/${hero}`);
 
   return (
     <section className="font-body text-stone-900 flex flex-col gap-8">

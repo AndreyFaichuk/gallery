@@ -1,5 +1,5 @@
 import { Separator } from '../ui';
-import { Hero } from './components';
+import { Hero, Process } from './components';
 import { Statement } from './components';
 
 export const AboutMe = () => {
@@ -10,6 +10,8 @@ export const AboutMe = () => {
       <Separator />
 
       <Statement />
+
+      <Process />
     </div>
   );
 };
