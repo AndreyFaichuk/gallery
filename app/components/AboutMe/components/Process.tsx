@@ -38,17 +38,21 @@ export const Process = () => {
         <div className="h-px max-w-24 flex-1 bg-amber-600" />
       </div>
 
-      <div className="flex items-center justify-between">
-        <MoveLeft
-          className={cn('size-10 md:size-8 cursor-pointer', {
-            'text-gray-400': currentIndex === 0,
-          })}
-          onClick={() => {
-            if (currentIndex === 0) return;
+      <div className="flex items-start justify-between">
+        <div className="flex flex-col mt-60 w-32 gap-4">
+          <MoveLeft
+            className={cn('size-10 md:size-8 cursor-pointer', {
+              'text-gray-400': currentIndex === 0,
+            })}
+            onClick={() => {
+              if (currentIndex === 0) return;
 
-            handleDecreaseIndex();
-          }}
-        />
+              handleDecreaseIndex();
+            }}
+          />
+
+          <p>A glimpse into my world and the living process behind each work</p>
+        </div>
         <div className="flex flex-col gap-4">
           <AnimatedSlider
             direction={direction}
@@ -72,7 +76,7 @@ export const Process = () => {
         </div>
 
         <MoveRight
-          className={cn('size-10 md:size-8 cursor-pointer', {
+          className={cn('size-10 md:size-8 cursor-pointer mt-60', {
             'text-gray-400': currentIndex === Object.values(process).length - 1,
           })}
           onClick={() => {
