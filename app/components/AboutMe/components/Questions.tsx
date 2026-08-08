@@ -29,14 +29,12 @@ export const Questions = () => {
       <div className="h-[300px] flex justify-around">
         {QUESTIONS.map(({ margin, text }) => (
           <div
-            className={cn(
-              'font-body text-2xl flex gap-4 flex-1 items-start justify-center',
-              margin,
-            )}
+            className={cn('font-body text-2xl flex gap-4 items-start justify-center', margin)}
             key={text}
           >
-            <div className="mt-[0.6em] h-px max-w-12 flex-1 bg-amber-600" />
-            <div className="w-44">
+            <div className="mt-[0.6em] h-px w-12 shrink-0 bg-amber-600" />
+
+            <div className="max-w-96">
               <p>{text}</p>
             </div>
           </div>
