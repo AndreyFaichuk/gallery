@@ -52,8 +52,8 @@ export const Process = () => {
           />
 
           <p>
-            A glimpse into my world and the living process behind each work, from the first spark of
-            inspiration.
+            This is an another variant of the text glimpse into my world and the living process
+            behind each work, from the first spark of inspiration. Please, use this one
           </p>
         </div>
         <div className="flex flex-col gap-4">
