@@ -29,19 +29,19 @@ export const Process = () => {
   const images = currentItem.map((path) => getMediaContentUrl(`${ABOUT_ME_PREFIX}/${path}`));
 
   return (
-    <section className="flex flex-col px-12 lg:px-24 gap-10">
+    <section className="flex flex-col gap-10 px-12 md:max-lg:gap-8 md:max-lg:px-8 lg:px-24">
       <div className="flex justify-center items-center gap-4">
         <div className="h-px max-w-24 flex-1 bg-amber-600" />
-        <h2 className="text-xs uppercase tracking-widest text-stone-500 sm:text-lg">
+        <h2 className="text-xs uppercase tracking-widest text-stone-500 sm:text-lg md:max-lg:text-[11px]">
           inside studio & process
         </h2>
         <div className="h-px max-w-24 flex-1 bg-amber-600" />
       </div>
 
       <div className="flex items-start justify-between">
-        <div className="flex flex-col mt-56 w-32 gap-4">
+        <div className="mt-56 flex w-32 flex-col gap-4 md:max-lg:mt-[clamp(130px,18vw,170px)] md:max-lg:w-24 md:max-lg:gap-3">
           <MoveLeft
-            className={cn('size-10 md:size-8 cursor-pointer', {
+            className={cn('size-10 cursor-pointer md:size-8 md:max-lg:size-6', {
               'text-gray-400': currentIndex === 0,
             })}
             onClick={() => {
@@ -51,12 +51,12 @@ export const Process = () => {
             }}
           />
 
-          <p className="2xl:text-[17px] 2xl:leading-[1.55] font-body">
+          <p className="font-body md:max-lg:text-[13px] md:max-lg:leading-[1.4] 2xl:text-[17px] 2xl:leading-[1.55]">
             A glimpse into my world and the journey behind each work, tracing every idea from its
             first spark to its final form.
           </p>
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 md:max-lg:gap-3">
           <AnimatedSlider
             direction={direction}
             id={currentIndex}
@@ -73,15 +73,18 @@ export const Process = () => {
             />
           </AnimatedSlider>
 
-          <span className="m-auto 2xl:text-lg">
+          <span className="m-auto md:max-lg:text-sm 2xl:text-lg">
             {currentIndex + 1} / {Object.values(process).length}
           </span>
         </div>
 
         <MoveRight
-          className={cn('size-10 md:size-8 cursor-pointer mt-56', {
-            'text-gray-400': currentIndex === Object.values(process).length - 1,
-          })}
+          className={cn(
+            'mt-56 size-10 cursor-pointer md:size-8 md:max-lg:mt-[clamp(130px,18vw,170px)] md:max-lg:size-6',
+            {
+              'text-gray-400': currentIndex === Object.values(process).length - 1,
+            },
+          )}
           onClick={() => {
             if (currentIndex === Object.values(process).length - 1) return;
 

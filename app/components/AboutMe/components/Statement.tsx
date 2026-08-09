@@ -8,8 +8,8 @@ export const Statement = () => {
   const statementImageUrl = getMediaContentUrl(`${ABOUT_ME_PREFIX}/${statement}`);
 
   return (
-    <section className="flex px-6 lg:px-12 gap-10 font-body">
-      <div className="relative h-[500px] w-[30%]">
+    <section className="flex gap-10 px-6 font-body md:max-lg:gap-7 md:max-lg:px-8 lg:px-12">
+      <div className="relative h-[500px] w-[30%] md:max-lg:h-[clamp(360px,42vw,400px)] md:max-lg:w-[40%]">
         <Image
           src={statementImageUrl}
           alt="statement-image"
@@ -18,22 +18,22 @@ export const Statement = () => {
           className="object-cover"
         />
       </div>
-      <div className="w-[70%] flex flex-col">
-        <div className="flex gap-2 items-center mb-4">
-          <h2 className="text-xs uppercase tracking-widest text-stone-500 sm:text-lg">
+      <div className="flex w-[70%] flex-col md:max-lg:w-[60%]">
+        <div className="mb-4 flex items-center gap-2 md:max-lg:mb-3">
+          <h2 className="text-xs uppercase tracking-widest text-stone-500 sm:text-lg md:max-lg:text-[11px]">
             artist statement
           </h2>
           <div className="h-px max-w-16 flex-1 bg-amber-600" />
         </div>
 
-        <div className="flex w-[85%] min-w-[70%] max-w-[90%] flex-col gap-6 2xl:gap-7 2xl:text-[17px] 2xl:leading-[1.55]">
-          <p className="text-xl leading-tight mb-2 italic text-zinc-800 2xl:text-[22px] 2xl:leading-[1.3]">
+        <div className="flex w-[85%] min-w-[70%] max-w-[90%] flex-col gap-6 md:max-lg:w-full md:max-lg:min-w-0 md:max-lg:max-w-none md:max-lg:gap-4 md:max-lg:text-[13px] md:max-lg:leading-[1.45] 2xl:gap-7 2xl:text-[17px] 2xl:leading-[1.55]">
+          <p className="mb-2 text-xl leading-tight italic text-zinc-800 md:max-lg:mb-0 md:max-lg:text-[15px] md:max-lg:leading-[1.35] 2xl:text-[22px] 2xl:leading-[1.3]">
             My paintings emerge from the dialogue between intuition and observation. I&apos;m
             interested in the invisible: the atmosphere of a moment, the trace of light, the echo of
             feeling.
           </p>
 
-          <div className="flex flex-col gap-6 border-r border-amber-600 pr-6 2xl:gap-7">
+          <div className="flex flex-col gap-6 border-r border-amber-600 pr-6 md:max-lg:gap-4 md:max-lg:pr-4 2xl:gap-7">
             <p>
               Through layers of transparent glazes, dense strokes, pigment and gold, I build a
               surface that breathes. The process is both surrender and decision — a movement between
