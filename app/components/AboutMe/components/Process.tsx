@@ -51,7 +51,7 @@ export const Process = () => {
             }}
           />
 
-          <p>
+          <p className="2xl:text-[17px] 2xl:leading-[1.55] font-body">
             A glimpse into my world and the journey behind each work, tracing every idea from its
             first spark to its final form.
           </p>
@@ -73,7 +73,7 @@ export const Process = () => {
             />
           </AnimatedSlider>
 
-          <span className="m-auto">
+          <span className="m-auto 2xl:text-lg">
             {currentIndex + 1} / {Object.values(process).length}
           </span>
         </div>
