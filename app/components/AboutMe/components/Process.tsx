@@ -80,7 +80,7 @@ export const Process = () => {
 
         <MoveRight
           className={cn(
-            'mt-56 size-10 cursor-pointer md:size-8 md:max-lg:mt-[clamp(130px,18vw,170px)] md:max-lg:size-6',
+            'mt-56 ml-4 size-10 shrink-0 cursor-pointer md:size-8 md:max-lg:mt-[clamp(130px,18vw,170px)] md:max-lg:size-6',
             {
               'text-gray-400': currentIndex === Object.values(process).length - 1,
             },

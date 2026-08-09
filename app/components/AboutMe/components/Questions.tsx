@@ -13,7 +13,7 @@ const QUESTIONS = [
   },
   {
     text: 'Can beauty transform without demanding explantion?',
-    margin: 'mt-10 md:max-lg:mt-10',
+    margin: 'mt-10 mr-6 md:max-lg:mt-10',
   },
 ] as const;
 
