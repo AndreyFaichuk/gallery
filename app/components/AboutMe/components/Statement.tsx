@@ -26,14 +26,14 @@ export const Statement = () => {
           <div className="h-px max-w-16 flex-1 bg-amber-600" />
         </div>
 
-        <div className="flex w-[85%] min-w-[70%] max-w-[90%] flex-col gap-6">
-          <p className="text-xl leading-tight mb-2 italic text-zinc-800">
+        <div className="flex w-[85%] min-w-[70%] max-w-[90%] flex-col gap-6 2xl:gap-7 2xl:text-[17px] 2xl:leading-[1.55]">
+          <p className="text-xl leading-tight mb-2 italic text-zinc-800 2xl:text-[22px] 2xl:leading-[1.3]">
             My paintings emerge from the dialogue between intuition and observation. I&apos;m
             interested in the invisible: the atmosphere of a moment, the trace of light, the echo of
             feeling.
           </p>
 
-          <div className="flex flex-col gap-6 border-r border-amber-600 pr-6">
+          <div className="flex flex-col gap-6 border-r border-amber-600 pr-6 2xl:gap-7">
             <p>
               Through layers of transparent glazes, dense strokes, pigment and gold, I build a
               surface that breathes. The process is both surrender and decision — a movement between
