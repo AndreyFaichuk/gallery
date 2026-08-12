@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../constants';
+import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../../constants';
 import { getMediaContentUrl } from '@/utils';
 
 export const Hero = () => {

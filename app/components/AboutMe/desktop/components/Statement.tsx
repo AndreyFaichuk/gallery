@@ -1,5 +1,5 @@
 import { getMediaContentUrl } from '@/utils';
-import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../constants';
+import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../../constants';
 import Image from 'next/image';
 
 export const Statement = () => {
