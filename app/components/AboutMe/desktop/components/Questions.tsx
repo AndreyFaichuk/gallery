@@ -24,7 +24,7 @@ export const Questions = () => {
       <div className="flex items-center justify-center gap-4 xs:max-md:hidden md:max-lg:hidden">
         <div className="h-px max-w-24 flex-1 bg-amber-600" />
         <h2 className="text-xs uppercase tracking-widest text-stone-500 sm:text-lg">
-          inside studio & process
+          the questions I return to
         </h2>
       </div>
       <div className="flex h-[300px] justify-around xs:max-md:h-[190px] xs:max-md:flex-col xs:max-md:items-center xs:max-md:gap-5 xs:max-md:px-10 md:max-lg:h-[170px] md:max-lg:gap-5 md:max-lg:px-8">
