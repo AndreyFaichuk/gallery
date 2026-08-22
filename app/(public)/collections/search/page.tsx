@@ -1,7 +1,7 @@
-import { PaintingSearchCatalog } from '@/app/components/layout/PaintingSearchCatalog';
-import { PaintingsFilterBar } from '@/app/components/PaintingsFilterBar';
+import { PaintingSearchCatalog } from '@/components/PaintingSearchCatalog';
+import { PaintingsFilterBar } from '@/components/PaintingsFilterBar';
 import type { PaintingsSearchParamsProps } from '@/types';
-import { getAllShopPaintings } from '@/utils/route-handlers/get-all-shop-paintings';
+import { getAllShopPaintings } from '@/services/gallery/get-all-shop-paintings';
 
 const test = [
   {

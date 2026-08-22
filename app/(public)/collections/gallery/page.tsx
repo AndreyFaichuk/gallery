@@ -1,8 +1,8 @@
-import { PaintingsFilterBar } from '@/app/components/PaintingsFilterBar';
+import { PaintingsFilterBar } from '@/components/PaintingsFilterBar';
 import type { PaintingsSearchParamsProps } from '@/types';
-import { PaintingsGallery } from '@/app/components/PaintingsGallery';
-import { getAllGalleryPaintings } from '@/utils/route-handlers/get-all-gallery-paintings';
-import { ALL_PAINTINGS_API_MODE } from '@/utils/route-handlers/types/filter-options.type';
+import { PaintingsGallery } from '@/components/PaintingsGallery';
+import { getAllGalleryPaintings } from '@/services/gallery/get-all-gallery-paintings';
+import { ALL_PAINTINGS_API_MODE } from '@/services/gallery/types';
 
 const wait = () => new Promise((res) => setTimeout(() => res(1), 3000));
 

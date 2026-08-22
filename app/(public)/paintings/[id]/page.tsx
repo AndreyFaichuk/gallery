@@ -1,7 +1,7 @@
-import { PaintingPage } from '@/app/components/PaintingPage/PaintingPage';
+import { PaintingPage } from '@/components/PaintingPage';
 import type { PaintingPageParams } from '@/types';
-import { getPainting } from '@/utils/route-handlers/get-painting';
-import { getYouMayAlsoLikePaintings } from '@/utils/route-handlers/get-you-may-also-like-paintings';
+import { getPainting } from '@/services/gallery/get-painting';
+import { getYouMayAlsoLikePaintings } from '@/services/gallery/get-you-may-also-like-paintings';
 import { redirect } from 'next/navigation';
 
 const test = [

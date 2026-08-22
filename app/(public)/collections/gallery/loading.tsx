@@ -1,5 +1,5 @@
-import { PaintingsFilterBarSkeleton } from '@/app/components/Skeletons';
-import { Skeleton } from '@/app/components/ui/skeleton';
+import { PaintingsFilterBarSkeleton } from '@/components/Skeletons';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const PREVIEW_SLOTS = [
   'col-[1_/_3] row-[1_/_2] md:col-[1_/_5] md:row-[1_/_3]',

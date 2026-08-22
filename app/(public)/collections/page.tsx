@@ -1,6 +1,6 @@
-import { CollectionsPreview } from '@/app/components/Collections/components/CollectionsPreview';
-import { MoreCollections } from '@/app/components/Collections/components/MoreCollections';
-import { CollectionsPreviewSkeleton } from '@/app/components/Skeletons';
+import { CollectionsPreview } from '@/components/Collections';
+import { MoreCollections } from '@/components/Collections';
+import { CollectionsPreviewSkeleton } from '@/components/Skeletons';
 import { Suspense } from 'react';
 
 const Page = async () => {

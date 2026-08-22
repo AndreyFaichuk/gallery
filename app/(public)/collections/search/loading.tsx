@@ -1,4 +1,4 @@
-import { DesktopSearchPageSkeleton, MobileSearchPageSkeleton } from '@/app/components/Skeletons';
+import { DesktopSearchPageSkeleton, MobileSearchPageSkeleton } from '@/components/Skeletons';
 import { PAINTING_ITEM_VARIANT } from '@/types';
 
 const Loading = () => {

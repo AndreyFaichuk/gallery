@@ -1,4 +1,4 @@
-import { AboutMe } from '@/app/components/AboutMe/AboutMe';
+import { AboutMe } from '@/components/AboutMe';
 
 const Page = () => <AboutMe />;
 
