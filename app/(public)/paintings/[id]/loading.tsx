@@ -1,4 +1,4 @@
-import { PaintingPageSkeleton } from '@/app/components/Skeletons';
+import { PaintingPageSkeleton } from '@/components/Skeletons';
 
 const Loading = () => {
   return <PaintingPageSkeleton />;

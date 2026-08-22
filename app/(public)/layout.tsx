@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
-import { Header } from '../components/layout/Header';
-import { Separator } from '../components/ui';
+import { Header } from '@/components/layout/Header';
+import { Separator } from '@/components/ui';
 
 type PublicLayoutProps = {
   children: ReactNode;
