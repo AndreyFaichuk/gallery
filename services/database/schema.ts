@@ -1,14 +1,14 @@
 import {
-  pgTable,
-  text,
-  numeric,
-  jsonb,
-  uuid,
-  uniqueIndex,
   boolean,
   index,
-  timestamp,
+  jsonb,
+  numeric,
   pgEnum,
+  pgTable,
+  text,
+  timestamp,
+  uniqueIndex,
+  uuid,
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm/sql/sql';
 import { DateTime } from 'luxon';
@@ -16,9 +16,7 @@ import { DateTime } from 'luxon';
 export const paintings = pgTable(
   'paintings',
   {
-    id: uuid('id')
-      .default(sql`gen_random_uuid()`)
-      .primaryKey(),
+    id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
     name: text('name').notNull(),
     description: text('description'),
     isExclusive: boolean('is_exclusive').notNull().default(false),
@@ -46,9 +44,7 @@ export const paintings = pgTable(
 export const searchTerms = pgTable(
   'search_terms',
   {
-    id: uuid('id')
-      .default(sql`gen_random_uuid()`)
-      .primaryKey(),
+    id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
     term: text('term').notNull(),
     paintingId: uuid('painting_id')
       .notNull()
@@ -61,9 +57,7 @@ export const searchTerms = pgTable(
 );
 
 export const collections = pgTable('collections', {
-  id: uuid('id')
-    .default(sql`gen_random_uuid()`)
-    .primaryKey(),
+  id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
   name: text('name').notNull(),
   description: text('description'),
   createdAt: timestamp().defaultNow(),

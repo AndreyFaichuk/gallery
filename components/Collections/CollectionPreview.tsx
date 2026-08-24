@@ -1,8 +1,8 @@
-import { getMediaContentUrl } from '@/utils';
-import { getCollectionById } from '@/services/gallery';
 import { ArrowRight, Asterisk } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getCollectionById } from '@/services/gallery';
+import { getMediaContentUrl } from '@/utils';
 
 type CollectionPreviewProps = {
   id: string;

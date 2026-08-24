@@ -1,6 +1,6 @@
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 import heroPhoto from '@/assets/images/hero_photo1.jpg';
 import { NAVIGATION_MENU_OPTIONS } from '@/constants';

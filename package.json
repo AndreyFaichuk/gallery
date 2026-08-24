@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "lint": "biome lint .",
-    "lint:fix": "biome lint --write .",
+    "lint:fix": "npx biome check --write .",
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
     "typecheck": "next typegen && tsc --noEmit",
-    "format": "biome format --write .",
+    "format": "npx biome format --write .",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:drop": "drizzle-kit drop"

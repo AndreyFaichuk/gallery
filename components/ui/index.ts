@@ -1,10 +1,11 @@
+export * from './accordion';
 export * from './button';
 export * from './checkbox';
 export * from './command';
 export * from './dialog';
 export * from './drawer';
-export * from './input-group';
 export * from './input';
+export * from './input-group';
 export * from './label';
 export * from './navigation-menu';
 export * from './pagination';
@@ -14,4 +15,3 @@ export * from './select';
 export * from './separator';
 export * from './skeleton';
 export * from './textarea';
-export * from './accordion';

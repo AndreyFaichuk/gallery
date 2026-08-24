@@ -1,21 +1,21 @@
 'use client';
 
+import { Image } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { type FC, Fragment } from 'react';
 import {
-  NavigationMenu as NavigationMenuRoot,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
-  NavigationMenuLink,
-  Separator,
   Button,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenu as NavigationMenuRoot,
+  NavigationMenuTrigger,
+  Separator,
 } from '@/components/ui';
 import { DESKTOP_MENU_OPTIONS } from '@/constants';
 import type { MenuOptionBase } from '@/types';
-import { type FC, Fragment } from 'react';
-import { Image } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/utils/cn';
 
 type NavigationSubMenuProps = {

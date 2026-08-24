@@ -3,11 +3,11 @@
 import type { FC } from 'react';
 import {
   PaginationContent,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
-  PaginationPrevious,
   PaginationNext,
-  PaginationEllipsis,
+  PaginationPrevious,
 } from '../../../../../ui/pagination';
 import type { PaginationProps } from './PaginationStrategy.types';
 

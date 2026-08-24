@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { Checkbox } from './checkbox';
 import type { FilterT } from '@/types';
+import { Checkbox } from './checkbox';
 
 type FilterItemProps = {
   onFilterChange: (value: string) => void;

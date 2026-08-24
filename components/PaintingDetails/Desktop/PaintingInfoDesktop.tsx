@@ -1,9 +1,8 @@
-import { useCurrency } from '@/hooks';
-import type { ExchangeT } from '@/types';
-import type { PaintingT } from '@/types';
 import type { FC } from 'react';
-import { Button } from '../../ui/button';
+import { useCurrency } from '@/hooks';
+import type { ExchangeT, PaintingT } from '@/types';
 import { formatDimension } from '@/utils';
+import { Button } from '../../ui/button';
 
 type PaintingInfoDesktopProps = ExchangeT & {
   painting: PaintingT;

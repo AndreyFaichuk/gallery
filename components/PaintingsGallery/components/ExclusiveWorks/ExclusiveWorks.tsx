@@ -1,14 +1,14 @@
 'use client';
 
-import type { PaintingT } from '@/types';
 import { CircleChevronLeft, CircleChevronRight, Sparkles } from 'lucide-react';
 import { type FC, useState } from 'react';
-import { ExclusivePaintingPreview } from './ExclusivePaintingPreview';
-import { formatDimension, getMediaContentUrl } from '@/utils';
-import { PaintingPhotoGallery } from '@/components/PaintingPhotoGallery';
-import { cn } from '@/utils/cn';
-import { useSlideContent } from '@/hooks';
 import { AnimatedSlider } from '@/components/AnimatedSlider';
+import { PaintingPhotoGallery } from '@/components/PaintingPhotoGallery';
+import { useSlideContent } from '@/hooks';
+import type { PaintingT } from '@/types';
+import { formatDimension, getMediaContentUrl } from '@/utils';
+import { cn } from '@/utils/cn';
+import { ExclusivePaintingPreview } from './ExclusivePaintingPreview';
 
 type ExclusiveWorksProps = {
   exclusiveItems: PaintingT[];

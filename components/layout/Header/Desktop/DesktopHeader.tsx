@@ -1,12 +1,10 @@
 'use client';
 
 import { Handbag, Search } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '../../../ui/popover';
-import { SuggestionsAndProductsAll } from '../../../SuggestionsAndProductsAll';
-import { Logo } from './components';
-import { CurrencySellector } from './components';
-import { NavigationMenu } from './components';
 import { useState } from 'react';
+import { SuggestionsAndProductsAll } from '../../../SuggestionsAndProductsAll';
+import { Popover, PopoverContent, PopoverTrigger } from '../../../ui/popover';
+import { CurrencySellector, Logo, NavigationMenu } from './components';
 
 const DesktopHeader = () => {
   const [isOpenedSearch, setIsOpenedSearch] = useState(false);

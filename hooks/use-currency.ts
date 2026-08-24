@@ -1,9 +1,9 @@
-import { CURRENCY_OPTIONS } from '@/constants';
-import type { ExchangeT } from '@/types';
-import { formatCurrency } from '@/utils';
-import type { ExchangeRatesCurrency } from '@/services/gallery/get-currency-exchange';
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
+import { CURRENCY_OPTIONS } from '@/constants';
+import type { ExchangeRatesCurrency } from '@/services/gallery/get-currency-exchange';
+import type { ExchangeT } from '@/types';
+import { formatCurrency } from '@/utils';
 
 type useCurrencyProps = ExchangeT & {
   price: string;

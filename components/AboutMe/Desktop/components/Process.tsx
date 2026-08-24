@@ -1,14 +1,14 @@
 'use client';
 
-import { getMediaContentUrl } from '@/utils';
-import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../../AboutMe.constants';
-import { useSlideContent } from '@/hooks';
-import { ProcessPreview } from './ProcessPreview';
 import { MoveLeft, MoveRight } from 'lucide-react';
+import { useState } from 'react';
+import { useSlideContent } from '@/hooks';
+import { getMediaContentUrl } from '@/utils';
 import { cn } from '@/utils/cn';
 import { AnimatedSlider } from '../../../AnimatedSlider';
 import { PaintingPhotoGallery } from '../../../PaintingPhotoGallery';
-import { useState } from 'react';
+import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../../AboutMe.constants';
+import { ProcessPreview } from './ProcessPreview';
 
 export const Process = () => {
   const { process } = IMAGES_CONFIG;

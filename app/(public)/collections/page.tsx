@@ -1,7 +1,6 @@
-import { CollectionsPreview } from '@/components/Collections';
-import { MoreCollections } from '@/components/Collections';
-import { CollectionsPreviewSkeleton } from '@/components/Skeletons';
 import { Suspense } from 'react';
+import { CollectionsPreview, MoreCollections } from '@/components/Collections';
+import { CollectionsPreviewSkeleton } from '@/components/Skeletons';
 
 const Page = async () => {
   return (

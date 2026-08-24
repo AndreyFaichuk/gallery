@@ -15,6 +15,11 @@
     "lineEnding": "lf",
     "lineWidth": 100
   },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
   "linter": {
     "enabled": true,
     "domains": {
@@ -28,6 +33,13 @@
       },
       "suspicious": {
         "noArrayIndexKey": "off"
+      }
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
       }
     }
   },

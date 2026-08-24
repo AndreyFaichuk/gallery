@@ -1,11 +1,11 @@
-import type { FC, ReactNode } from 'react';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import type { FC, ReactNode } from 'react';
 import './globals.css';
-import { cn } from '@/utils/cn';
-import ReactQueryProvider from '@/components/providers/TanstackQueryProvider';
 import { Header } from '@/components/layout/Header';
+import ReactQueryProvider from '@/components/providers/TanstackQueryProvider';
 import { Separator } from '@/components/ui';
+import { cn } from '@/utils/cn';
 
 const forum = localFont({
   src: '../assets/fonts/Forum-Regular.ttf',

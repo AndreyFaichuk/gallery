@@ -1,12 +1,12 @@
 'use client';
 
-import { useCurrency } from '@/hooks';
-import type { ExchangeT, PaintingT } from '@/types';
-import { getMediaContentUrl } from '@/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
+import { useCurrency } from '@/hooks';
+import type { ExchangeT, PaintingT } from '@/types';
+import { getMediaContentUrl } from '@/utils';
 
 type PaintingCollectionItemProps = ExchangeT & {
   item: PaintingT;

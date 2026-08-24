@@ -221,12 +221,8 @@
           "name": "paintings_collection_id_collections_id_fk",
           "tableFrom": "paintings",
           "tableTo": "collections",
-          "columnsFrom": [
-            "collection_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["collection_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -296,12 +292,8 @@
           "name": "search_terms_painting_id_paintings_id_fk",
           "tableFrom": "search_terms",
           "tableTo": "paintings",
-          "columnsFrom": [
-            "painting_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["painting_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -317,11 +309,7 @@
     "public.base_currency": {
       "name": "base_currency",
       "schema": "public",
-      "values": [
-        "EUR",
-        "USD",
-        "UAH"
-      ]
+      "values": ["EUR", "USD", "UAH"]
     }
   },
   "schemas": {},

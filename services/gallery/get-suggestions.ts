@@ -1,6 +1,5 @@
 import { ilike } from 'drizzle-orm';
-import { searchTerms } from '../database';
-import { db } from '../database';
+import { db, searchTerms } from '../database';
 
 type Options = {
   query: string;

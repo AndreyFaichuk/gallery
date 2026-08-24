@@ -1,13 +1,13 @@
 'use client';
 
-import React, { type FC } from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { ChevronDown } from 'lucide-react';
-import type { FilterBarDesktopProps } from '@/types';
+import React, { type FC } from 'react';
 import { FILTER_BAR_MOBILE_SORT_OPTION, SORT_OPTIONS } from '@/constants';
+import { useFilterManage } from '@/hooks';
+import type { FilterBarDesktopProps } from '@/types';
 import { Button, Separator } from '../../ui';
 import { FilterItem } from '../../ui/filter-item';
-import { useFilterManage } from '@/hooks';
+import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 
 export const FilterBarDesktop: FC<FilterBarDesktopProps> = ({
   filters,

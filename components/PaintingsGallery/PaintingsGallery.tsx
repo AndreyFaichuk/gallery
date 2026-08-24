@@ -1,10 +1,10 @@
 'use client';
 
-import type { PaintingT } from '@/types';
 import type { FC } from 'react';
-import { ExclusiveWorks } from './components/ExclusiveWorks';
+import type { PaintingT } from '@/types';
 import { Separator } from '../ui';
 import { AllPaintingsGallery } from './components/AllPaintingsGallery';
+import { ExclusiveWorks } from './components/ExclusiveWorks';
 
 type PaintingsGalleryProps = {
   allItems: PaintingT[];

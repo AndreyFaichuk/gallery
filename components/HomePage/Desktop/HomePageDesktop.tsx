@@ -1,9 +1,9 @@
-import { HomeHero } from './HomeHero';
+import { Separator } from '../../ui';
 import { HomeArtistQuote } from './HomeArtistQuote';
 import { HomeAtelier } from './HomeAtelier';
 import { HomeBenefits } from './HomeBenefits';
+import { HomeHero } from './HomeHero';
 import { HomeNewsletter } from './HomeNewsletter';
-import { Separator } from '../../ui';
 
 export const HomePageDesktop = () => {
   return (

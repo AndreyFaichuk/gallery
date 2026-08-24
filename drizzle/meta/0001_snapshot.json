@@ -106,12 +106,8 @@
           "name": "search_terms_painting_id_paintings_id_fk",
           "tableFrom": "search_terms",
           "tableTo": "paintings",
-          "columnsFrom": [
-            "painting_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["painting_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }

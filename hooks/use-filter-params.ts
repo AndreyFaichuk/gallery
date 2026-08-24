@@ -1,5 +1,5 @@
-import type { Nullable } from '@/types';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import type { Nullable } from '@/types';
 
 export const VALID_PARAMS = {
   PAGE: 'page',

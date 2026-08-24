@@ -1,11 +1,11 @@
 'use client';
 
 import React, { type FC } from 'react';
+import type { DrawerFilterSnaphotT, Nullable } from '@/types';
+import { Separator } from '../../ui';
 import { Button } from '../../ui/button';
 import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle } from '../../ui/drawer';
-import type { DrawerFilterSnaphotT, Nullable } from '@/types';
 import { FilterItem } from '../../ui/filter-item';
-import { Separator } from '../../ui';
 
 type FilterDrawerProps = {
   activeFilter: Nullable<DrawerFilterSnaphotT>;

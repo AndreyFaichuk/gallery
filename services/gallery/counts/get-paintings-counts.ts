@@ -1,6 +1,6 @@
+import { and, type SQL, sql } from 'drizzle-orm';
 import { db } from '@/services/database/db';
 import { paintings } from '@/services/database/schema';
-import { and, type SQL, sql } from 'drizzle-orm';
 
 type Options = {
   conditions: SQL[];

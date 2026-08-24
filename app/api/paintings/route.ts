@@ -1,8 +1,8 @@
-import { type NextRequest, NextResponse } from 'next/server';
 import { eq, ilike } from 'drizzle-orm';
+import { type NextRequest, NextResponse } from 'next/server';
 import { paintings as paintingsTable } from '@/services/database/schema';
-import { getSuggestions } from '@/services/gallery/get-suggestions';
 import { getPaintings } from '@/services/gallery/get-paintings';
+import { getSuggestions } from '@/services/gallery/get-suggestions';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);

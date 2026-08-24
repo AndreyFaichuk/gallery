@@ -1,6 +1,6 @@
-import * as React from 'react';
-import Link from 'next/link';
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
+import Link from 'next/link';
+import * as React from 'react';
 import { cn } from '@/utils/cn';
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
@@ -86,9 +86,9 @@ PaginationEllipsis.displayName = 'PaginationEllipsis';
 export {
   Pagination,
   PaginationContent,
-  PaginationLink,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
   PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
 };

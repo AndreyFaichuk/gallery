@@ -1,13 +1,13 @@
 'use client';
 
-import { type FC, useState } from 'react';
-import type { PhotoCollageDesktopProps } from '../Desktop';
-import { getMediaContentUrl } from '@/utils';
 import { Maximize2, Play } from 'lucide-react';
 import Image from 'next/image';
+import { type FC, useState } from 'react';
+import { getMediaContentUrl } from '@/utils';
 import { cn } from '@/utils/cn';
-import { Button } from '../../ui/button';
 import { PaintingPhotoGallery } from '../../PaintingPhotoGallery';
+import { Button } from '../../ui/button';
+import type { PhotoCollageDesktopProps } from '../Desktop';
 
 type GalleryItem = {
   type: 'image' | 'video';

@@ -1,4 +1,4 @@
-import { type ComponentProps, type ReactNode, forwardRef } from 'react';
+import { type ComponentProps, forwardRef, type ReactNode } from 'react';
 
 import { cn } from '@/utils/cn';
 

@@ -1,9 +1,9 @@
 'use client';
 
-import type { FC } from 'react';
-import type { PaginationProps } from './PaginationStrategy.types';
-import { Button } from '@/components/ui';
 import Link from 'next/link';
+import type { FC } from 'react';
+import { Button } from '@/components/ui';
+import type { PaginationProps } from './PaginationStrategy.types';
 
 export const LoadMore: FC<PaginationProps> = ({ setPage, currentPage, totalPages }) => {
   if (currentPage === totalPages) return null;

@@ -1,8 +1,8 @@
+import { redirect } from 'next/navigation';
 import { PaintingPage } from '@/components/PaintingPage';
-import type { PaintingPageParams } from '@/types';
 import { getPainting } from '@/services/gallery/get-painting';
 import { getYouMayAlsoLikePaintings } from '@/services/gallery/get-you-may-also-like-paintings';
-import { redirect } from 'next/navigation';
+import type { PaintingPageParams } from '@/types';
 
 const exchange = { EUR: 0.872334, UAH: 44.09512, USD: 1 };
 

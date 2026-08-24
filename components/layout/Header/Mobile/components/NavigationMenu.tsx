@@ -1,4 +1,9 @@
 'use client';
+import { X } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
 import {
   Button,
   Drawer,
@@ -8,14 +13,9 @@ import {
   Separator,
 } from '@/components/ui';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { cn } from '@/utils/cn';
 import { CURRENCY_OPTIONS, MOBILE_MENU_OPTIONS } from '@/constants';
 import type { ExchangeRatesCurrency } from '@/services/gallery/get-currency-exchange';
-import { X } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
-import type { FC } from 'react';
-import { useLocalStorage } from 'usehooks-ts';
-import Link from 'next/link';
+import { cn } from '@/utils/cn';
 
 type NavigationMenuProps = { isOpen: boolean; onClose: VoidFunction };
 

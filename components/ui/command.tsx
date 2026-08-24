@@ -2,11 +2,10 @@
 
 import { Command as CommandPrimitive } from 'cmdk';
 import { SearchIcon, X } from 'lucide-react';
-
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog';
-import { cn } from '@/utils/cn';
-import { InputGroup, InputGroupAddon } from './input-group';
 import type { ComponentProps } from 'react';
+import { cn } from '@/utils/cn';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog';
+import { InputGroup, InputGroupAddon } from './input-group';
 
 const Command = ({ className, ...props }: ComponentProps<typeof CommandPrimitive>) => {
   return (
@@ -160,11 +159,11 @@ const CommandShortcut = ({ className, ...props }: ComponentProps<'span'>) => {
 export {
   Command,
   CommandDialog,
-  CommandInput,
-  CommandList,
   CommandEmpty,
   CommandGroup,
+  CommandInput,
   CommandItem,
-  CommandShortcut,
+  CommandList,
   CommandSeparator,
+  CommandShortcut,
 };

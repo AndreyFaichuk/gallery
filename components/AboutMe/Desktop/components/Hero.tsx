@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../../AboutMe.constants';
 import { getMediaContentUrl } from '@/utils';
+import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../../AboutMe.constants';
 
 export const Hero = () => {
   const { hero } = IMAGES_CONFIG;

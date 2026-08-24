@@ -1,8 +1,7 @@
 import { desc } from 'drizzle-orm';
-import { exchangeRates } from '../database';
-import { db } from '../database';
-import { z } from 'zod';
 import { DateTime } from 'luxon';
+import { z } from 'zod';
+import { db, exchangeRates } from '../database';
 
 export const BASE_CURRENCY = {
   USD: 'USD',

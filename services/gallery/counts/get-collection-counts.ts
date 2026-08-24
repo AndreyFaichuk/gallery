@@ -1,6 +1,6 @@
+import { eq, sql } from 'drizzle-orm';
 import { db } from '@/services/database/db';
 import { collections, paintings } from '@/services/database/schema';
-import { eq, sql } from 'drizzle-orm';
 
 export const getCollectionCounts = async () => {
   return db

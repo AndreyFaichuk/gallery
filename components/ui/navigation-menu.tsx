@@ -1,8 +1,8 @@
 import { cva } from 'class-variance-authority';
 import { ChevronDownIcon } from 'lucide-react';
 import { NavigationMenu as NavigationMenuPrimitive } from 'radix-ui';
-import { cn } from '@/utils/cn';
 import type { ComponentProps } from 'react';
+import { cn } from '@/utils/cn';
 
 const NavigationMenu = ({
   className,
@@ -156,12 +156,12 @@ const NavigationMenuIndicator = ({
 
 export {
   NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
   NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuLink,
   NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
 };

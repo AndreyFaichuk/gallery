@@ -1,6 +1,6 @@
 import { COLLECTIONS_PREVIEW_SLOTS } from '@/constants';
-import { CollectionItem } from './CollectionItem';
 import { getAllCollections } from '@/services/gallery/get-all-collections';
+import { CollectionItem } from './CollectionItem';
 
 export const CollectionsPreview = async () => {
   const collections = await getAllCollections();

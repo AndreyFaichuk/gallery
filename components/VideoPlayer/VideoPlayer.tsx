@@ -1,7 +1,7 @@
 'use client';
 
-import type { FC } from 'react';
 import dynamic from 'next/dynamic';
+import type { FC } from 'react';
 import { cn } from '@/utils/cn';
 
 const ReactPlayer = dynamic(() => import('react-player'), {

@@ -1,5 +1,4 @@
-import { MobileSearchPageSkeleton } from '@/components/Skeletons';
-import { DesktopSearchPageSkeleton } from '@/components/Skeletons';
+import { DesktopSearchPageSkeleton, MobileSearchPageSkeleton } from '@/components/Skeletons';
 
 const Loading = () => {
   return (

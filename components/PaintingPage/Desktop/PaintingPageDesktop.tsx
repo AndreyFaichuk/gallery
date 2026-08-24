@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 
 import type { PaintingDetailProps, PaintingT } from '@/types';
-import { PhotoCollageDesktop, PaintingInfoDesktop } from '../../PaintingDetails/Desktop';
+import { PaintingInfoDesktop, PhotoCollageDesktop } from '../../PaintingDetails/Desktop';
 import { YouMayAlsoLikeDesktop } from '../../PaintingDetails/Desktop/YouMayAlsoLikeDesktop';
 
 export type PaintingPageDesktopProps = PaintingDetailProps & {
