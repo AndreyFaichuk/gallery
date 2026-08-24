@@ -1,9 +1,9 @@
 import { Instagram } from 'lucide-react';
 import Image from 'next/image';
-import home_atelier1 from 'assets/images/home_atelier1.jpg';
-import home_atelier2 from 'assets/images/home_atelier2.jpg';
-import home_atelier3 from 'assets/images/home_atelier3.jpg';
-import home_atelier4 from 'assets/images/home_atelier4.jpg';
+import home_atelier1 from '@/assets/images/home_atelier1.jpg';
+import home_atelier2 from '@/assets/images/home_atelier2.jpg';
+import home_atelier3 from '@/assets/images/home_atelier3.jpg';
+import home_atelier4 from '@/assets/images/home_atelier4.jpg';
 import Link from 'next/link';
 
 const ATELIER_ITEMS = [home_atelier1, home_atelier2, home_atelier3, home_atelier4];
