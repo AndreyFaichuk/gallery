@@ -1,4 +1,4 @@
-import { MenuOptions } from '@/types';
+import type { MenuOptions } from '@/types';
 import { Group, Images, Palette, ShoppingBag } from 'lucide-react';
 
 export const NAVIGATION_MENU_OPTIONS = {

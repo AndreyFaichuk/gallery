@@ -1,12 +1,12 @@
 'use client';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Pagination } from './Pagination';
-import { PaginationProps } from './PaginationStrategy.types';
+import type { PaginationProps } from './PaginationStrategy.types';
 import { LoadMore } from './LoadMore';
 import {
   ALL_PAINTINGS_API_MODE,
-  PaginationStrategyVariantT,
+  type PaginationStrategyVariantT,
 } from '@/services/gallery/types';
 
 type PaginationStrategyProps = PaginationProps & {

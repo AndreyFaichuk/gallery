@@ -52,7 +52,6 @@ const DesktopPaintingPageSkeleton = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {Array.from({ length: 4 }).map((_, index) => (
-                  // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
                   <Skeleton
                     key={index}
                     className="relative overflow-hidden w-full aspect-[7/9] rounded-none"
@@ -121,7 +120,6 @@ const MobilePaintingPageSkeleton = () => {
 
           <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
             {Array.from({ length: 4 }).map((_, index) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
               <Skeleton key={index} className="h-20 w-20 shrink-0 rounded-md" />
             ))}
           </div>

@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import { collections, paintings } from '../database';
+import { collections } from '../database';
 import { db } from '../database';
 
 type Options = {

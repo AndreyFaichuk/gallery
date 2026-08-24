@@ -3,7 +3,7 @@
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { Accordion as AccordionPrimitive } from 'radix-ui';
 import { cn } from '@/utils/cn';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
 const Accordion = ({ className, ...props }: ComponentProps<typeof AccordionPrimitive.Root>) => {
   return (

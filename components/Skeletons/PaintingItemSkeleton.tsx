@@ -42,7 +42,6 @@ export const PaintingItemSkeleton: FC<PaintingItemSkeletonProps> = ({
   return (
     <div className={cn(styles.containerClassName, containerClassName)}>
       {Array.from({ length: count }).map((_, i) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
         <div key={i} className={cn('w-full flex flex-col gap-4', styles.rootClassName)}>
           <Skeleton className="aspect-[3/4] w-full rounded-none" />
 

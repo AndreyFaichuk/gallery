@@ -1,7 +1,7 @@
 'use client';
 
-import { FC } from 'react';
-import { PaintingDetailProps, PaintingT } from '@/types';
+import type { FC } from 'react';
+import type { PaintingDetailProps, PaintingT } from '@/types';
 import { PhotoCollageMobile, YouMayAlsoLikeMobile } from '../../PaintingDetails/Mobile';
 import { PaintingInfoMobile } from '../../PaintingDetails/Mobile';
 

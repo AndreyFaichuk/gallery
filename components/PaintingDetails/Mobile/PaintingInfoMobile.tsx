@@ -1,7 +1,7 @@
 'use client';
 
 import { useCurrency } from '@/hooks';
-import { ExchangeT, PaintingT } from '@/types';
+import type { ExchangeT, PaintingT } from '@/types';
 import { Button } from '../../ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Separator } from '../../ui';
 import { formatDimension } from '@/utils';

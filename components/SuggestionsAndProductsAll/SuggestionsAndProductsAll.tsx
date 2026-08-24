@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 import { Command, CommandInput, CommandList, CommandGroup } from '@/components/ui/command';
 import { Suggestions } from './Suggestions';
 import { Products } from './Products';

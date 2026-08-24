@@ -61,9 +61,7 @@ export const FilterBarDesktop: FC<FilterBarDesktopProps> = ({
               <div className="flex flex-col gap-2">
                 <span className="text-foreground font-medium">{filter.name}</span>
                 <Separator />
-                {filtersSnapshot?.currentFilters.map((filter, index) => {
-                  const isLastBlock = index === filtersSnapshot?.currentFilters.length - 1;
-
+                {filtersSnapshot?.currentFilters.map((filter) => {
                   return (
                     <React.Fragment key={filter.label}>
                       <FilterItem filter={filter} onFilterChange={handleFilterSnapshotChange} />

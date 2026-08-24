@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 import { ActiveFilter } from '../ActiveFilter';
-import { ActiveFiltersDesktopProps } from '@/types';
+import type { ActiveFiltersDesktopProps } from '@/types';
 
 export const ActiveFiltersDesktop: FC<ActiveFiltersDesktopProps> = ({
   filtersToRender,

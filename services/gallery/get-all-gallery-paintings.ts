@@ -1,4 +1,4 @@
-import { FilterOptionsT } from './types';
+import type { FilterOptionsT } from './types';
 import { getExclusivePaintings } from './get-exclusive-paintings';
 import { getAllShopPaintings } from './get-all-shop-paintings';
 

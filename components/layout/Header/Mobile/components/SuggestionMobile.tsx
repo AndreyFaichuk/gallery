@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui';
 import Link from 'next/link';
-import { FC } from 'react';
+import type { FC } from 'react';
 
 type SuggestionMobileProps = {
   suggestion: string;

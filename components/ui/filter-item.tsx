@@ -1,7 +1,6 @@
-import { FC } from 'react';
-import { Separator } from './separator';
+import type { FC } from 'react';
 import { Checkbox } from './checkbox';
-import { FilterT } from '@/types';
+import type { FilterT } from '@/types';
 
 type FilterItemProps = {
   onFilterChange: (value: string) => void;
@@ -15,7 +14,11 @@ export const FilterItem: FC<FilterItemProps> = ({ onFilterChange, filter }) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-2 justify-between" onClick={handleFilterItemChange}>
+      <div
+        className="flex gap-2 justify-between"
+        onClick={handleFilterItemChange}
+        onKeyDown={() => {}}
+      >
         <span>{label}</span>
         <Checkbox
           id={`${label}-checkbox`}

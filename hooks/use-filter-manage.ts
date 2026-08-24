@@ -1,5 +1,5 @@
 import { FILTER_BAR_MOBILE_SORT_OPTION, SORT_OPTIONS } from '@/constants';
-import {
+import type {
   DrawerFilterSnaphotT,
   FilterBarDesktopProps,
   FilterBarT,

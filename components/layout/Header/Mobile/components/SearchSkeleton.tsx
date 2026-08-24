@@ -7,7 +7,6 @@ export const SearchSkeleton = () => {
       <CommandGroup heading="Suggestions">
         <div className="flex overflow-scroll h-14 gap-2">
           {[94, 68, 52, 86, 48, 34].map((width, index) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
             <Skeleton key={index} className="h-8 shrink-0 rounded-lg" style={{ width }} />
           ))}
         </div>
@@ -20,7 +19,6 @@ export const SearchSkeleton = () => {
 
             return (
               <div
-                // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
                 key={index}
                 className={isLastElement ? 'border-b-0 pb-0' : 'border-b-1 border-gray-200 pb-2'}
               >

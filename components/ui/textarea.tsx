@@ -1,5 +1,5 @@
 import { cn } from '@/utils/cn';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
 const Textarea = ({ className, ...props }: ComponentProps<'textarea'>) => {
   return (

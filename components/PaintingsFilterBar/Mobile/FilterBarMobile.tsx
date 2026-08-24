@@ -1,10 +1,10 @@
 'use client';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 import { FilterDrawer } from './FilterDrawer';
 import { Button } from '../../ui/button';
 import { ChevronDown } from 'lucide-react';
-import { FilterBarMobileProps } from '@/types';
+import type { FilterBarMobileProps } from '@/types';
 import { FILTER_BAR_MOBILE_SORT_OPTION } from '@/constants';
 import { useFilterManage } from '@/hooks';
 

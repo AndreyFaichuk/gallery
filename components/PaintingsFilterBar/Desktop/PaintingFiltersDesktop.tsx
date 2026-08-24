@@ -1,9 +1,9 @@
 'use client';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 import { ActiveFiltersDesktop } from './ActiveFiltersDesktop';
 import { FilterBarDesktop } from './FilterBarDesktop';
-import { ActiveFiltersDesktopProps, FilterBarDesktopProps } from '@/types';
+import type { ActiveFiltersDesktopProps, FilterBarDesktopProps } from '@/types';
 
 type PaintingFiltersDesktopProps = FilterBarDesktopProps & ActiveFiltersDesktopProps;
 

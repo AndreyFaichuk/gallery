@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { Drawer as DrawerPrimitive } from 'vaul';
 
 const Drawer = ({ ...props }: ComponentProps<typeof DrawerPrimitive.Root>) => {

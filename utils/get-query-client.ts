@@ -13,7 +13,7 @@ const makeQueryClient = () => {
   });
 };
 
-let browserQueryClient: QueryClient | undefined = undefined;
+let browserQueryClient: QueryClient | undefined ;
 
 export const getQueryClient = () => {
   if (isServer) {

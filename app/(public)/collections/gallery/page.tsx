@@ -4,12 +4,10 @@ import { PaintingsGallery } from '@/components/PaintingsGallery';
 import { getAllGalleryPaintings } from '@/services/gallery/get-all-gallery-paintings';
 import { ALL_PAINTINGS_API_MODE } from '@/services/gallery/types';
 
-const wait = () => new Promise((res) => setTimeout(() => res(1), 3000));
-
 const Page = async ({ searchParams }: PaintingsSearchParamsProps) => {
   const { collections, availability, query, page, sort } = await searchParams;
 
-  const { filters, allItems, totalCount, exchange, exclusiveItems } = await getAllGalleryPaintings({
+  const { filters, allItems, totalCount, exclusiveItems } = await getAllGalleryPaintings({
     collectionId: collections,
     isAvailable: availability,
     page: page ? Number(page) : undefined,

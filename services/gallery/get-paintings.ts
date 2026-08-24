@@ -1,4 +1,4 @@
-import { and, asc, desc, SQL } from 'drizzle-orm';
+import { and, asc, desc, type SQL } from 'drizzle-orm';
 import { paintings } from '../database';
 import { db } from '../database';
 import { SORT_PARAM_MAP } from './types';

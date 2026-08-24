@@ -1,14 +1,14 @@
 'use client';
 
-import { type FC, type ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 import { usePaintingsFilterBar } from '@/hooks/use-paintings-filter-bar';
 import { FilterBarMobile } from './Mobile';
-import { FilterOptions } from '@/types';
+import type { FilterOptions } from '@/types';
 import PaintingFiltersDesktop from './Desktop';
 import { PaginationStrategy } from '../layout/Header/Mobile/components/PaginationStrategy';
 import {
   ALL_PAINTINGS_API_MODE,
-  PaginationStrategyVariantT,
+  type PaginationStrategyVariantT,
 } from '@/services/gallery/types';
 
 export type PaintingsFilterBarProps = {

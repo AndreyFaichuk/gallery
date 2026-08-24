@@ -12,8 +12,8 @@ import {
   Button,
 } from '@/components/ui';
 import { DESKTOP_MENU_OPTIONS } from '@/constants';
-import { MenuOptionBase } from '@/types';
-import { FC, Fragment } from 'react';
+import type { MenuOptionBase } from '@/types';
+import { type FC, Fragment } from 'react';
 import { Image } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/utils/cn';
@@ -99,6 +99,8 @@ export const NavigationMenu = () => {
               </NavigationMenuItem>
             );
           }
+
+          return null;
         })}
       </NavigationMenuList>
     </NavigationMenuRoot>

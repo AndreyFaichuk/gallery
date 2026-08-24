@@ -1,10 +1,10 @@
-import {
+import type {
   BaseFilterOptionNamesT,
   BaseSortingOptionNamesT,
   FilterOptionParamsT,
   SortOptionParamsT,
 } from './navigation.types';
-import { Nullable } from './shared.types';
+import type { Nullable } from './shared.types';
 
 export type DrawerFilterSnaphotT = {
   param: FilterBarT['param'] | SortOptionParamsT;

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FC } from 'react';
+import type { FC } from 'react';
 
 type ProcessPreviewProps = {
   index: number;
@@ -9,7 +9,7 @@ type ProcessPreviewProps = {
   onPaintingClick: (index: number) => void;
 };
 
-export const ProcessPreview: FC<ProcessPreviewProps> = ({ index, images, onPaintingClick }) => {
+export const ProcessPreview: FC<ProcessPreviewProps> = ({ images, onPaintingClick }) => {
   return (
     <div className="grid h-[500px] grid-cols-2 grid-rows-2 gap-2">
       {images.map((path, imageIndex) => (

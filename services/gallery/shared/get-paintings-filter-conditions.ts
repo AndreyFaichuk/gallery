@@ -1,6 +1,6 @@
 import { paintings } from '@/services/database/schema';
-import { eq, ilike, inArray, SQL } from 'drizzle-orm';
-import { FilterOptionsT } from '../types';
+import { eq, ilike, inArray, type SQL } from 'drizzle-orm';
+import type { FilterOptionsT } from '../types';
 
 const SORT_PARAM_MAP = {
   name: paintings.name,

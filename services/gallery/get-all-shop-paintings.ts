@@ -4,7 +4,7 @@ import { getPaintings } from './get-paintings';
 import { getAvailabilityCounts, getCollectionCounts } from './counts';
 import { getPaintingsCounts } from './counts/get-paintings-counts';
 import { getPaintingsFilterConditions } from './shared';
-import { ALL_PAINTINGS_API_MODE, FilterOptionsT } from './types';
+import { ALL_PAINTINGS_API_MODE, type FilterOptionsT } from './types';
 
 export const getAllShopPaintings = async ({
   query,
