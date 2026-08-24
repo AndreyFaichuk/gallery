@@ -10,10 +10,10 @@ import {
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { cn } from '@/utils/cn';
 import { CURRENCY_OPTIONS, MOBILE_MENU_OPTIONS } from '@/constants';
-import { ExchangeRatesCurrency } from '@/services/gallery/get-currency-exchange';
-import { Image, X } from 'lucide-react';
+import type { ExchangeRatesCurrency } from '@/services/gallery/get-currency-exchange';
+import { X } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import Link from 'next/link';
 

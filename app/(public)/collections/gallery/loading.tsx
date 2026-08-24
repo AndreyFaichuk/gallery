@@ -86,7 +86,6 @@ const AllPaintingsGallerySkeleton = () => {
 
       <div className="grid grid-cols-1 justify-items-center gap-y-8 xs:grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] xs:gap-x-6 md:grid-cols-[repeat(auto-fit,minmax(min(100%,13.5rem),1fr))] min-[2500px]:grid-cols-[repeat(auto-fit,minmax(min(100%,26rem),1fr))]">
         {Array.from({ length: ALL_PAINTINGS_SKELETON_COUNT }).map((_, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
           <div
             key={index}
             className="flex w-full max-w-[350px] flex-col gap-4 min-[2500px]:max-w-[420px]"

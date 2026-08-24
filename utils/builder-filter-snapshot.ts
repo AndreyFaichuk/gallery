@@ -1,5 +1,5 @@
 import { FILTER_BAR_MOBILE_SORT_OPTION, SORT_OPTIONS } from '@/constants';
-import { FilterBarParamMapT, FilterBarT, Nullable, SortOptionParamsT } from '@/types';
+import type { FilterBarParamMapT, FilterBarT, Nullable, SortOptionParamsT } from '@/types';
 
 const buildFilterSnapshot = (activeFilter: FilterBarT, currentParamMap: FilterBarParamMapT) => {
   return {

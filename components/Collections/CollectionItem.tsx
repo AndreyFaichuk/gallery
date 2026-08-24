@@ -1,12 +1,12 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { CollectionT } from '@/types';
+import type { CollectionT } from '@/types';
 import { getMediaContentUrl } from '@/utils';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
+import type { FC } from 'react';
 
 type CollectionItemProps = {
   collection: CollectionT;

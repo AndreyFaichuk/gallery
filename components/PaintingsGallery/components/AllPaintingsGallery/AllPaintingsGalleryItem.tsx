@@ -1,7 +1,7 @@
 'use client';
 
-import { PaintingT } from '@/types';
-import { FC, ReactNode } from 'react';
+import type { PaintingT } from '@/types';
+import type { FC, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { getMediaContentUrl } from '@/utils';

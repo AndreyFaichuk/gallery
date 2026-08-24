@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import type { JSX } from 'react';
 
 export const FILTER_OPTION_PARAMS = {
   AVAILABILITY: 'availability',

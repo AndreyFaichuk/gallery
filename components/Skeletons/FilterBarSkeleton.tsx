@@ -45,7 +45,6 @@ const DesktopFilterBarSkeletonLayout = ({
         {activeFiltersCount > 0 && (
           <div className="flex gap-2 w-full items-center flex-wrap">
             {Array.from({ length: activeFiltersCount }).map((_, index) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
               <Skeleton key={index} className="h-8 w-32 rounded-lg" />
             ))}
             <Skeleton className="h-6 w-20 rounded-sm" />

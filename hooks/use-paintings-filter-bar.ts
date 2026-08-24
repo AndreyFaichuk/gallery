@@ -1,4 +1,4 @@
-import { FilterOptions } from '@/types';
+import type { FilterOptions } from '@/types';
 import { useFilterParams } from './use-filter-params';
 
 const LIMIT = 8;

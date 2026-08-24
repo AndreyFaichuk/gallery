@@ -1,7 +1,7 @@
 'use client';
 
-import { FC } from 'react';
-import { PaintingPageDesktopProps } from './Desktop';
+import type { FC } from 'react';
+import type { PaintingPageDesktopProps } from './Desktop';
 import { PaintingPageMobile } from './Mobile';
 import PaintingPageDesktop from './Desktop';
 

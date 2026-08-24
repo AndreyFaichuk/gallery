@@ -6,7 +6,7 @@ import { SearchIcon, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog';
 import { cn } from '@/utils/cn';
 import { InputGroup, InputGroupAddon } from './input-group';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
 const Command = ({ className, ...props }: ComponentProps<typeof CommandPrimitive>) => {
   return (

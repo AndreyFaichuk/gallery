@@ -9,7 +9,6 @@ export const SuggestionsSkeleton = () => {
 
       <div className="flex flex-col">
         {[128, 104, 152, 96].map((width, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
           <div key={index} className="rounded-md px-3 py-2">
             <Skeleton className="h-5 rounded-sm" style={{ width }} />
           </div>
@@ -28,7 +27,6 @@ export const ProductsSkeleton = () => {
 
       <div className="flex flex-col">
         {[136, 112, 152].map((width, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
           <div key={index} className="rounded-md px-3 py-2">
             <div className="flex items-center gap-2">
               <Skeleton className="h-[60px] w-[50px] shrink-0 rounded-none" />

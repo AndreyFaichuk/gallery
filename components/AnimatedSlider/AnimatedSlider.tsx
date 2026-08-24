@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 const variants = {
   enter: (direction: number) => ({

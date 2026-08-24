@@ -1,5 +1,5 @@
 import type { SortParam } from '@/services/gallery/types';
-import { PaintingT } from './schema.types';
+import type { PaintingT } from './schema.types';
 
 type QueryParamsBase<T> = {
   searchParams: Promise<T>;

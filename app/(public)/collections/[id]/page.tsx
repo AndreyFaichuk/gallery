@@ -3,7 +3,7 @@ import { MoreCollections } from '@/components/Collections';
 import { PaintingsCollection } from '@/components/PaintingsCollection';
 import { PaintingsFilterBar } from '@/components/PaintingsFilterBar';
 import { CollectionPreviewSkeleton } from '@/components/Skeletons';
-import { FILTER_OPTION_PARAMS, PaintingPageParams, PaintingsSearchParamsProps } from '@/types';
+import { FILTER_OPTION_PARAMS, type PaintingPageParams, type PaintingsSearchParamsProps } from '@/types';
 import { getAllShopPaintings } from '@/services/gallery/get-all-shop-paintings';
 import { Suspense } from 'react';
 

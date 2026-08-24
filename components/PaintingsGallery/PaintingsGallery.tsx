@@ -1,7 +1,7 @@
 'use client';
 
-import { PaintingT } from '@/types';
-import { FC } from 'react';
+import type { PaintingT } from '@/types';
+import type { FC } from 'react';
 import { ExclusiveWorks } from './components/ExclusiveWorks';
 import { Separator } from '../ui';
 import { AllPaintingsGallery } from './components/AllPaintingsGallery';

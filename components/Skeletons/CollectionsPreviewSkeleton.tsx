@@ -49,7 +49,6 @@ export const CollectionsPreviewSkeleton = () => {
               <div className="mt-2 flex max-w-[210px] flex-col md:max-w-[230px] gap-2">
                 {Array.from({ length: previewSlot.descriptionLines }).map((_, lineIndex) => (
                   <Skeleton
-                    // biome-ignore lint/suspicious/noArrayIndexKey: skeleton placeholders are static.
                     key={lineIndex}
                     className="h-[21px] rounded-sm bg-white/45"
                     style={{

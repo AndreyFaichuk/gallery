@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 
 import { Command, CommandInput, CommandGroup, CommandList } from '@/components/ui';
 import { Drawer, DrawerContent, DrawerTitle } from '@/components/ui';
@@ -52,7 +52,7 @@ const SuggestAndProductsAllMobileContent = ({ onClose }: { onClose: VoidFunction
           <CommandGroup heading="Suggestions">
             <div className="flex overflow-scroll h-14 gap-2">
               {suggestions.map((suggestion) => (
-                <div onClick={handleClearQueryAndClose} key={suggestion}>
+                <div onClick={handleClearQueryAndClose} key={suggestion} onKeyDown={() => {}}>
                   <SuggestionMobile suggestion={suggestion} />
                 </div>
               ))}
@@ -72,6 +72,7 @@ const SuggestAndProductsAllMobileContent = ({ onClose }: { onClose: VoidFunction
 
                 return (
                   <div
+                    onKeyDown={() => {}}
                     key={painting.id}
                     className={cn('border-b-1 border-gray-200 pb-2', {
                       'border-b-0 pb-0': isLastElement,

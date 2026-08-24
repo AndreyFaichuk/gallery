@@ -1,7 +1,7 @@
 'use client';
 
-import { FC, useState } from 'react';
-import { PhotoCollageDesktopProps } from '../Desktop';
+import { type FC, useState } from 'react';
+import type { PhotoCollageDesktopProps } from '../Desktop';
 import { getMediaContentUrl } from '@/utils';
 import { Maximize2, Play } from 'lucide-react';
 import Image from 'next/image';
@@ -69,6 +69,7 @@ export const PhotoCollageMobile: FC<PhotoCollageMobileProps> = ({
         <div
           className="relative aspect-[4/5] overflow-hidden rounded-xl bg-neutral-100"
           onClick={handleOpenPhotoGallery}
+          onKeyDown={() => {}}
         >
           <Image
             src={active.src}
@@ -79,7 +80,7 @@ export const PhotoCollageMobile: FC<PhotoCollageMobileProps> = ({
             priority={activeIndex === 0}
           />
 
-          {active.type == 'image' && (
+          {active.type === 'image' && (
             <div className="absolute inset-0 flex items-center justify-center">
               <Maximize2 className="size-8 fill-white text-white absolute right-[15px] top-[15px]" />
             </div>

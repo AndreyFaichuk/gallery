@@ -1,7 +1,7 @@
 'use client';
 
-import { FC } from 'react';
-import { PaginationProps } from './PaginationStrategy.types';
+import type { FC } from 'react';
+import type { PaginationProps } from './PaginationStrategy.types';
 import { Button } from '@/components/ui';
 import Link from 'next/link';
 

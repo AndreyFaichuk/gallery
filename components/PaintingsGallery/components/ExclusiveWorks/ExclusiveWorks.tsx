@@ -1,8 +1,8 @@
 'use client';
 
-import { PaintingT } from '@/types';
+import type { PaintingT } from '@/types';
 import { CircleChevronLeft, CircleChevronRight, Sparkles } from 'lucide-react';
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 import { ExclusivePaintingPreview } from './ExclusivePaintingPreview';
 import { formatDimension, getMediaContentUrl } from '@/utils';
 import { PaintingPhotoGallery } from '@/components/PaintingPhotoGallery';
@@ -12,21 +12,6 @@ import { AnimatedSlider } from '@/components/AnimatedSlider';
 
 type ExclusiveWorksProps = {
   exclusiveItems: PaintingT[];
-};
-
-const variants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 80 : -80,
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    x: direction > 0 ? -80 : 80,
-    opacity: 0,
-  }),
 };
 
 export const ExclusiveWorks: FC<ExclusiveWorksProps> = ({ exclusiveItems }) => {

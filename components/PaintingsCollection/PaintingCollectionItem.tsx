@@ -20,7 +20,6 @@ export const PaintingCollectionItem: FC<PaintingCollectionItemProps> = ({ exchan
     `paintings/${item.id}/${item.imageUrls[1] ?? item.imageUrls[0]}`,
   );
   const dimensions = `${item.width} x ${item.height} cm`;
-  const medium = 'Oil on canvas';
 
   return (
     <Link href={`/paintings/${item.id}`} className="block">

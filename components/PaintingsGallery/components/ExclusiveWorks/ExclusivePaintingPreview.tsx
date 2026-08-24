@@ -28,6 +28,7 @@ export const ExclusivePaintingPreview = ({
       {previewImages.map((image, index) => {
         return (
           <div
+            onKeyDown={() => {}}
             key={image}
             className={`relative overflow-hidden rounded-lg ${PREVIEW_SLOTS[index]}`}
             onClick={() => onPaintingClick(index)}

@@ -1,9 +1,9 @@
 'use client';
 
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import { Button } from '../../ui/button';
 import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle } from '../../ui/drawer';
-import { DrawerFilterSnaphotT, Nullable } from '@/types';
+import type { DrawerFilterSnaphotT, Nullable } from '@/types';
 import { FilterItem } from '../../ui/filter-item';
 import { Separator } from '../../ui';
 

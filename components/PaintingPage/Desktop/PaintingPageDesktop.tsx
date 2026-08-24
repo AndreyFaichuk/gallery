@@ -1,8 +1,8 @@
 'use client';
 
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import { PaintingDetailProps, PaintingT } from '@/types';
+import type { PaintingDetailProps, PaintingT } from '@/types';
 import { PhotoCollageDesktop, PaintingInfoDesktop } from '../../PaintingDetails/Desktop';
 import { YouMayAlsoLikeDesktop } from '../../PaintingDetails/Desktop/YouMayAlsoLikeDesktop';
 
