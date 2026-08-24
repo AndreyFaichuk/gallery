@@ -10,6 +10,7 @@
     "start": "next start",
     "typecheck": "next typegen && tsc --noEmit",
     "format": "npx biome format --write .",
+    "hooks:prepare": "lefthook install",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:drop": "drizzle-kit drop"
@@ -49,6 +50,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "^0.31.9",
+    "lefthook": "^2.1.10",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"

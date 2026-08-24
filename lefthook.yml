@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: run lint and format
+      run: npm run lint:fix {staged_files}
+      glob: "*.{js,jsx,ts,tsx,json,css}"
+
+pre-push:
+  parallel: true
+  jobs:
+    - name: run lint
+      run: npm run lint
+
+    - name: check typescript types
+      run: npm run typecheck
