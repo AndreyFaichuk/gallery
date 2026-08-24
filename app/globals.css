@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 html,
 body {
@@ -7,7 +7,7 @@ body {
 
 body {
   overflow-x: auto;
-  background: url('/bg.svg') center / cover no-repeat;
+  background: url("/bg.svg") center / cover no-repeat;
 }
 
 @theme {

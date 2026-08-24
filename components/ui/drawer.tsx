@@ -1,8 +1,8 @@
 'use client';
 
-import { cn } from '@/utils/cn';
 import type { ComponentProps } from 'react';
 import { Drawer as DrawerPrimitive } from 'vaul';
+import { cn } from '@/utils/cn';
 
 const Drawer = ({ ...props }: ComponentProps<typeof DrawerPrimitive.Root>) => {
   return <DrawerPrimitive.Root data-slot="drawer" {...props} />;
@@ -108,14 +108,14 @@ const DrawerDescription = ({
 
 export {
   Drawer,
-  DrawerPortal,
-  DrawerOverlay,
-  DrawerTrigger,
   DrawerClose,
   DrawerContent,
-  DrawerHeader,
-  DrawerFooter,
-  DrawerTitle,
   DrawerDescription,
+  DrawerFooter,
   DrawerHandle,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger,
 };

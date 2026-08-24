@@ -1,11 +1,11 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { useCurrency } from '@/hooks';
 import type { ExchangeT, PaintingT } from '@/types';
-import { Button } from '../../ui/button';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Separator } from '../../ui';
 import { formatDimension } from '@/utils';
-import { useEffect, useRef, useState } from 'react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Separator } from '../../ui';
+import { Button } from '../../ui/button';
 
 type PaintingInfoMobileProps = ExchangeT & {
   painting: PaintingT;

@@ -1,8 +1,8 @@
 'use client';
 
-import { NAVIGATION_MENU_OPTIONS } from '@/constants';
 import { MoveRight } from 'lucide-react';
 import Link from 'next/link';
+import { NAVIGATION_MENU_OPTIONS } from '@/constants';
 
 export const Discover = () => {
   return (

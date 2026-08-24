@@ -2,9 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
-
-import { CommandEmpty, CommandItem } from '../ui/command';
 import { SuggestionsSkeleton } from '../Skeletons';
+import { CommandEmpty, CommandItem } from '../ui/command';
 
 type SuggestionsProps = {
   suggestions: string[];

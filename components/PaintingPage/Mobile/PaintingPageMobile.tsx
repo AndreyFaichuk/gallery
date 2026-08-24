@@ -2,8 +2,11 @@
 
 import type { FC } from 'react';
 import type { PaintingDetailProps, PaintingT } from '@/types';
-import { PhotoCollageMobile, YouMayAlsoLikeMobile } from '../../PaintingDetails/Mobile';
-import { PaintingInfoMobile } from '../../PaintingDetails/Mobile';
+import {
+  PaintingInfoMobile,
+  PhotoCollageMobile,
+  YouMayAlsoLikeMobile,
+} from '../../PaintingDetails/Mobile';
 
 export type PaintingPageMobileProps = PaintingDetailProps & {
   youMayAlsoLikePaintings: PaintingT[];

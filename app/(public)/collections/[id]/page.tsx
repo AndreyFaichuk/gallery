@@ -1,11 +1,14 @@
-import { CollectionPreview } from '@/components/Collections';
-import { MoreCollections } from '@/components/Collections';
+import { Suspense } from 'react';
+import { CollectionPreview, MoreCollections } from '@/components/Collections';
 import { PaintingsCollection } from '@/components/PaintingsCollection';
 import { PaintingsFilterBar } from '@/components/PaintingsFilterBar';
 import { CollectionPreviewSkeleton } from '@/components/Skeletons';
-import { FILTER_OPTION_PARAMS, type PaintingPageParams, type PaintingsSearchParamsProps } from '@/types';
 import { getAllShopPaintings } from '@/services/gallery/get-all-shop-paintings';
-import { Suspense } from 'react';
+import {
+  FILTER_OPTION_PARAMS,
+  type PaintingPageParams,
+  type PaintingsSearchParamsProps,
+} from '@/types';
 
 type PageProps = PaintingsSearchParamsProps & PaintingPageParams;
 

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FILTER_BAR_MOBILE_SORT_OPTION, SORT_OPTIONS } from '@/constants';
 import type {
   DrawerFilterSnaphotT,
@@ -7,7 +8,6 @@ import type {
   SortOptionParamsT,
 } from '@/types';
 import { buildFilterSnapshot, buildSortSnapshot } from '@/utils';
-import { useState } from 'react';
 
 type useFilterManageProps = {
   currentParamsMap: FilterBarDesktopProps['currentParamsMap'];

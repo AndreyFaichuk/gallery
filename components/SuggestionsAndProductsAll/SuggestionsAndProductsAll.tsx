@@ -1,13 +1,13 @@
 'use client';
 
-import { type FC, useState } from 'react';
-import { Command, CommandInput, CommandList, CommandGroup } from '@/components/ui/command';
-import { Suggestions } from './Suggestions';
-import { Products } from './Products';
-import { VALID_PARAMS } from '@/hooks/use-filter-params';
 import { useSearchParams } from 'next/navigation';
-import { usePaintings } from '@/hooks';
+import { type FC, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
+import { Command, CommandGroup, CommandInput, CommandList } from '@/components/ui/command';
+import { usePaintings } from '@/hooks';
+import { VALID_PARAMS } from '@/hooks/use-filter-params';
+import { Products } from './Products';
+import { Suggestions } from './Suggestions';
 
 type SuggestionsAndProductsAllProps = {
   onClose: VoidFunction;

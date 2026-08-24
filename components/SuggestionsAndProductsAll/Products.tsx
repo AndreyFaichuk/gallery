@@ -1,12 +1,12 @@
 'use client';
 
-import type { PaintingT } from '@/types/schema.types';
 import Image from 'next/image';
-import { memo, type FC } from 'react';
 import { useRouter } from 'next/navigation';
-import { CommandItem } from '../ui';
+import { type FC, memo } from 'react';
+import type { PaintingT } from '@/types/schema.types';
 import { getMediaContentUrl } from '@/utils';
 import { ProductsSkeleton } from '../Skeletons';
+import { CommandItem } from '../ui';
 
 type ProductsProps = {
   paintings: PaintingT[];

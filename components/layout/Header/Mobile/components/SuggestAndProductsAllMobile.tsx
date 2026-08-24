@@ -1,20 +1,26 @@
 'use client';
 
-import { type FC, useState } from 'react';
-
-import { Command, CommandInput, CommandGroup, CommandList } from '@/components/ui';
-import { Drawer, DrawerContent, DrawerTitle } from '@/components/ui';
-import { VisuallyHidden } from 'radix-ui';
-import { SuggestionMobile } from './SuggestionMobile';
-import { getMediaContentUrl } from '@/utils';
-import { ProductMobile } from './ProductMobile';
-import { cn } from '@/utils/cn';
 import { useSearchParams } from 'next/navigation';
-import { usePaintings, VALID_PARAMS } from '@/hooks';
-import { InitialSearchState } from './InitialSearchState';
-import { EmptyResults } from './EmptyResults';
+import { VisuallyHidden } from 'radix-ui';
+import { type FC, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
+import {
+  Command,
+  CommandGroup,
+  CommandInput,
+  CommandList,
+  Drawer,
+  DrawerContent,
+  DrawerTitle,
+} from '@/components/ui';
+import { usePaintings, VALID_PARAMS } from '@/hooks';
+import { getMediaContentUrl } from '@/utils';
+import { cn } from '@/utils/cn';
+import { EmptyResults } from './EmptyResults';
+import { InitialSearchState } from './InitialSearchState';
+import { ProductMobile } from './ProductMobile';
 import { SearchSkeleton } from './SearchSkeleton';
+import { SuggestionMobile } from './SuggestionMobile';
 
 const SuggestAndProductsAllMobileContent = ({ onClose }: { onClose: VoidFunction }) => {
   const searchParams = useSearchParams();

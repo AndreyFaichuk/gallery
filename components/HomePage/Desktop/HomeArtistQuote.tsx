@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Separator } from '../../ui';
 import home_quote from '@/assets/images/home_quote.jpg';
+import { Separator } from '../../ui';
 
 export const HomeArtistQuote = () => {
   return (

@@ -1,9 +1,9 @@
+import Image from 'next/image';
+import { type FC, useState } from 'react';
 import type { PaintingT } from '@/types/schema.types';
 import { getMediaContentUrl } from '@/utils';
-import Image from 'next/image';
-import { useState, type FC } from 'react';
-import VideoPlayer from '../../VideoPlayer';
 import { PaintingPhotoGallery } from '../../PaintingPhotoGallery';
+import VideoPlayer from '../../VideoPlayer';
 
 export type PhotoCollageDesktopProps = Pick<PaintingT, 'name' | 'imageUrls' | 'id' | 'videos'>;
 

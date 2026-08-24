@@ -1,12 +1,12 @@
-import { useSlideContent } from '@/hooks';
-import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../../AboutMe.constants';
-import { useState } from 'react';
-import { getMediaContentUrl } from '@/utils';
 import { MoveLeft, MoveRight } from 'lucide-react';
-import { cn } from '@/utils/cn';
+import { useState } from 'react';
 import { AnimatedSlider } from '@/components/AnimatedSlider';
-import { ProcessPreview } from './ProcessPreview';
 import { PaintingPhotoGallery } from '@/components/PaintingPhotoGallery';
+import { useSlideContent } from '@/hooks';
+import { getMediaContentUrl } from '@/utils';
+import { cn } from '@/utils/cn';
+import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../../AboutMe.constants';
+import { ProcessPreview } from './ProcessPreview';
 
 export const Process = () => {
   const { process } = IMAGES_CONFIG;

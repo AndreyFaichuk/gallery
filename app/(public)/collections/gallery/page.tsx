@@ -1,8 +1,8 @@
 import { PaintingsFilterBar } from '@/components/PaintingsFilterBar';
-import type { PaintingsSearchParamsProps } from '@/types';
 import { PaintingsGallery } from '@/components/PaintingsGallery';
 import { getAllGalleryPaintings } from '@/services/gallery/get-all-gallery-paintings';
 import { ALL_PAINTINGS_API_MODE } from '@/services/gallery/types';
+import type { PaintingsSearchParamsProps } from '@/types';
 
 const Page = async ({ searchParams }: PaintingsSearchParamsProps) => {
   const { collections, availability, query, page, sort } = await searchParams;

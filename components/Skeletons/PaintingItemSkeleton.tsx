@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { cn } from '@/utils/cn';
 import { PAINTING_ITEM_VARIANT, type PaintingItemVariantT } from '@/types/painting.types';
+import { cn } from '@/utils/cn';
 import { Skeleton } from '../ui/skeleton';
 
 const PAINTING_ITEM_SKELETON_STYLES: Record<

@@ -1,7 +1,7 @@
 'use client';
 
-import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import { FILTER_BAR_MOBILE_OPTIONS } from '@/constants';
 import { Skeleton } from '../ui/skeleton';
 

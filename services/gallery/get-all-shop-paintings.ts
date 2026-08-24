@@ -1,8 +1,8 @@
-import { getCurrencyExchange } from './get-currency-exchange';
 import { FILTER_BAR_MOBILE_OPTIONS } from '@/constants';
-import { getPaintings } from './get-paintings';
 import { getAvailabilityCounts, getCollectionCounts } from './counts';
 import { getPaintingsCounts } from './counts/get-paintings-counts';
+import { getCurrencyExchange } from './get-currency-exchange';
+import { getPaintings } from './get-paintings';
 import { getPaintingsFilterConditions } from './shared';
 import { ALL_PAINTINGS_API_MODE, type FilterOptionsT } from './types';
 

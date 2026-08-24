@@ -1,9 +1,8 @@
 'use client';
 
-import type { PaintingT } from '@/types';
 import type { FC, ReactNode } from 'react';
+import type { ExchangeT, PaintingT } from '@/types';
 import { PaintingShopItem } from './PaintingShopItem';
-import type { ExchangeT } from '@/types';
 
 type PaintingsCatalogProps = ExchangeT & {
   items: PaintingT[];

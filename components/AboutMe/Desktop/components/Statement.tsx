@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import { getMediaContentUrl } from '@/utils';
 import { ABOUT_ME_PREFIX, IMAGES_CONFIG } from '../../AboutMe.constants';
-import Image from 'next/image';
 
 export const Statement = () => {
   const { statement } = IMAGES_CONFIG;

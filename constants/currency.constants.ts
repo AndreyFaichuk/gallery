@@ -1,5 +1,5 @@
-import { CURRENCY_SYMBOLS } from '@/utils';
 import { BASE_CURRENCY } from '@/services/gallery/get-currency-exchange';
+import { CURRENCY_SYMBOLS } from '@/utils';
 
 export const CURRENCY_OPTIONS = [
   {

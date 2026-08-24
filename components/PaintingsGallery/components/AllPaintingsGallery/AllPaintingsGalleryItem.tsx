@@ -1,9 +1,9 @@
 'use client';
 
-import type { PaintingT } from '@/types';
-import type { FC, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import type { FC, ReactNode } from 'react';
+import type { PaintingT } from '@/types';
 import { getMediaContentUrl } from '@/utils';
 
 type AllPaintingsGalleryItemProps = {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Button, Input } from '../../ui';
 import home_quote from '@/assets/images/home_quote.jpg';
+import { Button, Input } from '../../ui';
 
 export const HomeNewsletter = () => {
   return (

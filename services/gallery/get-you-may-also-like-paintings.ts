@@ -1,6 +1,5 @@
 import { and, eq, ne } from 'drizzle-orm';
-import { db } from '../database';
-import { paintings } from '../database';
+import { db, paintings } from '../database';
 
 type Options = {
   collectionId: string;

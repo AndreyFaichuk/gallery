@@ -1,12 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { Handbag, Menu, Search, X } from 'lucide-react';
-
-import { Titles } from './components';
-import { Logo } from './components';
-import { NavigationMenu } from './components';
-import { SuggestAndProductsAllMobile } from './components';
+import { useState } from 'react';
+import { Logo, NavigationMenu, SuggestAndProductsAllMobile, Titles } from './components';
 
 export const MobileHeader = () => {
   const [isNavigationMenuOpen, setIsNavigationMenuOpen] = useState(false);

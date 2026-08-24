@@ -1,8 +1,8 @@
 'use client';
 
-import { cn } from '@/utils/cn';
-import type { PaintingT } from '@/types';
 import type { FC, ReactNode } from 'react';
+import type { PaintingT } from '@/types';
+import { cn } from '@/utils/cn';
 import { AllPaintingsGalleryItem } from './AllPaintingsGalleryItem';
 
 type AllPaintingsProps = {

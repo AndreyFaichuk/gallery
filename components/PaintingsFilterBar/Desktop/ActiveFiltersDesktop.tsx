@@ -1,8 +1,8 @@
 'use client';
 
 import type { FC } from 'react';
-import { ActiveFilter } from '../ActiveFilter';
 import type { ActiveFiltersDesktopProps } from '@/types';
+import { ActiveFilter } from '../ActiveFilter';
 
 export const ActiveFiltersDesktop: FC<ActiveFiltersDesktopProps> = ({
   filtersToRender,

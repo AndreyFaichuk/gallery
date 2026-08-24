@@ -1,5 +1,5 @@
-import type { PaintingT } from '@/types/schema.types';
 import { useQuery } from '@tanstack/react-query';
+import type { PaintingT } from '@/types/schema.types';
 
 export const paintingsQueryKeys = {
   paintings: {

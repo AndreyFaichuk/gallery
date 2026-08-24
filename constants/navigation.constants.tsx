@@ -1,5 +1,5 @@
-import type { MenuOptions } from '@/types';
 import { Group, Images, Palette, ShoppingBag } from 'lucide-react';
+import type { MenuOptions } from '@/types';
 
 export const NAVIGATION_MENU_OPTIONS = {
   SHOP: { title: 'shop', link: '/collections/shop' },

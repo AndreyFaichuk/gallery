@@ -2,8 +2,8 @@
 
 import type { FC } from 'react';
 import type { PaintingPageDesktopProps } from './Desktop';
-import { PaintingPageMobile } from './Mobile';
 import PaintingPageDesktop from './Desktop';
+import { PaintingPageMobile } from './Mobile';
 
 type PaintingPageProps = PaintingPageDesktopProps;
 

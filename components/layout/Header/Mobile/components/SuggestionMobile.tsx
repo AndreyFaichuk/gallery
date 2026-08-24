@@ -1,8 +1,8 @@
 'use client';
 
-import { Button } from '@/components/ui';
 import Link from 'next/link';
 import type { FC } from 'react';
+import { Button } from '@/components/ui';
 
 type SuggestionMobileProps = {
   suggestion: string;

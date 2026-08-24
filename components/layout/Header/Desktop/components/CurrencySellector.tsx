@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
 import {
   Select,
   SelectContent,
@@ -10,8 +12,6 @@ import {
 } from '@/components/ui';
 import { CURRENCY_OPTIONS } from '@/constants';
 import type { ExchangeRatesCurrency } from '@/services/gallery/get-currency-exchange';
-import { useEffect, useState } from 'react';
-import { useLocalStorage } from 'usehooks-ts';
 
 export const CurrencySellector = () => {
   const [isMounted, setIsMounted] = useState(false);

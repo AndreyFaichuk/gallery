@@ -1,6 +1,5 @@
 import { and, asc, desc, type SQL } from 'drizzle-orm';
-import { paintings } from '../database';
-import { db } from '../database';
+import { db, paintings } from '../database';
 import { SORT_PARAM_MAP } from './types';
 
 type Options = {
