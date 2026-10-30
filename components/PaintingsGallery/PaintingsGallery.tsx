@@ -14,7 +14,7 @@ type PaintingsGalleryProps = {
 export const PaintingsGallery: FC<PaintingsGalleryProps> = ({ allItems, exclusiveItems }) => {
   return (
     <div className="flex flex-col gap-4">
-      <ExclusiveWorks exclusiveItems={exclusiveItems} />
+      {exclusiveItems.length > 0 && <ExclusiveWorks exclusiveItems={exclusiveItems} />}
 
       <Separator />
 

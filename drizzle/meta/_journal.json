@@ -5,78 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1772103759827,
-      "tag": "0000_open_supreme_intelligence",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1772128526857,
-      "tag": "0001_broken_red_skull",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1772646198909,
-      "tag": "0002_fuzzy_galactus",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1772647682531,
-      "tag": "0003_previous_moonstone",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1773486033967,
-      "tag": "0004_fixed_tombstone",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1773490609247,
-      "tag": "0005_organic_northstar",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "7",
-      "when": 1774290405210,
-      "tag": "0006_flaky_blue_shield",
-      "breakpoints": true
-    },
-    {
-      "idx": 7,
-      "version": "7",
-      "when": 1778173306777,
-      "tag": "0007_worried_doctor_octopus",
-      "breakpoints": true
-    },
-    {
-      "idx": 8,
-      "version": "7",
-      "when": 1778173605838,
-      "tag": "0008_known_omega_flight",
-      "breakpoints": true
-    },
-    {
-      "idx": 9,
-      "version": "7",
-      "when": 1780824272699,
-      "tag": "0009_tan_tigra",
-      "breakpoints": true
-    },
-    {
-      "idx": 10,
-      "version": "7",
-      "when": 1782217251205,
-      "tag": "0010_damp_mother_askani",
+      "when": 1793302380795,
+      "tag": "0000_add_base_columns",
       "breakpoints": true
     }
   ]
